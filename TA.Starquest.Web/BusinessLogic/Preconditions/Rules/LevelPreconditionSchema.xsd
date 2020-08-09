@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="LevelPreconditionSchema"
+    targetNamespace="http://tigra-astronomy.com/starquest/LevelPreconditionSchema.xsd"
+    elementFormDefault="qualified"
+    xmlns="http://tigra-astronomy.com/starquest/LevelPreconditionSchema.xsd"
+    xmlns:tns="http://tigra-astronomy.com/starquest/LevelPreconditionSchema.xsd"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+>
+  <xs:element name="LevelPrecondition">
+    <xs:complexType>
+      <xs:group minOccurs="1" maxOccurs="1" ref="simpleOrCompositeCondition"/>
+    </xs:complexType> 
+  </xs:element>
+
+
+  <xs:group name="simpleOrCompositeCondition">
+    <xs:choice>
+      <xs:group ref="simpleCondition"/>
+      <xs:group ref="compositeCondition"/>
+    </xs:choice>
+  </xs:group>
+
+  <xs:group name="simpleCondition">
+    <xs:choice>
+      <xs:element name="HasBadge" type="badgeCondition"/>
+      <xs:element name="JoinedBefore" type="dateCondition" />
+    </xs:choice>
+  </xs:group>
+
+  <xs:complexType name="badgeCondition">
+    <xs:attribute name="id" type="xs:integer" use="required" />
+  </xs:complexType>
+
+  <xs:complexType name="dateCondition">
+    <xs:attribute name="date" type="xs:dateTime" use="required"/>
+  </xs:complexType>
+
+  <xs:group name="compositeCondition">
+    <xs:choice>
+      <xs:element name="HasAny" type="compositeElement" />
+      <xs:element name="HasAll" type="compositeElement" />
+    </xs:choice>
+  </xs:group>
+
+  <xs:complexType name="compositeElement" >
+    <xs:sequence minOccurs="1" maxOccurs="unbounded" >
+      <xs:group ref="simpleOrCompositeCondition" />
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

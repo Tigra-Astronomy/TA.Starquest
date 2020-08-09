@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="MS.Gamification.GameLogic.Preconditions.CompositePredicate&lt;T&gt;">
+    <Position X="7.5" Y="1" Width="2" />
+    <NestedTypes>
+      <Class Name="MS.Gamification.GameLogic.Preconditions.CompositePredicate&lt;T&gt;.False&lt;TQ&gt;" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>GameLogic\Preconditions\CompositePredicate.cs</NewMemberFileName>
+        </TypeIdentifier>
+        <Lollipop Position="0.2" />
+      </Class>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEAAAAAAAAAAgAAAAAAAAAAAAAAAAAEEAA=</HashCode>
+      <FileName>GameLogic\Preconditions\CompositePredicate.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="MS.Gamification.GameLogic.Preconditions.HasBadge">
+    <Position X="1" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAgAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>GameLogic\Preconditions\HasBadge.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="MS.Gamification.GameLogic.Preconditions.JoinedBefore">
+    <Position X="3" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAABAAA=</HashCode>
+      <FileName>GameLogic\Preconditions\JoinedBefore.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="MS.Gamification.GameLogic.Preconditions.HasAll">
+    <Position X="5.75" Y="4.75" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>GameLogic\Preconditions\HasAll.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MS.Gamification.GameLogic.Preconditions.HasAny">
+    <Position X="8.75" Y="4.75" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>GameLogic\Preconditions\HasAny.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MS.Gamification.GameLogic.Preconditions.LevelPreconditionParser">
+    <Position X="11.75" Y="1" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AUAAAEAAARgAAAAAAAAACAAAAAAAAAAAAAAAAAQAAAA=</HashCode>
+      <FileName>GameLogic\Preconditions\LevelPreconditionParser.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="MS.Gamification.GameLogic.Preconditions.IPredicate&lt;T&gt;">
+    <Position X="1.25" Y="1" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>GameLogic\Preconditions\IPredicate.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="MS.Gamification.GameLogic.Preconditions.ICompositePredicate&lt;T&gt;">
+    <Position X="4.5" Y="1" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAA=</HashCode>
+      <FileName>GameLogic\Preconditions\ICompositePredicate.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
