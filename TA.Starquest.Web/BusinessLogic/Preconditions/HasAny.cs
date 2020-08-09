@@ -4,7 +4,7 @@
 // Last modified: 2016-07-20@13:01
 
 using System.Linq;
-using TA.Starquest.Web.DataAccess.Entities;
+using TA.Starquest.DataAccess.Entities;
 
 namespace TA.Starquest.Web.BusinessLogic.Preconditions
     {
@@ -12,9 +12,9 @@ namespace TA.Starquest.Web.BusinessLogic.Preconditions
     ///     A composite predicate that is true if any of its subconditions are true (logical OR).
     /// </summary>
     /// <seealso cref="ICompositePredicate{T}" />
-    internal class HasAny : CompositePredicate<ApplicationUser>
+    internal class HasAny : CompositePredicate<StarquestUser>
         {
-        public override bool Evaluate(ApplicationUser candidate)
+        public override bool Evaluate(StarquestUser candidate)
             {
             return Subconditions.Any(p => p.Evaluate(candidate));
             }

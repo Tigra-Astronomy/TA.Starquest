@@ -7,7 +7,7 @@ using System;
 using System.Linq;
 using System.Xml.Linq;
 using NLog;
-using TA.Starquest.Web.DataAccess.Entities;
+using TA.Starquest.DataAccess.Entities;
 
 namespace TA.Starquest.Web.BusinessLogic.Preconditions
     {
@@ -20,7 +20,7 @@ namespace TA.Starquest.Web.BusinessLogic.Preconditions
         private static readonly XNamespace xmlns = "http://tigra-astronomy.com/starquest/LevelPreconditionSchema.xsd";
         private readonly ILogger log = LogManager.GetCurrentClassLogger();
 
-        public IPredicate<ApplicationUser> ParsePreconditionXml(string xml)
+        public IPredicate<StarquestUser> ParsePreconditionXml(string xml)
             {
             try
                 {
@@ -32,11 +32,11 @@ namespace TA.Starquest.Web.BusinessLogic.Preconditions
             catch (Exception e)
                 {
                 log.Warn(e, "Unable to parse precondition XML; using AlwaysFalse predicate");
-                return CompositePredicate<ApplicationUser>.AlwaysFalse;
+                return CompositePredicate<StarquestUser>.AlwaysFalse;
                 }
             }
 
-        private IPredicate<ApplicationUser> CreatePredicate(XElement predicateXml)
+        private IPredicate<StarquestUser> CreatePredicate(XElement predicateXml)
             {
             var predicateType = predicateXml.Name.LocalName;
             switch (predicateType)
@@ -51,11 +51,11 @@ namespace TA.Starquest.Web.BusinessLogic.Preconditions
                         return CreateCompositePredicate(new HasAll(), predicateXml);
                     default:
                         log.Warn($"Unrecognised predicate type {predicateType}");
-                        return CompositePredicate<ApplicationUser>.AlwaysFalse;
+                        return CompositePredicate<StarquestUser>.AlwaysFalse;
                 }
             }
 
-        private IPredicate<ApplicationUser> CreateJoinedBeforePredicate(XElement predicateXml)
+        private IPredicate<StarquestUser> CreateJoinedBeforePredicate(XElement predicateXml)
             {
             try
                 {
@@ -66,7 +66,7 @@ namespace TA.Starquest.Web.BusinessLogic.Preconditions
             catch (Exception e)
                 {
                 log.Warn(e, $"Failed to create JoinedBefore predicate from {predicateXml}");
-                return CompositePredicate<ApplicationUser>.AlwaysFalse;
+                return CompositePredicate<StarquestUser>.AlwaysFalse;
                 }
             }
 
@@ -75,7 +75,7 @@ namespace TA.Starquest.Web.BusinessLogic.Preconditions
         /// </summary>
         /// <param name="predicate">The predicate already built.</param>
         /// <param name="predicateXml">The predicate XML.</param>
-        private IPredicate<ApplicationUser> CreateCompositePredicate(ICompositePredicate<ApplicationUser> predicate,
+        private IPredicate<StarquestUser> CreateCompositePredicate(ICompositePredicate<StarquestUser> predicate,
             XElement predicateXml)
             {
             try
@@ -91,11 +91,11 @@ namespace TA.Starquest.Web.BusinessLogic.Preconditions
             catch (Exception e)
                 {
                 log.Warn(e, $"parsing composite predicate from {predicateXml}");
-                return CompositePredicate<ApplicationUser>.AlwaysFalse;
+                return CompositePredicate<StarquestUser>.AlwaysFalse;
                 }
             }
 
-        private IPredicate<ApplicationUser> CreateHasBadgePredicate(XElement predicateXml)
+        private IPredicate<StarquestUser> CreateHasBadgePredicate(XElement predicateXml)
             {
             try
                 {
@@ -106,7 +106,7 @@ namespace TA.Starquest.Web.BusinessLogic.Preconditions
             catch (Exception e)
                 {
                 log.Warn(e, $"Failed to create HasBadge predicate from {predicateXml}");
-                return CompositePredicate<ApplicationUser>.AlwaysFalse;
+                return CompositePredicate<StarquestUser>.AlwaysFalse;
                 }
             }
         }

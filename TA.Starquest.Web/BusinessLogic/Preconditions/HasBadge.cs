@@ -4,11 +4,11 @@
 // Last modified: 2016-07-21@01:41
 
 using System.Linq;
-using TA.Starquest.Web.DataAccess.Entities;
+using TA.Starquest.DataAccess.Entities;
 
 namespace TA.Starquest.Web.BusinessLogic.Preconditions
     {
-    public class HasBadge : IPredicate<ApplicationUser>
+    public class HasBadge : IPredicate<StarquestUser>
         {
         private readonly int badgeId;
 
@@ -17,7 +17,7 @@ namespace TA.Starquest.Web.BusinessLogic.Preconditions
             this.badgeId = badgeId;
             }
 
-        public bool Evaluate(ApplicationUser candidate)
+        public bool Evaluate(StarquestUser candidate)
             {
             return candidate.Badges.Any(p => p.Id == badgeId);
             }

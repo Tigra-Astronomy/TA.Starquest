@@ -4,11 +4,11 @@
 // Last modified: 2016-07-20@13:19
 
 using System;
-using TA.Starquest.Web.DataAccess.Entities;
+using TA.Starquest.DataAccess.Entities;
 
 namespace TA.Starquest.Web.BusinessLogic.Preconditions
     {
-    public class JoinedBefore : IPredicate<ApplicationUser>
+    public class JoinedBefore : IPredicate<StarquestUser>
         {
         private readonly DateTime deadline;
 
@@ -17,7 +17,7 @@ namespace TA.Starquest.Web.BusinessLogic.Preconditions
             this.deadline = deadline;
             }
 
-        public bool Evaluate(ApplicationUser candidate)
+        public bool Evaluate(StarquestUser candidate)
             {
             return candidate.Provisioned < deadline;
             }

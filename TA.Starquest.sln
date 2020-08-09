@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TA.Starquest.Core", "TA.Sta
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TA.Starquest.Web", "TA.Starquest.Web\TA.Starquest.Web.csproj", "{F3A6A73D-354D-4D28-8F27-EFA705ED4EA8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TA.Starquest.DataAccess", "TA.Starquest.DataAccess\TA.Starquest.DataAccess.csproj", "{9D7838D0-7F89-4930-A0ED-742D85F87E1A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{F3A6A73D-354D-4D28-8F27-EFA705ED4EA8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F3A6A73D-354D-4D28-8F27-EFA705ED4EA8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F3A6A73D-354D-4D28-8F27-EFA705ED4EA8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9D7838D0-7F89-4930-A0ED-742D85F87E1A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9D7838D0-7F89-4930-A0ED-742D85F87E1A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9D7838D0-7F89-4930-A0ED-742D85F87E1A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9D7838D0-7F89-4930-A0ED-742D85F87E1A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

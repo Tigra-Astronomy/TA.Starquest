@@ -4,13 +4,13 @@
 // Last modified: 2016-07-20@13:01
 
 using System.Linq;
-using TA.Starquest.Web.DataAccess.Entities;
+using TA.Starquest.DataAccess.Entities;
 
 namespace TA.Starquest.Web.BusinessLogic.Preconditions
     {
-    internal class HasAll : CompositePredicate<ApplicationUser>
+    internal class HasAll : CompositePredicate<StarquestUser>
         {
-        public override bool Evaluate(ApplicationUser candidate)
+        public override bool Evaluate(StarquestUser candidate)
             {
             return Subconditions.All(p => p.Evaluate(candidate));
             }
