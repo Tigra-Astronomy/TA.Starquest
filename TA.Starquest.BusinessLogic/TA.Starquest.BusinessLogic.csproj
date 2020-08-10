@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Preconditions\Rules\LevelPreconditionSchema.xsd" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Preconditions\Rules\LevelPreconditionSchema.xsd" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\TA.Starquest.Core\TA.Starquest.Core.csproj" />
+    <ProjectReference Include="..\TA.Starquest.DataAccess\TA.Starquest.DataAccess.csproj" />
+  </ItemGroup>
+
+</Project>

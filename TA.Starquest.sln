@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30404.54
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TA.Starquest.Specifications", "TA.Starquest.Specifications\TA.Starquest.Specifications.csproj", "{C0636040-96C9-456B-BC73-5D09A6E6D8CB}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TA.Starquest.Core", "TA.Starquest.Core\TA.Starquest.Core.csproj", "{281799DC-F6E5-4768-91D7-4A777A9C3752}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TA.Starquest.Web", "TA.Starquest.Web\TA.Starquest.Web.csproj", "{F3A6A73D-354D-4D28-8F27-EFA705ED4EA8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TA.Starquest.DataAccess", "TA.Starquest.DataAccess\TA.Starquest.DataAccess.csproj", "{9D7838D0-7F89-4930-A0ED-742D85F87E1A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TA.Starquest.DataAccess", "TA.Starquest.DataAccess\TA.Starquest.DataAccess.csproj", "{9D7838D0-7F89-4930-A0ED-742D85F87E1A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TA.Starquest.BusinessLogic", "TA.Starquest.BusinessLogic\TA.Starquest.BusinessLogic.csproj", "{F496A2D6-22A5-4925-9271-8782E7E73F1B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +17,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{C0636040-96C9-456B-BC73-5D09A6E6D8CB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C0636040-96C9-456B-BC73-5D09A6E6D8CB}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C0636040-96C9-456B-BC73-5D09A6E6D8CB}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C0636040-96C9-456B-BC73-5D09A6E6D8CB}.Release|Any CPU.Build.0 = Release|Any CPU
 		{281799DC-F6E5-4768-91D7-4A777A9C3752}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{281799DC-F6E5-4768-91D7-4A777A9C3752}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{281799DC-F6E5-4768-91D7-4A777A9C3752}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -33,6 +29,10 @@ Global
 		{9D7838D0-7F89-4930-A0ED-742D85F87E1A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9D7838D0-7F89-4930-A0ED-742D85F87E1A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9D7838D0-7F89-4930-A0ED-742D85F87E1A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F496A2D6-22A5-4925-9271-8782E7E73F1B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F496A2D6-22A5-4925-9271-8782E7E73F1B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F496A2D6-22A5-4925-9271-8782E7E73F1B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F496A2D6-22A5-4925-9271-8782E7E73F1B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

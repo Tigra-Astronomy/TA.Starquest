@@ -1,7 +1,14 @@
-// This file is part of the MS.Gamification project
+// This file is part of the TA.Starquest project
 // 
-// File: XmlDocumentAttribute.cs  Created: 2016-07-21@12:10
-// Last modified: 2016-08-06@03:02
+// Copyright © 2015-2020 Tigra Astronomy, all rights reserved.
+// 
+// Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
+// documentation files (the "Software"), to deal in the Software without restriction, including without limitation
+// the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to
+// permit persons to whom the Software is furnished to do so. The Software comes with no warranty of any kind.
+// You make use of the Software entirely at your own risk and assume all liability arising from your use thereof.
+// 
+// File: XmlDocumentAttribute.cs  Last modified: 2020-08-09@21:31 by Tim Long
 
 using System;
 using System.Collections.Generic;
@@ -27,16 +34,17 @@ namespace TA.Starquest.DataAccess.Validation
         private readonly Maybe<string> maybeXsdResourceName = Maybe<string>.Empty;
 
         /// <summary>
-        ///     Initializes a new instance of the <see cref="XmlDocumentAttribute" /> class with no schema. No schema
-        ///     validation will take place, but the validated object must still consist of well-formed XML.
+        ///     Initializes a new instance of the <see cref="XmlDocumentAttribute" /> class with no schema. No
+        ///     schema validation will take place, but the validated object must still consist of well-formed
+        ///     XML.
         /// </summary>
-        public XmlDocumentAttribute() {}
+        public XmlDocumentAttribute() { }
 
         /// <summary>
-        ///     Initializes a new instance of the <see cref="XmlDocumentAttribute" /> class with a resource identifier
-        ///     that can be used to load an XML Schema Document (XSD). The validated object must be well-formed XML and
-        ///     must also conform to the supplied schema. Note that failure to load the schema will result in the
-        ///     validated object being considered invalid.
+        ///     Initializes a new instance of the <see cref="XmlDocumentAttribute" /> class with a resource
+        ///     identifier that can be used to load an XML Schema Document (XSD). The validated object must be
+        ///     well-formed XML and must also conform to the supplied schema. Note that failure to load the
+        ///     schema will result in the validated object being considered invalid.
         /// </summary>
         /// <param name="schemaResourceName">Name of the schema resource.</param>
         /// <param name="schemaResourceType"><see cref="Type" /> of the schema resource.</param>
@@ -46,13 +54,12 @@ namespace TA.Starquest.DataAccess.Validation
             }
 
         /// <summary>
-        ///     Validates the specified <paramref name="value" /> with respect to the current validation attribute.
+        ///     Validates the specified <paramref name="value" /> with respect to the current validation
+        ///     attribute.
         /// </summary>
         /// <param name="value">The value to validate.</param>
         /// <param name="validationContext">The context information about the validation operation.</param>
-        /// <returns>
-        ///     An instance of the <see cref="ValidationResult" /> class.
-        /// </returns>
+        /// <returns>An instance of the <see cref="ValidationResult" /> class.</returns>
         protected override ValidationResult IsValid(object value, ValidationContext validationContext)
             {
             // An empty or null object should pass validation. 
@@ -69,7 +76,7 @@ namespace TA.Starquest.DataAccess.Validation
             catch (XmlException e)
                 {
                 Log.Error()
-                    .Message( "Failing XML validation due to invalid markup")
+                    .Message("Failing XML validation due to invalid markup")
                     .Property("xml", xmlString)
                     .Exception(e)
                     .Write();
@@ -108,7 +115,7 @@ namespace TA.Starquest.DataAccess.Validation
             using (var xmlReader = XmlReader.Create(stream, xmlReaderSettings))
                 try
                     {
-                    while (xmlReader.Read()) {}
+                    while (xmlReader.Read()) { }
                     return ValidationResult.Success;
                     }
                 catch (XmlSchemaException e)
@@ -134,7 +141,6 @@ namespace TA.Starquest.DataAccess.Validation
             return schema;
             }
 
-
         private void ValidationEventHandler(object sender, ValidationEventArgs validationEventArgs)
             {
             throw validationEventArgs.Exception ?? new XmlSchemaException(validationEventArgs.Message);
@@ -154,7 +160,7 @@ namespace TA.Starquest.DataAccess.Validation
             {
             if (maybeXsdResourceName.None)
                 return Maybe<XmlSchema>.Empty;
-            var xsdString = SchemaFromEmbeddedResource(maybeXsdResourceName.Single()).Result;   // awaitable
+            var xsdString = SchemaFromEmbeddedResource(maybeXsdResourceName.Single()).Result; // awaitable
             using (var textReader = new StringReader(xsdString))
             using (var xmlReader = XmlReader.Create(textReader))
                 {

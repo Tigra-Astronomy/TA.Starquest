@@ -1,7 +1,14 @@
-﻿// This file is part of the MS.Gamification project
+﻿// This file is part of the TA.Starquest project
 // 
-// File: ApplicationUser.cs  Created: 2016-05-10@22:28
-// Last modified: 2016-07-20@13:29
+// Copyright © 2015-2020 Tigra Astronomy, all rights reserved.
+// 
+// Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
+// documentation files (the "Software"), to deal in the Software without restriction, including without limitation
+// the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to
+// permit persons to whom the Software is furnished to do so. The Software comes with no warranty of any kind.
+// You make use of the Software entirely at your own risk and assume all liability arising from your use thereof.
+// 
+// File: StarquestUser.cs  Last modified: 2020-08-09@21:31 by Tim Long
 
 using System;
 using System.Collections.Generic;
@@ -12,9 +19,7 @@ namespace TA.Starquest.DataAccess.Entities
     // You can add profile data for the user by adding more properties to your ApplicationUser class, please visit http://go.microsoft.com/fwlink/?LinkID=317594 to learn more.
     public class StarquestUser : IdentityUser, IDomainEntity<string>
         {
-        /// <summary>
-        ///     The date and time on which the user account was provisioned.
-        /// </summary>
+        /// <summary>The date and time on which the user account was provisioned.</summary>
         public DateTime Provisioned { get; set; } = DateTime.Now;
 
         #region Navigation
@@ -22,5 +27,12 @@ namespace TA.Starquest.DataAccess.Entities
 
         public virtual List<Badge> Badges { get; set; } = new List<Badge>();
         #endregion Navigation
-        }
+
+        #region Identity Navigation Properties
+        public virtual ICollection<IdentityUserClaim<string>> Claims { get; set; }
+        public virtual ICollection<IdentityUserLogin<string>> Logins { get; set; }
+        public virtual ICollection<IdentityUserToken<string>> Tokens { get; set; }
+        public virtual ICollection<IdentityUserRole<string>> UserRoles { get; set; }
+        #endregion Identity Navigation Properties
     }
+}

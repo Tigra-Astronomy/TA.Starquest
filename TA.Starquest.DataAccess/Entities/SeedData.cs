@@ -1,7 +1,14 @@
-﻿// This file is part of the MS.Gamification project
+﻿// This file is part of the TA.Starquest project
 // 
-// File: SeedData.cs  Created: 2016-11-01@19:37
-// Last modified: 2017-05-16@20:36
+// Copyright © 2015-2020 Tigra Astronomy, all rights reserved.
+// 
+// Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
+// documentation files (the "Software"), to deal in the Software without restriction, including without limitation
+// the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to
+// permit persons to whom the Software is furnished to do so. The Software comes with no warranty of any kind.
+// You make use of the Software entirely at your own risk and assume all liability arising from your use thereof.
+// 
+// File: SeedData.cs  Last modified: 2020-08-09@21:31 by Tim Long
 
 using System;
 using System.Collections.Generic;
@@ -10,79 +17,6 @@ namespace TA.Starquest.DataAccess.Entities
     {
     public static class SeedData
         {
-        internal const string AdministratorUserName = "Administrator";
-        internal const string AdministratorDefaultPassword = "password";
-        public static List<string> Categories = new List<string>
-            {
-            "Artificial Satellite",
-            "Asterism",
-            "Astrometry",
-            "Comet",
-            "Constellation",
-            "Crater",
-            "Dark Nebula",
-            "Diffuse Nebula",
-            "Double Star",
-            "Eclipse",
-            "Emission Nebula",
-            "Galaxy",
-            "Globular Cluster",
-            "Mare",
-            "Meteor",
-            "Minor Planet",
-            "Open Cluster",
-            "Phase",
-            "Phenomenon",
-            "Planet",
-            "Planetary Nebula",
-            "Region",
-            "Satellite",
-            "Sky",
-            "Star",
-            "Surface Feature",
-            "Variable Star"
-            };
-
-        internal static void EnsureCategories(this ApplicationDbContext context)
-            {
-            //ToDo - complete review of data seeding is needed
-            //foreach (var seed in Categories)
-            //    {
-            //    context.Categories.AddOrUpdate(p => p.Name,
-            //        new Category {Name = seed});
-            //    }
-            }
-
-        internal static void EnsureDefaultRolesAndUsers(this ApplicationDbContext context)
-            {
-            EnsureRoleExists(context, RoleNames.Administrator);
-            EnsureRoleExists(context, RoleNames.Moderator);
-            EnsureRoleExists(context, RoleNames.EventManager);
-            EnsureAdminUserExists(context);
-            }
-
-        internal static void EnsureRoleExists(this ApplicationDbContext context, string roleName)
-            {
-            //ToDo - role management is different in EF Core, this needs to be re-implemented
-            //var roleStore = new RoleStore<IdentityRole>(context);
-            //var roleManager = new RoleManager<IdentityRole>(roleStore);
-            //if (!context.Roles.Any(role => role.Name == roleName))
-            //    roleManager.Create(new IdentityRole {Name = roleName});
-            }
-
-        internal static void EnsureAdminUserExists(this ApplicationDbContext context)
-            {
-            //ToDo - needs to be re-implemented for EF core
-            //if (context.Users.Any(p => p.Roles.Any(r => r.RoleId == RoleNames.Administrator)) ||
-            //    context.Users.Any(user => user.UserName == AdministratorUserName)) return;
-            //var userStore = new UserStore<ApplicationUser>(context);
-            //var userManager = new UserManager<ApplicationUser>(userStore);
-            ////ToDo: Hard coded secrets!! These need to come from web.config or similar
-            //var adminUser = new ApplicationUser
-            //        {UserName = AdministratorUserName, Email = "nobody@nowhere.com", EmailConfirmed = true};
-            //userManager.Create(adminUser, AdministratorDefaultPassword);
-            //userManager.AddToRole(adminUser.Id, RoleNames.Administrator);
-            }
 
         internal static void CreateBetaMission(ApplicationDbContext context)
             {

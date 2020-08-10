@@ -1,7 +1,14 @@
-﻿// This file is part of the MS.Gamification project
+﻿// This file is part of the TA.Starquest project
 // 
-// File: MissionTrack.cs  Created: 2016-05-10@22:28
-// Last modified: 2016-08-18@01:33
+// Copyright © 2015-2020 Tigra Astronomy, all rights reserved.
+// 
+// Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
+// documentation files (the "Software"), to deal in the Software without restriction, including without limitation
+// the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to
+// permit persons to whom the Software is furnished to do so. The Software comes with no warranty of any kind.
+// You make use of the Software entirely at your own risk and assume all liability arising from your use thereof.
+// 
+// File: MissionTrack.cs  Last modified: 2020-08-09@21:31 by Tim Long
 
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -15,9 +22,7 @@ namespace TA.Starquest.DataAccess.Entities
         [Display(Name = "Track Name")]
         public string Name { get; set; }
 
-        /// <summary>
-        ///     Track number determines the order in which tracks are displayed.
-        /// </summary>
+        /// <summary>Track number determines the order in which tracks are displayed.</summary>
         /// <value>The number.</value>
         [Display(Name = "Track Number")]
         public int Number { get; set; }
