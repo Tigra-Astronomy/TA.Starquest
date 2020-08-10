@@ -19,7 +19,7 @@ namespace TA.Starquest.BusinessLogic.Preconditions
 
         public bool Evaluate(StarquestUser candidate)
             {
-            return candidate.Badges.Any(p => p.Id == badgeId);
+            return candidate.UserBadges.Any(p => p.BadgeId == badgeId);
             }
         }
     }

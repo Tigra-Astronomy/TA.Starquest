@@ -18,6 +18,7 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using TA.Starquest.DataAccess.EFCore;
 using TA.Starquest.DataAccess.Entities;
+using TA.Starquest.DataAccess.Entities.QueueWorkItems;
 using TA.Starquest.DataAccess.Identity;
 
 namespace TA.Starquest.DataAccess
@@ -45,6 +46,8 @@ namespace TA.Starquest.DataAccess
 
         public virtual DbSet<QueuedWorkItem> QueuedWorkItems { get; set; }
 
+        public virtual DbSet<UserBadge> UserBadges { get; set; }    // Many to Many navigation table
+
 
         protected override void OnModelCreating(ModelBuilder builder)
             {
@@ -53,6 +56,11 @@ namespace TA.Starquest.DataAccess
             // Customize the ASP.NET Identity model and override the defaults if needed.
             // For example, you can rename the ASP.NET Identity table names and more.
             // Add your customizations after calling base.OnModelCreating(builder);
+
+            // Add implicit entities for Table-Per-Hierarchy mapping of QueuedWorkItem
+            builder.Entity<ObservingSessionReminder>();
+            builder.Entity<ObservingSessionCancellation>();
+
 
             // Apply all configuration classes found in the current assembly.
             builder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());

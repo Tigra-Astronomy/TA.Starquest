@@ -12,6 +12,7 @@
 
 using System;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using TA.Starquest.Core.QueueProcessing;
 
 namespace TA.Starquest.DataAccess.Entities
@@ -33,6 +34,7 @@ namespace TA.Starquest.DataAccess.Entities
 
         public WorkItemDisposition Disposition { get; set; }
 
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
         }
     }

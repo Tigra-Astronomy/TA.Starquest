@@ -23,16 +23,9 @@ namespace TA.Starquest.DataAccess.Entities
         public DateTime Provisioned { get; set; } = DateTime.Now;
 
         #region Navigation
-        public virtual List<Observation> Observations { get; set; } = new List<Observation>();
+        public virtual ICollection<Observation> Observations { get; set; } = new List<Observation>();
 
-        public virtual List<Badge> Badges { get; set; } = new List<Badge>();
+        public virtual ICollection<UserBadge> UserBadges { get; set; } = new List<UserBadge>();
         #endregion Navigation
-
-        #region Identity Navigation Properties
-        public virtual ICollection<IdentityUserClaim<string>> Claims { get; set; }
-        public virtual ICollection<IdentityUserLogin<string>> Logins { get; set; }
-        public virtual ICollection<IdentityUserToken<string>> Tokens { get; set; }
-        public virtual ICollection<IdentityUserRole<string>> UserRoles { get; set; }
-        #endregion Identity Navigation Properties
-    }
+        }
 }

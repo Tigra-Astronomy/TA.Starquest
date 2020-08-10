@@ -1,117 +1,129 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="NameAndType">
-  <Class Name="MS.Gamification.Models.MissionLevel">
-    <Position X="1" Y="3" Width="1.5" />
+  <Class Name="TA.Starquest.DataAccess.Entities.Mission">
+    <Position X="0.75" Y="0.5" Width="3.25" />
     <TypeIdentifier>
-      <HashCode>EAACAADAAEAAAAAAAAAAAAQAAAAAAAABAAAAAAAAAAA=</HashCode>
-      <FileName>Models\MissionLevel.cs</FileName>
+      <HashCode>AAACAAAAAAAAAEAAAAAAAACAAAAAABAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entities\Mission.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="TA.Starquest.DataAccess.Entities.MissionLevel">
+    <Position X="1" Y="3" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>EAACAADAAEAAAAAAAAAAAASAAAAAAAABAAAAAAAAAAA=</HashCode>
+      <FileName>Entities\MissionLevel.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
       <Property Name="Mission" />
     </ShowAsAssociation>
-    <ShowAsCollectionAssociation>
-      <Property Name="Tracks" />
-    </ShowAsCollectionAssociation>
     <Lollipop Position="1.3" />
   </Class>
-  <Class Name="MS.Gamification.Models.MissionTrack">
-    <Position X="5" Y="3" Width="1.5" />
+  <Class Name="TA.Starquest.DataAccess.Entities.MissionTrack">
+    <Position X="5.5" Y="3" Width="2.75" />
     <TypeIdentifier>
-      <HashCode>EAACAACAIAAAAAAAAEAAAAQAAAAAAACAAAAAAAAAAAA=</HashCode>
-      <FileName>Models\MissionTrack.cs</FileName>
+      <HashCode>EAACAAAAoAAAQAAIAEAAAAQAAAAAAACAAAAAAAAAAAA=</HashCode>
+      <FileName>Entities\MissionTrack.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
       <Property Name="MissionLevel" />
     </ShowAsAssociation>
-    <ShowAsCollectionAssociation>
-      <Property Name="Challenges" />
-    </ShowAsCollectionAssociation>
     <Lollipop Position="0.2" />
   </Class>
-  <Class Name="MS.Gamification.Models.Challenge">
-    <Position X="8" Y="3" Width="1.75" />
+  <Class Name="TA.Starquest.DataAccess.Entities.Challenge">
+    <Position X="10" Y="3" Width="3" />
     <TypeIdentifier>
-      <HashCode>AAACAACAAAEAggAAAAIAAAQAAAAAAAAAEAAkAAAACAA=</HashCode>
-      <FileName>Models\Challenge.cs</FileName>
+      <HashCode>AAACAACAAAEAggAAAAIAAAQAAAAQAAAAEAAkAAAACAA=</HashCode>
+      <FileName>Entities\Challenge.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
-      <Property Name="Category" />
       <Property Name="MissionTrack" />
+      <Property Name="Category" />
     </ShowAsAssociation>
     <Lollipop Position="0.2" />
   </Class>
-  <Class Name="MS.Gamification.Models.Category">
-    <Position X="11.75" Y="3" Width="1.5" />
+  <Class Name="TA.Starquest.DataAccess.Entities.Category">
+    <Position X="14.5" Y="3" Width="2.75" />
     <TypeIdentifier>
       <HashCode>AAACAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Models\Category.cs</FileName>
+      <FileName>Entities\Category.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
-  <Class Name="MS.Gamification.Models.Observation">
-    <Position X="5" Y="6.75" Width="2" />
+  <Class Name="TA.Starquest.DataAccess.Entities.Observation">
+    <Position X="6" Y="7" Width="3" />
     <TypeIdentifier>
       <HashCode>AAAjACAEAgAAAMAAAAAACAwAAACAAAAAAAAAAAAAAEA=</HashCode>
-      <FileName>Models\Observation.cs</FileName>
+      <FileName>Entities\Observation.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
       <Property Name="Challenge" />
+      <Property Name="Status" />
       <Property Name="Equipment" />
       <Property Name="Seeing" />
       <Property Name="Transparency" />
-      <Property Name="User" />
-      <Property Name="Status" />
     </ShowAsAssociation>
     <Lollipop Position="0.2" />
   </Class>
-  <Class Name="MS.Gamification.Models.ApplicationUser">
-    <Position X="8.5" Y="7.25" Width="2.25" />
+  <Class Name="TA.Starquest.DataAccess.Entities.StarquestUser">
+    <Position X="12" Y="7.25" Width="3.25" />
+    <AssociationLine Name="Badges" Type="TA.Starquest.DataAccess.Entities.Badge">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="-0.15" Y="0.831" />
+      </MemberNameLabel>
+    </AssociationLine>
     <TypeIdentifier>
-      <HashCode>AAAAAAAACAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Models\ApplicationUser.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAIAAAQAAAAAAAAAAAAAAEAAAAAAAA=</HashCode>
+      <FileName>Entities\StarquestUser.cs</FileName>
     </TypeIdentifier>
     <ShowAsCollectionAssociation>
       <Property Name="Observations" />
+      <Property Name="Badges" />
     </ShowAsCollectionAssociation>
     <Lollipop Position="0.2" />
   </Class>
-  <Class Name="MS.Gamification.Models.Mission">
-    <Position X="0.75" Y="0.5" Width="3.25" />
+  <Class Name="TA.Starquest.DataAccess.Entities.Badge">
+    <Position X="16.5" Y="5.25" Width="1.5" />
+    <AssociationLine Name="Users" Type="TA.Starquest.DataAccess.Entities.StarquestUser">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="-1.942" Y="0.685" />
+      </MemberNameLabel>
+    </AssociationLine>
     <TypeIdentifier>
-      <HashCode>AAACAAAAAAAAAEAAAAAAAAAAAAAAABAAAAAAAAAAAAA=</HashCode>
-      <FileName>Models\Mission.cs</FileName>
+      <HashCode>AAACAGAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entities\Badge.cs</FileName>
     </TypeIdentifier>
     <ShowAsCollectionAssociation>
-      <Property Name="MissionLevels" />
+      <Property Name="Users" />
     </ShowAsCollectionAssociation>
     <Lollipop Position="0.2" />
   </Class>
-  <Enum Name="MS.Gamification.Models.ModerationState" Collapsed="true">
-    <Position X="1" Y="6.5" Width="1.5" />
+  <Enum Name="TA.Starquest.DataAccess.Entities.ModerationState" Collapsed="true">
+    <Position X="1" Y="6.5" Width="3" />
     <TypeIdentifier>
       <HashCode>AAAAAAACAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAA=</HashCode>
-      <FileName>Models\ModerationState.cs</FileName>
+      <FileName>Entities\ModerationState.cs</FileName>
     </TypeIdentifier>
   </Enum>
-  <Enum Name="MS.Gamification.Models.AntoniadiScale" Collapsed="true">
-    <Position X="1" Y="7.5" Width="1.5" />
+  <Enum Name="TA.Starquest.DataAccess.Entities.AntoniadiScale" Collapsed="true">
+    <Position X="1" Y="7.5" Width="3" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAgMAAAIAAAAAgAAAAAAAAAABA=</HashCode>
-      <FileName>Models\AntoniadiScale.cs</FileName>
+      <FileName>Entities\AntoniadiScale.cs</FileName>
     </TypeIdentifier>
   </Enum>
-  <Enum Name="MS.Gamification.Models.TransparencyLevel" Collapsed="true">
-    <Position X="1" Y="8.5" Width="1.5" />
+  <Enum Name="TA.Starquest.DataAccess.Entities.TransparencyLevel" Collapsed="true">
+    <Position X="1" Y="8.5" Width="3" />
     <TypeIdentifier>
       <HashCode>AAAAAQAAQAAAAAAAAAAAAgAAAAIAAAAAAAAAAABAABA=</HashCode>
-      <FileName>Models\TransparencyLevel.cs</FileName>
+      <FileName>Entities\TransparencyLevel.cs</FileName>
     </TypeIdentifier>
   </Enum>
-  <Enum Name="MS.Gamification.Models.ObservingEquipment" Collapsed="true">
-    <Position X="1" Y="9.5" Width="1.5" />
+  <Enum Name="TA.Starquest.DataAccess.Entities.ObservingEquipment" Collapsed="true">
+    <Position X="1" Y="9.5" Width="3" />
     <TypeIdentifier>
       <HashCode>AAAAAAAEAAAAAAAAAAAAAAAAAAAABAAAAAABAAAAAAA=</HashCode>
-      <FileName>Models\ObservingEquipment.cs</FileName>
+      <FileName>Entities\ObservingEquipment.cs</FileName>
     </TypeIdentifier>
   </Enum>
   <Font Name="Segoe UI" Size="9" />

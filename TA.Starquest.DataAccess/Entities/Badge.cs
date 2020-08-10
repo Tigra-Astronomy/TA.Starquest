@@ -18,11 +18,6 @@ namespace TA.Starquest.DataAccess.Entities
     {
     public class Badge : IDomainEntity<int>
         {
-        public Badge()
-            {
-            Users = new List<StarquestUser>();
-            }
-
         /// <summary>
         ///     Identifies the storage location of a badge bitmap to an <see cref="IImageStore" />
         ///     service.
@@ -36,14 +31,14 @@ namespace TA.Starquest.DataAccess.Entities
         [Display(Name = "Badge Name")]
         public string Name { get; set; }
 
-        #region Navigation
-        /// <summary>The list of users who have been awarded this badge.</summary>
-        /// <value>The users.</value>
-        public virtual List<StarquestUser> Users { get; set; }
-        #endregion Navigation
-
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
-        }
+
+        #region Navigation
+        /// <summary>The list of users who have been awarded this badge.</summary>
+        /// <value>The users.</value>
+        public virtual ICollection<UserBadge> UserBadges { get; set; } = new List<UserBadge>();
+        #endregion Navigation
     }
+}
