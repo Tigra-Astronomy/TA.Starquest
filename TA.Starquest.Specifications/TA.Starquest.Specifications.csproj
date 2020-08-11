@@ -16,7 +16,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\TA.Starquest.BusinessLogic\TA.Starquest.BusinessLogic.csproj" />
     <ProjectReference Include="..\TA.Starquest.Core\TA.Starquest.Core.csproj" />
+    <ProjectReference Include="..\TA.Starquest.DataAccess\TA.Starquest.DataAccess.csproj" />
   </ItemGroup>
 
 </Project>
