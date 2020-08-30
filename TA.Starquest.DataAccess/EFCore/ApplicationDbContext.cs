@@ -11,22 +11,23 @@
 // File: ApplicationDbContext.cs  Last modified: 2020-08-09@21:31 by Tim Long
 
 using System;
-using System.Collections.Generic;
 using System.Reflection;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using TA.Starquest.DataAccess.EFCore;
 using TA.Starquest.DataAccess.Entities;
 using TA.Starquest.DataAccess.Entities.QueueWorkItems;
-using TA.Starquest.DataAccess.Identity;
 
-namespace TA.Starquest.DataAccess
+namespace TA.Starquest.DataAccess.EFCore
     {
     public class ApplicationDbContext : IdentityDbContext<StarquestUser>
         {
-        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
-            : base(options) { }
+        private readonly Action<ModelBuilder> createDatabase;
+
+        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options, Action<ModelBuilder> createDatabase = null)
+            : base(options)
+            {
+            this.createDatabase = createDatabase;
+            }
 
         public virtual DbSet<Challenge> Challenges { get; set; }
 
@@ -51,7 +52,18 @@ namespace TA.Starquest.DataAccess
 
         protected override void OnModelCreating(ModelBuilder builder)
             {
+            // Apply all configuration classes found in the current assembly.
+            builder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
 
+            if (createDatabase is null)
+                ProductionOnModelCreating(builder);
+            else
+                createDatabase(builder);
+            }
+
+        //ToDo: this method should be injected always so we can remove the null default from the constructor
+        private void ProductionOnModelCreating(ModelBuilder builder)
+            {
             base.OnModelCreating(builder);
             // Customize the ASP.NET Identity model and override the defaults if needed.
             // For example, you can rename the ASP.NET Identity table names and more.
@@ -60,11 +72,7 @@ namespace TA.Starquest.DataAccess
             // Add implicit entities for Table-Per-Hierarchy mapping of QueuedWorkItem
             builder.Entity<ObservingSessionReminder>();
             builder.Entity<ObservingSessionCancellation>();
-
-
-            // Apply all configuration classes found in the current assembly.
-            builder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
-
+                         
             // Seed roles
 
             // Seed admin user

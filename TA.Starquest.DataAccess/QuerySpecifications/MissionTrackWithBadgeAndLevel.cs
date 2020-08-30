@@ -8,26 +8,24 @@
 // permit persons to whom the Software is furnished to do so. The Software comes with no warranty of any kind.
 // You make use of the Software entirely at your own risk and assume all liability arising from your use thereof.
 // 
-// File: ObservationsAwaitingModeration.cs  Last modified: 2020-08-11@14:43 by Tim Long
+// File: MissionTrackWithBadgeAndLevel.cs  Last modified: 2020-08-11@14:43 by Tim Long
 
 using System.Linq;
-using TA.Starquest.Core;
 using TA.Starquest.DataAccess.Entities;
-using TA.Starquest.DataAccess.Models;
 
 namespace TA.Starquest.DataAccess.QuerySpecifications
     {
-    public class ObservationsAwaitingModeration : QuerySpecification<Observation, ModerationQueueItem>
+    public class MissionTrackWithBadgeAndLevel : QuerySpecification<MissionTrack>
         {
-        public override IQueryable<ModerationQueueItem> GetQuery(IQueryable<Observation> items)
+        public MissionTrackWithBadgeAndLevel()
             {
-            //var query = from item in items
-            //            where item.Status == ModerationState.AwaitingModeration
-            //            select item;
-            var moderationQueue = items
-                .Where(p => p.Status == ModerationState.AwaitingModeration)
-                .Project().To<ModerationQueueItem>();
-            return moderationQueue;
+            FetchStrategy.Include(p => p.Badge);
+            FetchStrategy.Include(p => p.MissionLevel);
+            }
+
+        public override IQueryable<MissionTrack> GetQuery(IQueryable<MissionTrack> items)
+            {
+            return items;
             }
         }
     }

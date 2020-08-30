@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using TA.Starquest.DataAccess;
+using TA.Starquest.DataAccess.EFCore;
 using TA.Starquest.DataAccess.Entities;
 
 [assembly: HostingStartup(typeof(TA.Starquest.Web.Areas.Identity.IdentityHostingStartup))]

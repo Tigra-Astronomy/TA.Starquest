@@ -9,8 +9,10 @@
 @if (showBanner)
     {
     <div id="cookieConsent" class="alert alert-info alert-dismissible fade show" role="alert">
-        Use this space to summarize your privacy and cookie use policy. <a asp-page="/Privacy">Learn More</a>.
-        <button type="button" class="accept-policy close" data-dismiss="alert" aria-label="Close" data-cookie-string="@cookieString">
+        For the purposes of General Data Protection Regulations (GDPR), may we have your consent to use non-essential cookies?
+        Please <a asp-page="/Privacy">review the privacy policy</a>
+        and if you agree to our use of non-essential cookies, click the accept button.
+        <button type="button" class="btn btn-success accept-policy close" data-dismiss="alert" aria-label="Close" data-cookie-string="@cookieString">
             <span aria-hidden="true">Accept</span>
         </button>
     </div>

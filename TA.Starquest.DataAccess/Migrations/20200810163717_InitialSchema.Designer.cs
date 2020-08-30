@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TA.Starquest.DataAccess;
+using TA.Starquest.DataAccess.EFCore;
 
 namespace TA.Starquest.DataAccess.Migrations
 {

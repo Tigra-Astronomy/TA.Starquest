@@ -24,6 +24,17 @@ a {
   border-color: #1861ac;
 }
 
+.masthead {
+    background-image: url('/images/masthead.png');
+    background-position: 0% 25%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: white;
+    margin-bottom: 0px;
+    text-shadow: black 0.3em 0.3em 0.3em;
+}
+
+
 /* Sticky footer styles
 -------------------------------------------------- */
 html {
@@ -69,3 +80,4 @@ body {
   white-space: nowrap;
   line-height: 60px; /* Vertically center the text there */
 }
+

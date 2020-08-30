@@ -1,0 +1,18 @@
+[
+  {
+    "Id": 10,
+    "Name": "Phase"
+  },
+  {
+    "Id": 20,
+    "Name": "Planet"
+  },
+  {
+    "Id": 30,
+    "Name": "Open Cluster"
+  },
+  {
+    "Id": 40,
+    "Name": "Galaxy"
+  }
+]

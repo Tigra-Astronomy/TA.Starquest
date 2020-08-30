@@ -34,6 +34,7 @@ namespace TA.Starquest.Web
                 });
 
             services.AddControllersWithViews();
+            services.AddRazorPages();
             }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -47,22 +48,39 @@ namespace TA.Starquest.Web
                 {
                 app.UseExceptionHandler("/Home/Error");
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
-                app.UseHsts();
+                //ToDo [TPL] Enable this one we have a trusted SSL certificate
+                //app.UseHsts();
                 }
             app.UseHttpsRedirection();
-            app.UseStaticFiles();
+            ConfigureStaticFiles(app, env);
             app.UseCookiePolicy();  // GDPR cookie consent
-
             app.UseRouting();
-
             app.UseAuthorization();
-
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
+            endpoints.MapAreaControllerRoute(
+                name:"admin",
+                areaName:"Admin", 
+                pattern:"{area:exists}/{controller=Home}/{action=Index}/{id?}");
+            endpoints.MapRazorPages();
             });
+        }
+
+        private static void ConfigureStaticFiles(IApplicationBuilder app, IWebHostEnvironment env)
+            {
+            int cacheMaxAgeSeconds = env.IsDevelopment()?20: 604800;;
+            app.UseStaticFiles(new StaticFileOptions
+                {
+                OnPrepareResponse = ctx =>
+                    {
+                    // using Microsoft.AspNetCore.Http;
+                    ctx.Context.Response.Headers.Append(
+                        "Cache-Control", $"public, max-age={cacheMaxAgeSeconds}");
+                    }
+                });
             }
         }
     }

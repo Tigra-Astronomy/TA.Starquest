@@ -24,8 +24,14 @@ namespace TA.Starquest.DataAccess.Entities
 
         #region Navigation
         public virtual ICollection<Observation> Observations { get; set; } = new List<Observation>();
-
         public virtual ICollection<UserBadge> UserBadges { get; set; } = new List<UserBadge>();
         #endregion Navigation
-        }
+
+        #region Identity Navigation
+        public virtual ICollection<IdentityUserClaim<string>> Claims { get; set; }
+        public virtual ICollection<IdentityUserLogin<string>> Logins { get; set; }
+        public virtual ICollection<IdentityUserToken<string>> Tokens { get; set; }
+        public virtual ICollection<IdentityUserRole<string>> UserRoles { get; set; }
+        #endregion
+    }
 }

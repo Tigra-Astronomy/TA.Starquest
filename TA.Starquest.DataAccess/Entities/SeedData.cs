@@ -12,6 +12,7 @@
 
 using System;
 using System.Collections.Generic;
+using TA.Starquest.DataAccess.EFCore;
 
 namespace TA.Starquest.DataAccess.Entities
     {

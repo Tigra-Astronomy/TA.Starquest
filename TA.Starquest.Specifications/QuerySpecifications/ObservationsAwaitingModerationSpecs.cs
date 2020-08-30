@@ -11,7 +11,7 @@ using TA.Starquest.DataAccess.Entities;
 using TA.Starquest.DataAccess.Models;
 using TA.Starquest.DataAccess.QuerySpecifications;
 
-namespace MS.Gamification.Tests.QuerySpecifications
+namespace TA.Starquest.Specifications.QuerySpecifications
     {
     /*
      * Query Specification: Observations Awaiting Moderation

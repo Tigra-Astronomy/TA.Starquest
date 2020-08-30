@@ -8,7 +8,7 @@
 // permit persons to whom the Software is furnished to do so. The Software comes with no warranty of any kind.
 // You make use of the Software entirely at your own risk and assume all liability arising from your use thereof.
 // 
-// File: IFetchStrategy.cs  Last modified: 2020-08-09@21:31 by Tim Long
+// File: IFetchStrategy.cs  Last modified: 2020-08-11@14:43 by Tim Long
 
 using System;
 using System.Collections.Generic;

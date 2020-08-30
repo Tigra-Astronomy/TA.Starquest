@@ -8,26 +8,31 @@
 // permit persons to whom the Software is furnished to do so. The Software comes with no warranty of any kind.
 // You make use of the Software entirely at your own risk and assume all liability arising from your use thereof.
 // 
-// File: ObservationsAwaitingModeration.cs  Last modified: 2020-08-11@14:43 by Tim Long
+// File: LevelExistsInMission.cs  Last modified: 2020-08-11@14:43 by Tim Long
 
 using System.Linq;
-using TA.Starquest.Core;
 using TA.Starquest.DataAccess.Entities;
-using TA.Starquest.DataAccess.Models;
 
 namespace TA.Starquest.DataAccess.QuerySpecifications
     {
-    public class ObservationsAwaitingModeration : QuerySpecification<Observation, ModerationQueueItem>
+    public class LevelExistsInMission : QuerySpecification<MissionLevel, int>
         {
-        public override IQueryable<ModerationQueueItem> GetQuery(IQueryable<Observation> items)
+        private readonly int levelNumber;
+        private readonly int missionId;
+
+        public LevelExistsInMission(int levelNumber, int missionId)
             {
-            //var query = from item in items
-            //            where item.Status == ModerationState.AwaitingModeration
-            //            select item;
-            var moderationQueue = items
-                .Where(p => p.Status == ModerationState.AwaitingModeration)
-                .Project().To<ModerationQueueItem>();
-            return moderationQueue;
+            this.levelNumber = levelNumber;
+            this.missionId = missionId;
+            }
+
+        public override IQueryable<int> GetQuery(IQueryable<MissionLevel> items)
+            {
+            var query = from level in items
+                        where level.MissionId == missionId
+                        where level.Level == levelNumber
+                        select level.Level;
+            return query;
             }
         }
     }

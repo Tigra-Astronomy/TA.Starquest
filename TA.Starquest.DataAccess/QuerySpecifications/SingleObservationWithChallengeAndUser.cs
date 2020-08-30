@@ -8,26 +8,29 @@
 // permit persons to whom the Software is furnished to do so. The Software comes with no warranty of any kind.
 // You make use of the Software entirely at your own risk and assume all liability arising from your use thereof.
 // 
-// File: ObservationsAwaitingModeration.cs  Last modified: 2020-08-11@14:43 by Tim Long
+// File: SingleObservationWithChallengeAndUser.cs  Last modified: 2020-08-11@14:43 by Tim Long
 
 using System.Linq;
-using TA.Starquest.Core;
 using TA.Starquest.DataAccess.Entities;
-using TA.Starquest.DataAccess.Models;
 
 namespace TA.Starquest.DataAccess.QuerySpecifications
     {
-    public class ObservationsAwaitingModeration : QuerySpecification<Observation, ModerationQueueItem>
+    public class SingleObservationWithChallengeAndUser : QuerySpecification<Observation>
         {
-        public override IQueryable<ModerationQueueItem> GetQuery(IQueryable<Observation> items)
+        private readonly int observationId;
+
+        public SingleObservationWithChallengeAndUser(int observationId)
             {
-            //var query = from item in items
-            //            where item.Status == ModerationState.AwaitingModeration
-            //            select item;
-            var moderationQueue = items
-                .Where(p => p.Status == ModerationState.AwaitingModeration)
-                .Project().To<ModerationQueueItem>();
-            return moderationQueue;
+            this.observationId = observationId;
+            FetchStrategy.Include(p => p.Challenge);
+            FetchStrategy.Include(p => p.User);
+            }
+
+        public override IQueryable<Observation> GetQuery(IQueryable<Observation> items)
+            {
+            return from item in items
+                   where item.Id == observationId
+                   select item;
             }
         }
     }

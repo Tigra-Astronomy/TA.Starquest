@@ -1,0 +1,28 @@
+{
+  "Mission": {
+    "Id": 1,
+    "Title": "Test Mission",
+    "MissionLevels": [
+      {
+        "Id": 1,
+        "AwardTitle": "Mission 1 Level 1 Award",
+        "Level": 1,
+        "MissionId": 1,
+        "Name": "Mission 1 Level 1",
+        "Tracks": [
+          {
+            "Id": 1,
+            "AwardTitle": "Mission 1 Level 1 Track 1 Award",
+            "Badge": {
+              "Id": 111,
+              "ImageIdentifier": "Badge111.png",
+              "Name": "M1L1T1"
+            }
+          },
+          {},
+          {}
+        ] 
+      }
+    ]
+  }
+}
