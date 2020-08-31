@@ -17,11 +17,21 @@ using TA.Starquest.DataAccess.Entities;
 
 namespace TA.Starquest.DataAccess.QuerySpecifications
     {
-    internal class EligibleObservationsForChallenges : QuerySpecification<Observation>
+    public class EligibleObservationsForChallenges : QuerySpecification<Observation>
         {
         private readonly IEnumerable<Challenge> challenges;
         private readonly string userId;
 
+        /// <summary>
+        /// Gets all observations for a user that are currently eligible to count
+        /// as progress towards a specified set of challenges.
+        /// To be eligible,  an observation must meet the following criteria:
+        /// 1. Belong to the specified user
+        /// 2. Be submitted against one of the specified challenges
+        /// 3. Be in <see cref="ModerationState.Approved"/> state.
+        /// </summary>
+        /// <param name="challenges">The set of challenges to be considered.</param>
+        /// <param name="userId">The user of interest.</param>
         public EligibleObservationsForChallenges(IEnumerable<Challenge> challenges, string userId)
             {
             this.challenges = challenges;
@@ -39,7 +49,7 @@ namespace TA.Starquest.DataAccess.QuerySpecifications
                                        join observation in approvedObservationsForUser
                                            on challenge.Id equals observation.ChallengeId
                                        select observation;
-            return eligibleObservations.DistinctBy(p => p.ChallengeId).AsQueryable();
+            return eligibleObservations.AsQueryable();
             }
         }
     }

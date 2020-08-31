@@ -56,10 +56,23 @@ namespace TA.Starquest.Specifications.QuerySpecifications
                 {
                 dataLoader(uow);
                 }
+            uow.Commit();
             return context;
             }
 
-        public void CreateStandardMissionData(IUnitOfWork uow)
+        public QueryTestContextBuilder WithUser(string id, string name)
+            {
+            var user = new StarquestUser
+                {
+                Id = id,
+                UserName = name,
+                NormalizedUserName = name.ToUpper()
+                };
+            dataLoaders.Add(uow=>uow.Users.Add(user));
+            return this;
+            }
+
+        private void CreateStandardMissionData(IUnitOfWork uow)
             {
             uow.CategoriesRepository.Add(new[]
                 {
@@ -169,7 +182,59 @@ namespace TA.Starquest.Specifications.QuerySpecifications
                 {
                 challenge1111, challenge1112, challenge1121, challenge1122, challenge1131, challenge1132
                 });
-            uow.Commit();
             }
-        }
+
+        public QueryTestContextBuilder WithObservation(int observationId, string userId, int challengeId)
+            {
+            var observation = new Observation
+                {
+                Id = observationId, UserId = userId, ChallengeId = challengeId,
+                Notes = "Unit test observation"
+                };
+            dataLoaders.Add(uow=>uow.Observations.Add(observation));
+            return this;
+            }
+
+        public QueryTestContextBuilder WithObservationAwaitingModeration(int observationId, string userId, int challengeId)
+            {
+            var observation = new Observation
+                {
+                Id = observationId,
+                UserId = userId,
+                ChallengeId = challengeId,
+                Notes = "Unit test observation awaiting moderation",
+                Status = ModerationState.AwaitingModeration
+                };
+            dataLoaders.Add(uow => uow.Observations.Add(observation));
+            return this;
+            }
+
+        public QueryTestContextBuilder WithRejectedObservation(int observationId, string userId, int challengeId)
+            {
+            var observation = new Observation
+                {
+                Id = observationId,
+                UserId = userId,
+                ChallengeId = challengeId,
+                Notes = "Unit test observation awaiting moderation",
+                Status = ModerationState.Rejected
+                };
+            dataLoaders.Add(uow => uow.Observations.Add(observation));
+            return this;
+            }
+
+        public QueryTestContextBuilder WithApprovedObservation(int observationId, string userId, int challengeId)
+            {
+            var observation = new Observation
+                {
+                Id = observationId,
+                UserId = userId,
+                ChallengeId = challengeId,
+                Notes = "Unit test observation awaiting moderation",
+                Status = ModerationState.Approved
+                };
+            dataLoaders.Add(uow => uow.Observations.Add(observation));
+            return this;
+            }
+       }
     }
