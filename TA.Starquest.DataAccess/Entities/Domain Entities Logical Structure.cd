@@ -27,6 +27,7 @@
     </TypeIdentifier>
     <ShowAsAssociation>
       <Property Name="MissionLevel" />
+      <Property Name="Badge" />
     </ShowAsAssociation>
     <Lollipop Position="0.2" />
   </Class>
@@ -37,8 +38,8 @@
       <FileName>Entities\Challenge.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
-      <Property Name="MissionTrack" />
       <Property Name="Category" />
+      <Property Name="MissionTrack" />
     </ShowAsAssociation>
     <Lollipop Position="0.2" />
   </Class>
@@ -58,44 +59,30 @@
     </TypeIdentifier>
     <ShowAsAssociation>
       <Property Name="Challenge" />
-      <Property Name="Status" />
       <Property Name="Equipment" />
       <Property Name="Seeing" />
       <Property Name="Transparency" />
+      <Property Name="Status" />
     </ShowAsAssociation>
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="TA.Starquest.DataAccess.Entities.StarquestUser">
     <Position X="12" Y="7.25" Width="3.25" />
-    <AssociationLine Name="Badges" Type="TA.Starquest.DataAccess.Entities.Badge">
-      <MemberNameLabel ManuallyPlaced="true">
-        <Position X="-0.15" Y="0.831" />
-      </MemberNameLabel>
-    </AssociationLine>
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAIAAAQAAAAAAAAAAAAAAEAAAAAAAA=</HashCode>
+      <HashCode>AAAAIAAAEAAAAAAAAAAQAAAAAAAAAAgAAAEQAAABAAA=</HashCode>
       <FileName>Entities\StarquestUser.cs</FileName>
     </TypeIdentifier>
     <ShowAsCollectionAssociation>
       <Property Name="Observations" />
-      <Property Name="Badges" />
     </ShowAsCollectionAssociation>
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="TA.Starquest.DataAccess.Entities.Badge">
-    <Position X="16.5" Y="5.25" Width="1.5" />
-    <AssociationLine Name="Users" Type="TA.Starquest.DataAccess.Entities.StarquestUser">
-      <MemberNameLabel ManuallyPlaced="true">
-        <Position X="-1.942" Y="0.685" />
-      </MemberNameLabel>
-    </AssociationLine>
+    <Position X="6" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAACAGAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAACAEAAEAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Entities\Badge.cs</FileName>
     </TypeIdentifier>
-    <ShowAsCollectionAssociation>
-      <Property Name="Users" />
-    </ShowAsCollectionAssociation>
     <Lollipop Position="0.2" />
   </Class>
   <Enum Name="TA.Starquest.DataAccess.Entities.ModerationState" Collapsed="true">

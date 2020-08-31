@@ -8,12 +8,19 @@
 // permit persons to whom the Software is furnished to do so. The Software comes with no warranty of any kind.
 // You make use of the Software entirely at your own risk and assume all liability arising from your use thereof.
 // 
-// File: ITestRepository.cs  Last modified: 2020-08-11@15:25 by Tim Long
+// File: with_standard_mission.cs  Last modified: 2020-08-31@18:56 by Tim Long
+
+using Machine.Specifications;
+using TA.Starquest.DataAccess.EFCore;
 
 namespace TA.Starquest.Specifications.QuerySpecifications
     {
-    interface ITestRepository
+    internal class with_standard_mission
         {
-        void ClearEntities();
+        Establish context = () => Builder = new QueryTestContextBuilder();
+        private Cleanup after = () => Context?.Dispose();
+        protected static EntityFrameworkCoreUnitOfWork UnitOfWork => Context.UnitOfWork;
+        protected static QueryTestContextBuilder Builder;
+        protected static QueryTestContext Context;
         }
     }

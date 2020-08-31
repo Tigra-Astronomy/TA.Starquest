@@ -7,7 +7,7 @@ using TA.Starquest.DataAccess.EFCore;
 
 namespace TA.Starquest.Specifications.QuerySpecifications
 {
-    class QueryContext : IDisposable
+    class QueryTestContext : IDisposable
     {
     public EntityFrameworkCoreUnitOfWork UnitOfWork { get; set; }
     public ApplicationDbContext DbContext { get; set; }

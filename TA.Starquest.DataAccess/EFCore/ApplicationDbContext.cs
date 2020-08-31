@@ -14,6 +14,7 @@ using System;
 using System.Reflection;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 using TA.Starquest.DataAccess.Entities;
 using TA.Starquest.DataAccess.Entities.QueueWorkItems;
 
@@ -21,13 +22,11 @@ namespace TA.Starquest.DataAccess.EFCore
     {
     public class ApplicationDbContext : IdentityDbContext<StarquestUser>
         {
-        private readonly Action<ModelBuilder> createDatabase;
+        public static readonly ILoggerFactory MyLoggerFactory
+            = LoggerFactory.Create(builder => { builder.AddConsole(); });
 
-        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options, Action<ModelBuilder> createDatabase = null)
-            : base(options)
-            {
-            this.createDatabase = createDatabase;
-            }
+        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
+            : base(options) { }
 
         public virtual DbSet<Challenge> Challenges { get; set; }
 
@@ -49,20 +48,7 @@ namespace TA.Starquest.DataAccess.EFCore
 
         public virtual DbSet<UserBadge> UserBadges { get; set; }    // Many to Many navigation table
 
-
         protected override void OnModelCreating(ModelBuilder builder)
-            {
-            // Apply all configuration classes found in the current assembly.
-            builder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
-
-            if (createDatabase is null)
-                ProductionOnModelCreating(builder);
-            else
-                createDatabase(builder);
-            }
-
-        //ToDo: this method should be injected always so we can remove the null default from the constructor
-        private void ProductionOnModelCreating(ModelBuilder builder)
             {
             base.OnModelCreating(builder);
             // Customize the ASP.NET Identity model and override the defaults if needed.
@@ -72,11 +58,20 @@ namespace TA.Starquest.DataAccess.EFCore
             // Add implicit entities for Table-Per-Hierarchy mapping of QueuedWorkItem
             builder.Entity<ObservingSessionReminder>();
             builder.Entity<ObservingSessionCancellation>();
-                         
+
             // Seed roles
 
             // Seed admin user
             // Seed categories from JSON data file
+
+            // Apply all configuration classes found in the current assembly.
+            builder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
             }
-        }
+
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+            => optionsBuilder
+                .UseLoggerFactory(MyLoggerFactory)
+                .EnableSensitiveDataLogging();
+
     }
+}
