@@ -13,7 +13,6 @@
 using System.Reflection;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Logging;
 using TA.Starquest.DataAccess.Entities;
 using TA.Starquest.DataAccess.Entities.QueueWorkItems;
 
@@ -21,8 +20,6 @@ namespace TA.Starquest.DataAccess.EFCore
     {
     public class ApplicationDbContext : IdentityDbContext<StarquestUser>
         {
-        private readonly ILoggerFactory loggerFactory;
-
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options) { }
 

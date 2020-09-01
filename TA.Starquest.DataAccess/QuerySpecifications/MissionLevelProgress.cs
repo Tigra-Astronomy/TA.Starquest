@@ -15,6 +15,10 @@ using TA.Starquest.DataAccess.Entities;
 
 namespace TA.Starquest.DataAccess.QuerySpecifications
     {
+    /// <summary>
+    /// A query which specifies a specific mission and its related
+    /// levels, badges and challenges, all of which are eagerly loaded.
+    /// </summary>
     public class MissionLevelProgress : QuerySpecification<Mission>
         {
         private readonly int missionId;
@@ -23,9 +27,13 @@ namespace TA.Starquest.DataAccess.QuerySpecifications
             {
             this.missionId = missionId;
             FetchStrategy.Include(p => p.MissionLevels);
-            FetchStrategy.Include(p => p.MissionLevels.Select(q => q.Tracks.Select(r => r.Badge)));
-            FetchStrategy.Include(p =>
-                p.MissionLevels.Select(q => q.Tracks.Select(r => r.Challenges.Select(s => s.Category))));
+            FetchStrategy.Include(p => p.MissionLevels
+                .Select(q => q.Tracks
+                    .Select(r => r.Badge)));
+            FetchStrategy.Include(p => p.MissionLevels
+                .Select(q => q.Tracks
+                    .Select(r => r.Challenges
+                        .Select(s => s.Category))));
             }
 
         public override IQueryable<Mission> GetQuery(IQueryable<Mission> items)

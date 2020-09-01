@@ -37,8 +37,10 @@ namespace TA.Starquest.Specifications.QuerySpecifications
             return this;
             }
 
-        public QueryTestContext Build()
+        public QueryTestContext Build(bool logDatabaseSetup = false)
             {
+            if (!logDatabaseSetup)
+                LogSetup.MuteLogging();
             SqliteConnection connection = CreateInMemoryDatabase();
             var dbOptionsBuilder = new DbContextOptionsBuilder<ApplicationDbContext>();
             dbOptionsBuilder
@@ -59,6 +61,7 @@ namespace TA.Starquest.Specifications.QuerySpecifications
                 dataLoader(uow);
                 }
             uow.Commit();
+            LogSetup.EnableLogging();
             return context;
             }
 

@@ -15,7 +15,10 @@ using TA.Starquest.DataAccess.Entities;
 
 namespace TA.Starquest.DataAccess.QuerySpecifications
     {
-    public class LevelExistsInMission : QuerySpecification<MissionLevel, int>
+    /// <summary>
+    /// A query that specifies all levels that are linked to a set of missions.
+    /// </summary>
+    public class LevelExistsInMission : QuerySpecification<MissionLevel>
         {
         private readonly int levelNumber;
         private readonly int missionId;
@@ -26,12 +29,12 @@ namespace TA.Starquest.DataAccess.QuerySpecifications
             this.missionId = missionId;
             }
 
-        public override IQueryable<int> GetQuery(IQueryable<MissionLevel> items)
+        public override IQueryable<MissionLevel> GetQuery(IQueryable<MissionLevel> items)
             {
             var query = from level in items
                         where level.MissionId == missionId
                         where level.Level == levelNumber
-                        select level.Level;
+                        select level;
             return query;
             }
         }
