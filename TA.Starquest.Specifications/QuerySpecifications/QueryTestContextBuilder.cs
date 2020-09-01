@@ -41,8 +41,10 @@ namespace TA.Starquest.Specifications.QuerySpecifications
             {
             SqliteConnection connection = CreateInMemoryDatabase();
             var dbOptionsBuilder = new DbContextOptionsBuilder<ApplicationDbContext>();
-            dbOptionsBuilder.UseSqlite(connection);
-            dbOptionsBuilder.EnableSensitiveDataLogging();
+            dbOptionsBuilder
+                .UseSqlite(connection)
+                .UseLoggerFactory(LogSetup.LogFactory)
+                .EnableSensitiveDataLogging();
             var dbContext = new ApplicationDbContext(dbOptionsBuilder.Options);
             dbContext.Database.EnsureCreated();
             var uow = new EntityFrameworkCoreUnitOfWork(dbContext);

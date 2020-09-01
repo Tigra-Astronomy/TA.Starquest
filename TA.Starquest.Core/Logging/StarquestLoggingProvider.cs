@@ -21,7 +21,7 @@ using TA.Utils.Logging.NLog;
 
 namespace TA.Starquest.Core.Logging
     {
-    class StarquestLoggingProvider : ILoggerProvider
+    public class StarquestLoggingProvider : ILoggerProvider
         {
         /// <inheritdoc />
         public void Dispose() { }

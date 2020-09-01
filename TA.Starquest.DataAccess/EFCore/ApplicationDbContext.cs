@@ -8,9 +8,8 @@
 // permit persons to whom the Software is furnished to do so. The Software comes with no warranty of any kind.
 // You make use of the Software entirely at your own risk and assume all liability arising from your use thereof.
 // 
-// File: ApplicationDbContext.cs  Last modified: 2020-08-09@21:31 by Tim Long
+// File: ApplicationDbContext.cs  Last modified: 2020-09-01@04:21 by Tim Long
 
-using System;
 using System.Reflection;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
@@ -22,8 +21,7 @@ namespace TA.Starquest.DataAccess.EFCore
     {
     public class ApplicationDbContext : IdentityDbContext<StarquestUser>
         {
-        public static readonly ILoggerFactory MyLoggerFactory
-            = LoggerFactory.Create(builder => { builder.AddConsole(); });
+        private readonly ILoggerFactory loggerFactory;
 
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options) { }
@@ -46,7 +44,7 @@ namespace TA.Starquest.DataAccess.EFCore
 
         public virtual DbSet<QueuedWorkItem> QueuedWorkItems { get; set; }
 
-        public virtual DbSet<UserBadge> UserBadges { get; set; }    // Many to Many navigation table
+        public virtual DbSet<UserBadge> UserBadges { get; set; } // Many to Many navigation table
 
         protected override void OnModelCreating(ModelBuilder builder)
             {
@@ -67,11 +65,5 @@ namespace TA.Starquest.DataAccess.EFCore
             // Apply all configuration classes found in the current assembly.
             builder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
             }
-
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-            => optionsBuilder
-                .UseLoggerFactory(MyLoggerFactory)
-                .EnableSensitiveDataLogging();
-
+        }
     }
-}
