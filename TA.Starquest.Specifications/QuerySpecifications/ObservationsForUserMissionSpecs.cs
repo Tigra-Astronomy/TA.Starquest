@@ -25,14 +25,15 @@ namespace MS.Gamification.Tests.QuerySpecifications
         static IEnumerable<Observation> results;
         Establish context = () => Context = Builder.WithStandardMission()
             .WithUser("user", "Joe User")
-            .WithUser("otherUser", "Anonymous")
-            .WithObservation(1, "user", 100)
-            .WithObservation(2, "user", 200)
-            .WithObservation(3, "other", 200)
+            .WithUser("other", "Anonymous")
+            .WithObservation(1, "user", 1111)
+            .WithObservation(2, "user", 1121)
+            .WithObservation(3, "other", 1131)
             .Build();
         Because of = () =>
             results = UnitOfWork.Observations.AllSatisfying(new ObservationsForUserMission("user", 1));
         It should_fetch_two_observations = () => results.Count().ShouldEqual(2);
-        It should_not_fetch_observation_3 = () => results.Any(p => p.Id == 3).ShouldBeFalse();
+        It should_fetch_observations_1_and_2 = () => 
+            results.Select(p => p.Id).SequenceEqual(new[] {1, 2});
         }
     }

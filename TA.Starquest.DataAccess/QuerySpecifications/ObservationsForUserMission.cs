@@ -36,7 +36,7 @@ namespace TA.Starquest.DataAccess.QuerySpecifications
             {
             var observations = from observation in items
                                where observation.UserId == userId
-                               where observation.Challenge.MissionTrack.MissionLevelId == missionId
+                               where observation.Challenge.MissionTrack.MissionLevel.MissionId == missionId
                                orderby observation.ObservationDateTimeUtc
                                select observation;
             return observations;
