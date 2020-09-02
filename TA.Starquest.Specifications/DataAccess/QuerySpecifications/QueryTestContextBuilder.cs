@@ -18,7 +18,7 @@ using TA.Starquest.DataAccess;
 using TA.Starquest.DataAccess.EFCore;
 using TA.Starquest.DataAccess.Entities;
 
-namespace TA.Starquest.Specifications.QuerySpecifications
+namespace TA.Starquest.Specifications.DataAccess.QuerySpecifications
     {
     class QueryTestContextBuilder
         {
@@ -67,7 +67,7 @@ namespace TA.Starquest.Specifications.QuerySpecifications
 
         public QueryTestContextBuilder WithUser(string id, string name)
             {
-            var user = new StarquestUser
+            var user = new ApplicationUser
                 {
                 Id = id,
                 UserName = name,

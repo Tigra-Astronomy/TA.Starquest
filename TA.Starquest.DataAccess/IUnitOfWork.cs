@@ -25,7 +25,7 @@ namespace TA.Starquest.DataAccess
 
         /// <summary>Gets the users repository.</summary>
         /// <value>The users.</value>
-        IRepository<StarquestUser, string> Users { get; }
+        IRepository<ApplicationUser, string> Users { get; }
 
         /// <summary>Gets the categories repository.</summary>
         /// <value>The categories repository.</value>

@@ -15,9 +15,8 @@ using System.Linq;
 using Machine.Specifications;
 using TA.Starquest.DataAccess.Entities;
 using TA.Starquest.DataAccess.QuerySpecifications;
-using TA.Starquest.Specifications.QuerySpecifications;
 
-namespace MS.Gamification.Tests.QuerySpecifications
+namespace TA.Starquest.Specifications.DataAccess.QuerySpecifications
     {
     [Subject(typeof(ObservationsForUserMission))]
     class when_fetching_observations_for_a_users_who_has_observed_multiple_missions : with_query_specification_context

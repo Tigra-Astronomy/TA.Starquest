@@ -11,7 +11,7 @@ using TA.Starquest.DataAccess.Entities;
 using TA.Starquest.DataAccess.Models;
 using TA.Starquest.DataAccess.QuerySpecifications;
 
-namespace TA.Starquest.Specifications.QuerySpecifications
+namespace TA.Starquest.Specifications.DataAccess.QuerySpecifications
     {
     /*
      * Query Specification: Observations Awaiting Moderation
@@ -34,7 +34,7 @@ namespace TA.Starquest.Specifications.QuerySpecifications
         {
         Establish context = () =>
             {
-            var user = new StarquestUser {Id = "darth", Email = "Darth@deathstar.com", UserName = "Darth Vader"};
+            var user = new ApplicationUser {Id = "darth", Email = "Darth@deathstar.com", UserName = "Darth Vader"};
             var obsTime = new DateTime(2016, 08, 18, 0, 0, 0, DateTimeKind.Utc);
             var challenge = new Challenge {Id = 1, Name = "Destroy the rebel alliance"};
             Observations = new List<Observation>

@@ -49,7 +49,7 @@ namespace TA.Starquest.DataAccess.EFCore
         public IRepository<Challenge, int> Challenges { get; }
 
         [NotNull]
-        public IRepository<StarquestUser, string> Users { get; }
+        public IRepository<ApplicationUser, string> Users { get; }
 
         [NotNull]
         public IRepository<Category, int> CategoriesRepository { get; }

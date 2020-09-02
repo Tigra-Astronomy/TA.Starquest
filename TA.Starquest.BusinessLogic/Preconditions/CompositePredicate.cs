@@ -11,7 +11,7 @@ namespace TA.Starquest.BusinessLogic.Preconditions
     ///     A composite predicate that can contain zero or more subconditions.
     /// </summary>
     /// <typeparam name="T">The type of object that the predicate can be applied to.</typeparam>
-    internal abstract class CompositePredicate<T> : ICompositePredicate<T>
+    public abstract class CompositePredicate<T> : ICompositePredicate<T>
         {
         protected readonly List<IPredicate<T>> Subconditions = new List<IPredicate<T>>();
 

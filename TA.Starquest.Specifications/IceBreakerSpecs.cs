@@ -6,8 +6,7 @@ using Machine.Specifications;
 using TA.Starquest.Core;
 using TA.Starquest.DataAccess.Entities;
   using TA.Starquest.DataAccess.Entities.QueueWorkItems;
-  using TA.Starquest.Specifications.QuerySpecifications;
-using TA.Utils.Core;
+  using TA.Utils.Core;
 
 internal class when_creating_a_picklist_item
     {

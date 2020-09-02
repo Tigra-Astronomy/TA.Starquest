@@ -8,9 +8,9 @@ using TA.Starquest.DataAccess.Entities;
 
 namespace TA.Starquest.BusinessLogic.Preconditions
     {
-    internal class HasAll : CompositePredicate<StarquestUser>
+    public class HasAll : CompositePredicate<ApplicationUser>
         {
-        public override bool Evaluate(StarquestUser candidate)
+        public override bool Evaluate(ApplicationUser candidate)
             {
             return Subconditions.All(p => p.Evaluate(candidate));
             }

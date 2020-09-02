@@ -17,9 +17,9 @@ using TA.Starquest.DataAccess.Entities;
 namespace TA.Starquest.DataAccess.QuerySpecifications
     {
     /// <summary>Selects all users eligible to receive notification emails</summary>
-    public class UsersForNotifyAllSpecification : QuerySpecification<StarquestUser, string>
+    public class UsersForNotifyAllSpecification : QuerySpecification<ApplicationUser, string>
         {
-        public override IQueryable<string> GetQuery(IQueryable<StarquestUser> users)
+        public override IQueryable<string> GetQuery(IQueryable<ApplicationUser> users)
             {
             Contract.Requires(users != null);
             Contract.Ensures(Contract.Result<IQueryable<string>>() != null);

@@ -4,7 +4,7 @@ using TA.Starquest.DataAccess.Entities;
 using TA.Starquest.DataAccess.QuerySpecifications;
 using TA.Utils.Core;
 
-namespace TA.Starquest.Specifications.QuerySpecifications
+namespace TA.Starquest.Specifications.DataAccess.QuerySpecifications
     {
     [Subject(typeof(LevelExistsInMission), "query")]
     internal class when_retrieving_levels_for_a_mission : with_query_specification_context

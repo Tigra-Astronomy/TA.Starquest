@@ -1,11 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Data.Common;
-using System.Text;
 using Microsoft.Data.Sqlite;
 using TA.Starquest.DataAccess.EFCore;
 
-namespace TA.Starquest.Specifications.QuerySpecifications
+namespace TA.Starquest.Specifications.DataAccess.QuerySpecifications
 {
     class QueryTestContext : IDisposable
     {

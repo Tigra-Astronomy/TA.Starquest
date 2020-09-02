@@ -15,7 +15,7 @@ using Machine.Specifications;
 using TA.Starquest.DataAccess.Entities;
 using TA.Starquest.DataAccess.QuerySpecifications;
 
-namespace TA.Starquest.Specifications.QuerySpecifications
+namespace TA.Starquest.Specifications.DataAccess.QuerySpecifications
     {
     [Subject(typeof(MissionLevelProgress), "query")]
     internal class when_retrieving_mission_progress : with_query_specification_context

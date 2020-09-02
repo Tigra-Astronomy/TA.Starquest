@@ -12,9 +12,9 @@ namespace TA.Starquest.BusinessLogic.Preconditions
     ///     A composite predicate that is true if any of its subconditions are true (logical OR).
     /// </summary>
     /// <seealso cref="ICompositePredicate{T}" />
-    internal class HasAny : CompositePredicate<StarquestUser>
+    public class HasAny : CompositePredicate<ApplicationUser>
         {
-        public override bool Evaluate(StarquestUser candidate)
+        public override bool Evaluate(ApplicationUser candidate)
             {
             return Subconditions.Any(p => p.Evaluate(candidate));
             }

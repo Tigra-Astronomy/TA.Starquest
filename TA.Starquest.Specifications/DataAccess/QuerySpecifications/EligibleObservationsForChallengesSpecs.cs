@@ -9,7 +9,7 @@ using Machine.Specifications;
 using TA.Starquest.DataAccess.Entities;
 using TA.Starquest.DataAccess.QuerySpecifications;
 
-namespace TA.Starquest.Specifications.QuerySpecifications
+namespace TA.Starquest.Specifications.DataAccess.QuerySpecifications
     {
     class when_fetching_eligible_observations_for_a_set_of_challenges : with_query_specification_context
         {

@@ -19,7 +19,7 @@ namespace TA.Starquest.DataAccess.EFCore
     {
     /// <summary>Stores all of the registered users, their passwords, claims and other details.</summary>
     /// <seealso cref="Repository{TEntity,TKey}" />
-    public class UserRepository : Repository<StarquestUser, string>
+    public class UserRepository : Repository<ApplicationUser, string>
         {
         /// <summary>Initializes a new instance of the <see cref="UserRepository" /> class.</summary>
         /// <param name="dbContext">The database context.</param>

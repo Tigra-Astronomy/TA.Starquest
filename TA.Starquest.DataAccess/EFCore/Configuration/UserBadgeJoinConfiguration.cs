@@ -14,6 +14,14 @@ namespace TA.Starquest.DataAccess.EFCore.Configuration
         {
         builder.HasKey(entity => new {entity.UserId, entity.BadgeId});
         builder.HasIndex(e => e.Awarded);
+
+        builder.HasOne(userBadges => userBadges.User)
+            .WithMany(user => user.UserBadges)
+            .HasForeignKey(userBadges => userBadges.UserId);
+
+        builder.HasOne(userBadges => userBadges.Badge)
+            .WithMany(badge => badge.UserBadges)
+            .HasForeignKey(userBadges => userBadges.BadgeId);
         }
     }
 }

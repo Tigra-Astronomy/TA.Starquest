@@ -5,6 +5,20 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="BusinessLogic\PreconditionsEngine\HasAll-1-2-4.xml" />
+    <None Remove="BusinessLogic\PreconditionsEngine\HasAny-1-2-4.xml" />
+    <None Remove="BusinessLogic\PreconditionsEngine\HasBadge-1.xml" />
+    <None Remove="BusinessLogic\PreconditionsEngine\JoinedBefore-2016-07-20-Midnight.xml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="BusinessLogic\PreconditionsEngine\TestData\HasAll-1-2-4.xml" />
+    <EmbeddedResource Include="BusinessLogic\PreconditionsEngine\TestData\HasAny-1-2-4.xml" />
+    <EmbeddedResource Include="BusinessLogic\PreconditionsEngine\TestData\HasBadge-1.xml" />
+    <EmbeddedResource Include="BusinessLogic\PreconditionsEngine\TestData\JoinedBefore-2016-07-20-Midnight.xml" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="GitVersionTask" Version="5.3.7">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -21,6 +35,10 @@
     <ProjectReference Include="..\TA.Starquest.BusinessLogic\TA.Starquest.BusinessLogic.csproj" />
     <ProjectReference Include="..\TA.Starquest.Core\TA.Starquest.Core.csproj" />
     <ProjectReference Include="..\TA.Starquest.DataAccess\TA.Starquest.DataAccess.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Web\" />
   </ItemGroup>
 
 </Project>

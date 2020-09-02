@@ -13,7 +13,7 @@
 using Machine.Specifications;
 using TA.Starquest.DataAccess.EFCore;
 
-namespace TA.Starquest.Specifications.QuerySpecifications
+namespace TA.Starquest.Specifications.DataAccess.QuerySpecifications
     {
     internal class with_query_specification_context
         {

@@ -21,7 +21,7 @@ namespace TA.Starquest.Web.Areas.Identity
                     options.UseSqlServer(
                         context.Configuration.GetConnectionString("TAStarquestWebContextConnection")));
 
-                services.AddDefaultIdentity<StarquestUser>(options => options.SignIn.RequireConfirmedAccount = true)
+                services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true)
                     .AddEntityFrameworkStores<ApplicationDbContext>();
             });
         }

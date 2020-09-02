@@ -10,7 +10,7 @@ namespace TA.Starquest.BusinessLogic.Preconditions
     ///     condition.
     /// </summary>
     /// <typeparam name="T">The type of the object to be evaluated.</typeparam>
-    internal interface IPredicate<in T>
+    public interface IPredicate<in T>
         {
         /// <summary>
         ///     Evaluates the predicate against the specified object.

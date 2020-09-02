@@ -17,7 +17,7 @@ using Microsoft.AspNetCore.Identity;
 namespace TA.Starquest.DataAccess.Entities
     {
     // You can add profile data for the user by adding more properties to your ApplicationUser class, please visit http://go.microsoft.com/fwlink/?LinkID=317594 to learn more.
-    public class StarquestUser : IdentityUser, IDomainEntity<string>
+    public class ApplicationUser : IdentityUser, IDomainEntity<string>
         {
         /// <summary>The date and time on which the user account was provisioned.</summary>
         public DateTime Provisioned { get; set; } = DateTime.Now;

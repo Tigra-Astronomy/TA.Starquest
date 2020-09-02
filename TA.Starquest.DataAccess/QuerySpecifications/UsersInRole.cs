@@ -18,7 +18,7 @@ namespace TA.Starquest.DataAccess.QuerySpecifications
     {
     /// <summary>Matches all the users who have the specified role.</summary>
     /// <seealso cref="ApplicationUser" />
-    internal class UsersInRole : QuerySpecification<StarquestUser>
+    internal class UsersInRole : QuerySpecification<ApplicationUser>
         {
         private readonly string role;
         private readonly RoleManager<IdentityRole> roleManager;
@@ -29,7 +29,7 @@ namespace TA.Starquest.DataAccess.QuerySpecifications
             this.roleManager = roleManager;
             }
 
-        public override IQueryable<StarquestUser> GetQuery(IQueryable<StarquestUser> items)
+        public override IQueryable<ApplicationUser> GetQuery(IQueryable<ApplicationUser> items)
             {
             var targetRoleId = roleManager.Roles.Single(p => p.Name == role).Id;
             var usersInRole = from user in items

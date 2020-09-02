@@ -8,29 +8,22 @@
 // permit persons to whom the Software is furnished to do so. The Software comes with no warranty of any kind.
 // You make use of the Software entirely at your own risk and assume all liability arising from your use thereof.
 // 
-// File: SingleUserWithBadges.cs  Last modified: 2020-08-11@14:43 by Tim Long
+// File: GameLogicContext.cs  Last modified: 2020-09-02@14:34 by Tim Long
 
-using System.Linq;
+using System.Collections.Generic;
+using TA.Starquest.BusinessLogic.Preconditions;
 using TA.Starquest.DataAccess.Entities;
 
-namespace TA.Starquest.DataAccess.QuerySpecifications
+namespace TA.Starquest.Specifications.BusinessLogic
     {
-    public class SingleUserWithBadges : QuerySpecification<ApplicationUser>
+    class GameLogicContext
         {
-        private readonly string userId;
+        public LevelPreconditionParser Parser { get; set; } = new LevelPreconditionParser();
 
-        public SingleUserWithBadges(string userId)
-            {
-            this.userId = userId;
-            FetchStrategy.Include(p => p.UserBadges);
-            }
+        public IPredicate<ApplicationUser> Precondition { get; set; }
 
-        public override IQueryable<ApplicationUser> GetQuery(IQueryable<ApplicationUser> items)
-            {
-            var query = from user in items
-                        where user.Id == userId
-                        select user;
-            return query;
-            }
+        public ApplicationUser User { get; set; }
+
+        public IEnumerable<Badge> Badges { get; set; }
         }
     }

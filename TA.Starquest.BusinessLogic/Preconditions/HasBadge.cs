@@ -8,7 +8,7 @@ using TA.Starquest.DataAccess.Entities;
 
 namespace TA.Starquest.BusinessLogic.Preconditions
     {
-    public class HasBadge : IPredicate<StarquestUser>
+    public class HasBadge : IPredicate<ApplicationUser>
         {
         private readonly int badgeId;
 
@@ -17,7 +17,7 @@ namespace TA.Starquest.BusinessLogic.Preconditions
             this.badgeId = badgeId;
             }
 
-        public bool Evaluate(StarquestUser candidate)
+        public bool Evaluate(ApplicationUser candidate)
             {
             return candidate.UserBadges.Any(p => p.BadgeId == badgeId);
             }

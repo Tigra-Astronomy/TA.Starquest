@@ -27,7 +27,7 @@ namespace TA.Starquest.DataAccess.Entities
         {
         public ObservingSession()
             {
-            Attendees = new List<StarquestUser>();
+            Attendees = new List<ApplicationUser>();
             Venue = string.Empty;
             Title = string.Empty;
             Description = string.Empty;
@@ -47,7 +47,7 @@ namespace TA.Starquest.DataAccess.Entities
         public string Description { get; set; }
 
         [NotNull]
-        public List<StarquestUser> Attendees { get; set; }
+        public List<ApplicationUser> Attendees { get; set; }
 
         public ScheduleState ScheduleState { get; set; }
 

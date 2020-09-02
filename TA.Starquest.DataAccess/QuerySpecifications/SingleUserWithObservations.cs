@@ -15,7 +15,7 @@ using TA.Starquest.DataAccess.Entities;
 
 namespace TA.Starquest.DataAccess.QuerySpecifications
     {
-    public class SingleUserWithObservations : QuerySpecification<StarquestUser>
+    public class SingleUserWithObservations : QuerySpecification<ApplicationUser>
         {
         private readonly string requestedUserId;
 
@@ -25,7 +25,7 @@ namespace TA.Starquest.DataAccess.QuerySpecifications
             FetchStrategy.Include(p => p.Observations.Select(q => q.Challenge));
             }
 
-        public override IQueryable<StarquestUser> GetQuery(IQueryable<StarquestUser> items)
+        public override IQueryable<ApplicationUser> GetQuery(IQueryable<ApplicationUser> items)
             {
             var query = from user in items
                         where user.Id == requestedUserId

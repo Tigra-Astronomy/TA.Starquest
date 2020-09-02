@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using Machine.Specifications;
 using TA.Starquest.DataAccess.Entities;
 using TA.Starquest.DataAccess.QuerySpecifications;
 
-namespace TA.Starquest.Specifications.QuerySpecifications
+namespace TA.Starquest.Specifications.DataAccess.QuerySpecifications
 {
 class when_querying_the_challenges_for_a_mission_level : with_query_specification_context
     {
