@@ -56,7 +56,7 @@ namespace TA.Starquest.Specifications.BusinessLogic.PreconditionsEngine
             .WithPreconditionResource("HasBadge-1.xml")
             .WithUserAwardedBadges(2, 3)
             .Build();
-        It should_be_false = () => User.SatisfiesPrecondition(Precondition).ShouldBeFalse();
+        It should_not_satisfy_the_condition = () => User.SatisfiesPrecondition(Precondition).ShouldBeFalse();
     }
 
     [Subject(typeof(LevelPreconditionParser))]
@@ -76,7 +76,7 @@ namespace TA.Starquest.Specifications.BusinessLogic.PreconditionsEngine
             .WithPreconditionResource("HasAll-1-2-4.xml")
             .WithUserAwardedBadges(1, 2, 3, 4)
             .Build();
-        It should_evaluate_as_expected = () => User.SatisfiesPrecondition(Precondition).ShouldBeTrue();
+        It should_satisfy_the_condition = () => User.SatisfiesPrecondition(Precondition).ShouldBeTrue();
     }
 
     [Subject(typeof(LevelPreconditionParser))]
@@ -86,7 +86,27 @@ namespace TA.Starquest.Specifications.BusinessLogic.PreconditionsEngine
             .WithPreconditionResource("HasAll-1-2-4.xml")
             .WithUserAwardedBadges(1, 3, 4)
             .Build();
-        It should_evaluate_as_expected = () => User.SatisfiesPrecondition(Precondition).ShouldBeFalse();
+        It should_not_satisfy_the_condition = () => User.SatisfiesPrecondition(Precondition).ShouldBeFalse();
+    }
+
+    [Subject(typeof(LevelPreconditionParser))]
+    class when_applying_a_has_any_badge_precondition_to_a_user_who_has_one_of_the_badges : with_game_logic_context
+    {
+        Establish context = () => GameContext = GameContextBuilder
+            .WithPreconditionResource("HasAny-1-2-4.xml")
+            .WithUserAwardedBadges(3, 4)
+            .Build();
+        It should_satisfy_the_condition = () => User.SatisfiesPrecondition(Precondition).ShouldBeTrue();
+    }
+
+    [Subject(typeof(LevelPreconditionParser))]
+    class when_applying_a_has_any_badge_precondition_to_a_user_who_has_none_of_the_badges : with_game_logic_context
+    {
+        Establish context = () => GameContext = GameContextBuilder
+            .WithPreconditionResource("HasAny-1-2-4.xml")
+            .WithUserAwardedBadges(3, 5)
+            .Build();
+        It should_not_satisfy_the_condition = () => User.SatisfiesPrecondition(Precondition).ShouldBeFalse();
     }
 
     [Subject(typeof(LevelPreconditionParser))]
