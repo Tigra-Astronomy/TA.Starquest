@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@using TA.Utils.Core
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -22,9 +23,34 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="UserProfile" asp-action="Index">My Profile</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Mission" asp-action="Index">My Missions</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Observation" asp-action="Index">My Observations</a>
+                        </li>
+                @*@if (User.CanAdminister())
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="Admin" asp-controller="UserAdministration" asp-action="Index">Admin Dashboard</a>
+                        </li>
+                    }
+                @if (User.CanManageEvents())
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="Admin" asp-controller="UserAdministration" asp-action="Index">Admin Dashboard</a>
+                        </li>
+
+                    }*@
+
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="Admin" asp-controller="ObservingSessions" asp-action="Index">Event Management</a>
                         </li>
                     </ul>
+                    @* ToDo: render the moderation queue notification badge *@
+                    <partial name="_LoginPartial" />
                 </div>
             </div>
         </nav>
@@ -38,7 +64,8 @@
 
     <footer class="border-top footer text-muted">
         <div class="container">
-            &copy; 2020 - TA.Starquest.Web - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            Starquest version @GitVersion.GitFullSemVer+Branch.@GitVersion.GitBranchName
+            Copyright &copy; 2016 - @DateTime.Now.Year - Fern Hughes, Tim Long, Tigra Astronomy
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
