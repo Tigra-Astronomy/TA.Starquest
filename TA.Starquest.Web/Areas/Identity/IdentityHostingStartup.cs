@@ -16,14 +16,14 @@ namespace TA.Starquest.Web.Areas.Identity
     {
         public void Configure(IWebHostBuilder builder)
         {
-            builder.ConfigureServices((context, services) => {
-                services.AddDbContext<ApplicationDbContext>(options =>
-                    options.UseSqlServer(
-                        context.Configuration.GetConnectionString("TAStarquestWebContextConnection")));
+            //builder.ConfigureServices((context, services) => {
+            //    services.AddDbContext<ApplicationDbContext>(options =>
+            //        options.UseSqlServer(
+            //            context.Configuration.GetConnectionString("TAStarquestWebContextConnection")));
 
-                services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true)
-                    .AddEntityFrameworkStores<ApplicationDbContext>();
-            });
+            //    services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true)
+            //        .AddEntityFrameworkStores<ApplicationDbContext>();
+            //});
         }
     }
 }

@@ -1,0 +1,312 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<DirectedGraph GraphDirection="LeftToRight" Layout="Sugiyama" ZoomLevel="-1" xmlns="http://schemas.microsoft.com/vs/2009/dgml">
+  <Nodes>
+    <Node Id="AspNetRoleClaims" Category="Table" Bounds="20,638.160000000001,137.026666666667,25" Group="Collapsed" Label="AspNetRoleClaims" />
+    <Node Id="AspNetRoleClaims_ClaimType" Category="Field Optional" Description="text" Label="ClaimType" />
+    <Node Id="AspNetRoleClaims_ClaimValue" Category="Field Optional" Description="text" Label="ClaimValue" />
+    <Node Id="AspNetRoleClaims_Id" Category="Field Primary" Description="bigint" Label="Id" />
+    <Node Id="AspNetRoleClaims_RoleId" Category="Field Foreign" Description="text" Label="RoleId" />
+    <Node Id="AspNetRoles" Category="Table" Bounds="199.843333333334,866.040000000001,107.34,25" Group="Collapsed" Label="AspNetRoles" />
+    <Node Id="AspNetRoles_ConcurrencyStamp" Category="Field Optional" Description="text" Label="ConcurrencyStamp" />
+    <Node Id="AspNetRoles_Id" Category="Field Primary" Description="text" Label="Id" />
+    <Node Id="AspNetRoles_Name" Category="Field Optional" Description="text" Label="Name" />
+    <Node Id="AspNetRoles_NormalizedName" Category="Field Optional" Description="text" Label="NormalizedName" />
+    <Node Id="AspNetUserClaims" Category="Table" Bounds="846.626666666667,638.16,137.773333333333,25" Group="Collapsed" Label="AspNetUserClaims" />
+    <Node Id="AspNetUserClaims_ClaimType" Category="Field Optional" Description="text" Label="ClaimType" />
+    <Node Id="AspNetUserClaims_ClaimValue" Category="Field Optional" Description="text" Label="ClaimValue" />
+    <Node Id="AspNetUserClaims_Id" Category="Field Primary" Description="bigint" Label="Id" />
+    <Node Id="AspNetUserClaims_UserId" Category="Field Foreign" Description="text" Label="UserId" />
+    <Node Id="AspNetUserLogins" Category="Table" Bounds="349.748333333333,638.16,137.53,25" Group="Collapsed" Label="AspNetUserLogins" />
+    <Node Id="AspNetUserLogins_LoginProvider" Category="Field Primary" Description="text" Label="LoginProvider" />
+    <Node Id="AspNetUserLogins_ProviderDisplayName" Category="Field Optional" Description="text" Label="ProviderDisplayName" />
+    <Node Id="AspNetUserLogins_ProviderKey" Category="Field Primary" Description="text" Label="ProviderKey" />
+    <Node Id="AspNetUserLogins_UserId" Category="Field Foreign" Description="text" Label="UserId" />
+    <Node Id="AspNetUserRoles" Category="Table" Bounds="187.95,638.160000000001,131.126666666667,25" Group="Collapsed" Label="AspNetUserRoles" />
+    <Node Id="AspNetUserRoles_RoleId" Category="Field Primary" Description="text" Label="RoleId" />
+    <Node Id="AspNetUserRoles_UserId" Category="Field Primary" Description="text" Label="UserId" />
+    <Node Id="AspNetUserTokens" Category="Table" Bounds="517.881666666667,638.16,139.263333333333,25" Group="Collapsed" Label="AspNetUserTokens" />
+    <Node Id="AspNetUserTokens_LoginProvider" Category="Field Primary" Description="text" Label="LoginProvider" />
+    <Node Id="AspNetUserTokens_Name" Category="Field Primary" Description="text" Label="Name" />
+    <Node Id="AspNetUserTokens_UserId" Category="Field Primary" Description="text" Label="UserId" />
+    <Node Id="AspNetUserTokens_Value" Category="Field Optional" Description="text" Label="Value" />
+    <Node Id="AspNetUsers" Category="Table" Bounds="634.47,866.040000000001,108.086666666667,25" Group="Collapsed" Label="AspNetUsers" />
+    <Node Id="AspNetUsers_AccessFailedCount" Category="Field" Description="bigint" Label="AccessFailedCount" />
+    <Node Id="AspNetUsers_ConcurrencyStamp" Category="Field Optional" Description="text" Label="ConcurrencyStamp" />
+    <Node Id="AspNetUsers_Email" Category="Field Optional" Description="text" Label="Email" />
+    <Node Id="AspNetUsers_EmailConfirmed" Category="Field" Description="bigint" Label="EmailConfirmed" />
+    <Node Id="AspNetUsers_Id" Category="Field Primary" Description="text" Label="Id" />
+    <Node Id="AspNetUsers_LockoutEnabled" Category="Field" Description="bigint" Label="LockoutEnabled" />
+    <Node Id="AspNetUsers_LockoutEnd" Category="Field Optional" Description="text" Label="LockoutEnd" />
+    <Node Id="AspNetUsers_NormalizedEmail" Category="Field Optional" Description="text" Label="NormalizedEmail" />
+    <Node Id="AspNetUsers_NormalizedUserName" Category="Field Optional" Description="text" Label="NormalizedUserName" />
+    <Node Id="AspNetUsers_ObservingSessionId" Category="Field Foreign" Description="bigint" Label="ObservingSessionId" />
+    <Node Id="AspNetUsers_PasswordHash" Category="Field Optional" Description="text" Label="PasswordHash" />
+    <Node Id="AspNetUsers_PhoneNumber" Category="Field Optional" Description="text" Label="PhoneNumber" />
+    <Node Id="AspNetUsers_PhoneNumberConfirmed" Category="Field" Description="bigint" Label="PhoneNumberConfirmed" />
+    <Node Id="AspNetUsers_Provisioned" Category="Field" Description="text" Label="Provisioned" />
+    <Node Id="AspNetUsers_SecurityStamp" Category="Field Optional" Description="text" Label="SecurityStamp" />
+    <Node Id="AspNetUsers_TwoFactorEnabled" Category="Field" Description="bigint" Label="TwoFactorEnabled" />
+    <Node Id="AspNetUsers_UserName" Category="Field Optional" Description="text" Label="UserName" />
+    <Node Id="Badges" Category="Table" Bounds="1037.665,807.58,171.696666666667,141.92" Group="Expanded" Label="Badges" />
+    <Node Id="Badges_Id" Category="Field Primary" Bounds="1057.665,847.58,50,25.96" Description="bigint" Label="Id" />
+    <Node Id="Badges_ImageIdentifier" Category="Field Optional" Bounds="1057.665,903.54,100.393333333333,25.96" Description="text" Label="ImageIdentifier" />
+    <Node Id="Badges_Name" Category="Field Optional" Bounds="1137.665,847.58,51.6966666666667,25.96" Description="text" Label="Name" />
+    <Node Id="Categories" Category="Table" Bounds="719.3,579.7,96.4266666666666,141.92" Group="Expanded" Label="Categories" />
+    <Node Id="Categories_Id" Category="Field Primary" Bounds="741.665,619.7,50,25.96" Description="bigint" Label="Id" />
+    <Node Id="Categories_Name" Category="Field" Bounds="741.665,675.66,51.6966666666667,25.96" Description="text" Label="Name" />
+    <Node Id="Challenges" Category="Table" Bounds="719.898333333333,323.84,329.23,197.88" Group="Expanded" Label="Challenges" />
+    <Node Id="Challenges_BookSection" Category="Field Optional" Bounds="943.238333333334,419.8,85.8899999999999,25.96" Description="text" Label="BookSection" />
+    <Node Id="Challenges_CategoryId" Category="Field Foreign" Bounds="835.021666666667,419.8,78.2166666666667,25.96" Description="bigint" Label="CategoryId" />
+    <Node Id="Challenges_Id" Category="Field Primary" Bounds="739.898333333333,363.84,50,25.96" Description="bigint" Label="Id" />
+    <Node Id="Challenges_Location" Category="Field Optional" Bounds="739.898333333333,419.8,65.1233333333333,25.96" Description="text" Label="Location" />
+    <Node Id="Challenges_MissionTrackId" Category="Field Foreign" Bounds="739.898333333333,475.76,97.8866666666667,25.96" Description="bigint" Label="MissionTrackId" />
+    <Node Id="Challenges_Name" Category="Field" Bounds="819.898333333333,363.84,51.6966666666667,25.96" Description="text" Label="Name" />
+    <Node Id="Challenges_Points" Category="Field" Bounds="901.595,363.84,52.1633333333333,25.96" Description="bigint" Label="Points" />
+    <Node Id="Challenges_ValidationImage" Category="Field" Bounds="867.785,475.76,105.44,25.96" Description="text" Label="ValidationImage" />
+    <Node Id="Database" Category="Database" Bounds="0,0,1844.145,1281.32" Group="Expanded" Label="TA-Starquest.db" />
+    <Node Id="MissionLevels" Category="Table" Bounds="1239.665,779.6,251.696666666667,197.88" Group="Expanded" Label="MissionLevels" />
+    <Node Id="MissionLevels_AwardTitle" Category="Field" Bounds="1360.52166666667,875.56,75.9700000000003,25.96" Description="text" Label="AwardTitle" />
+    <Node Id="MissionLevels_Id" Category="Field Primary" Bounds="1259.665,819.6,50,25.96" Description="bigint" Label="Id" />
+    <Node Id="MissionLevels_Level" Category="Field" Bounds="1339.665,819.6,50,25.96" Description="bigint" Label="Level" />
+    <Node Id="MissionLevels_MissionId" Category="Field Foreign" Bounds="1259.665,875.56,70.8566666666666,25.96" Description="bigint" Label="MissionId" />
+    <Node Id="MissionLevels_Name" Category="Field" Bounds="1419.665,819.6,51.6966666666667,25.96" Description="text" Label="Name" />
+    <Node Id="MissionLevels_Precondition" Category="Field Optional" Bounds="1259.665,931.52,87.3,25.96" Description="text" Label="Precondition" />
+    <Node Id="MissionTracks" Category="Table" Bounds="1232.86166666667,551.72,265.303333333334,197.88" Group="Expanded" Label="MissionTracks" />
+    <Node Id="MissionTracks_AwardTitle" Category="Field" Bounds="1346.51833333333,647.68,75.9700000000003,25.96" Description="text" Label="AwardTitle" />
+    <Node Id="MissionTracks_BadgeId" Category="Field Foreign" Bounds="1252.86166666667,647.68,63.6566666666665,25.96" Description="bigint" Label="BadgeId" />
+    <Node Id="MissionTracks_Id" Category="Field Primary" Bounds="1252.86166666667,591.72,50,25.96" Description="bigint" Label="Id" />
+    <Node Id="MissionTracks_MissionLevelId" Category="Field Foreign" Bounds="1252.86166666667,703.64,97.7133333333334,25.96" Description="bigint" Label="MissionLevelId" />
+    <Node Id="MissionTracks_Name" Category="Field" Bounds="1332.86166666667,591.72,51.6966666666667,25.96" Description="text" Label="Name" />
+    <Node Id="MissionTracks_Number" Category="Field" Bounds="1414.55833333333,591.72,63.6066666666668,25.96" Description="bigint" Label="Number" />
+    <Node Id="Missions" Category="Table" Bounds="1280.51333333333,1063.44,170,141.92" Group="Expanded" Label="Missions" />
+    <Node Id="Missions_Id" Category="Field Primary" Bounds="1300.51333333333,1103.44,50,25.96" Description="bigint" Label="Id" />
+    <Node Id="Missions_Precondition" Category="Field Optional" Bounds="1300.51333333333,1159.4,87.3000000000002,25.96" Description="text" Label="Precondition" />
+    <Node Id="Missions_Title" Category="Field" Bounds="1380.51333333333,1103.44,50,25.96" Description="text" Label="Title" />
+    <Node Id="Observations" Category="Table" Bounds="496.626666666667,40,383.773333333333,253.84" Group="Expanded" Label="Observations" />
+    <Node Id="Observations_ChallengeId" Category="Field Foreign" Bounds="709.673333333333,135.96,82.8099999999999,25.96" Description="bigint" Label="ChallengeId" />
+    <Node Id="Observations_Equipment" Category="Field" Bounds="602.316666666667,135.96,77.3566666666666,25.96" Description="bigint" Label="Equipment" />
+    <Node Id="Observations_ExpectedImage" Category="Field Optional" Bounds="759.56,191.92,100.84,25.96" Description="text" Label="ExpectedImage" />
+    <Node Id="Observations_Id" Category="Field Primary" Bounds="516.626666666667,80,50,25.96" Description="bigint" Label="Id" />
+    <Node Id="Observations_Notes" Category="Field Optional" Bounds="596.626666666667,80,51.4433333333333,25.96" Description="text" Label="Notes" />
+    <Node Id="Observations_ObservationDateTimeUtc" Category="Field" Bounds="654.543333333333,247.88,152.813333333333,25.96" Description="text" Label="ObservationDateTimeUtc" />
+    <Node Id="Observations_ObservingSite" Category="Field Optional" Bounds="635.783333333333,191.92,93.7766666666666,25.96" Description="text" Label="ObservingSite" />
+    <Node Id="Observations_Seeing" Category="Field" Bounds="516.626666666667,135.96,55.6899999999999,25.96" Description="bigint" Label="Seeing" />
+    <Node Id="Observations_Status" Category="Field" Bounds="678.07,80,52.1100000000001,25.96" Description="bigint" Label="Status" />
+    <Node Id="Observations_SubmittedImage" Category="Field Optional" Bounds="516.626666666667,247.88,107.916666666667,25.96" Description="text" Label="SubmittedImage" />
+    <Node Id="Observations_Transparency" Category="Field" Bounds="516.626666666667,191.92,89.1566666666666,25.96" Description="bigint" Label="Transparency" />
+    <Node Id="Observations_UserId" Category="Field Foreign" Bounds="760.18,80,54.0466666666666,25.96" Description="text" Label="UserId" />
+    <Node Id="ObservingSessions" Category="Table" Bounds="516.451666666667,1007.48,344.123333333333,253.84" Group="Expanded" Label="ObservingSessions" />
+    <Node Id="ObservingSessions_Description" Category="Field Optional" Bounds="536.451666666667,1103.44,80.2533333333333,25.96" Description="text" Label="Description" />
+    <Node Id="ObservingSessions_Id" Category="Field Primary" Bounds="536.451666666667,1047.48,50,25.96" Description="bigint" Label="Id" />
+    <Node Id="ObservingSessions_RemindOneDayBefore" Category="Field" Bounds="536.451666666667,1159.4,137.036666666667,25.96" Description="bigint" Label="RemindOneDayBefore" />
+    <Node Id="ObservingSessions_RemindOneWeekBefore" Category="Field" Bounds="536.451666666667,1215.36,145.966666666667,25.96" Description="bigint" Label="RemindOneWeekBefore" />
+    <Node Id="ObservingSessions_ScheduleState" Category="Field" Bounds="646.705,1103.44,94.5266666666666,25.96" Description="bigint" Label="ScheduleState" />
+    <Node Id="ObservingSessions_StartsAt" Category="Field" Bounds="779.275,1047.48,61.3,25.96" Description="text" Label="StartsAt" />
+    <Node Id="ObservingSessions_Title" Category="Field" Bounds="616.451666666667,1047.48,50,25.96" Description="text" Label="Title" />
+    <Node Id="ObservingSessions_Venue" Category="Field" Bounds="696.451666666667,1047.48,52.8233333333333,25.96" Description="text" Label="Venue" />
+    <Node Id="QueuedWorkItems" Category="Table" Bounds="1528.165,40,295.98,197.88" Group="Expanded" Label="QueuedWorkItems" />
+    <Node Id="QueuedWorkItems_Discriminator" Category="Field" Bounds="1548.165,191.92,90.4466666666667,25.96" Description="text" Label="Discriminator" />
+    <Node Id="QueuedWorkItems_Disposition" Category="Field" Bounds="1724.855,80,79.29,25.96" Description="bigint" Label="Disposition" />
+    <Node Id="QueuedWorkItems_Id" Category="Field Primary" Bounds="1548.165,80,50,25.96" Description="bigint" Label="Id" />
+    <Node Id="QueuedWorkItems_Message" Category="Field Optional" Bounds="1628.165,80,66.6900000000001,25.96" Description="text" Label="Message" />
+    <Node Id="QueuedWorkItems_ObservingSessionId" Category="Field Optional" Bounds="1668.61166666667,191.92,123.976666666667,25.96" Description="bigint" Label="ObservingSessionId" />
+    <Node Id="QueuedWorkItems_ProcessAfter" Category="Field" Bounds="1548.165,135.96,85.9433333333334,25.96" Description="text" Label="ProcessAfter" />
+    <Node Id="QueuedWorkItems_QueueName" Category="Field" Bounds="1664.10833333333,135.96,86.8766666666666,25.96" Description="text" Label="QueueName" />
+    <Node Id="UserBadges" Category="Table" Bounds="1014.66166666667,579.7,187.703333333333,141.92" Group="Expanded" Label="UserBadges" />
+    <Node Id="UserBadges_Awarded" Category="Field" Bounds="1034.66166666667,675.66,66.8699999999999,25.96" Description="text" Label="Awarded" />
+    <Node Id="UserBadges_BadgeId" Category="Field Primary" Bounds="1118.70833333333,619.7,63.6566666666668,25.96" Description="bigint" Label="BadgeId" />
+    <Node Id="UserBadges_UserId" Category="Field Primary" Bounds="1034.66166666667,619.7,54.0466666666666,25.96" Description="text" Label="UserId" />
+  </Nodes>
+  <Links>
+    <Link Source="AspNetRoleClaims" Target="AspNetRoleClaims_ClaimType" Category="Contains" />
+    <Link Source="AspNetRoleClaims" Target="AspNetRoleClaims_ClaimValue" Category="Contains" />
+    <Link Source="AspNetRoleClaims" Target="AspNetRoleClaims_Id" Category="Contains" />
+    <Link Source="AspNetRoleClaims" Target="AspNetRoleClaims_RoleId" Category="Contains" />
+    <Link Source="AspNetRoleClaims_RoleId" Target="AspNetRoles_Id" Category="Foreign Key" Label="FK_AspNetRoleClaims_0_0" />
+    <Link Source="AspNetRoles" Target="AspNetRoles_ConcurrencyStamp" Category="Contains" />
+    <Link Source="AspNetRoles" Target="AspNetRoles_Id" Category="Contains" />
+    <Link Source="AspNetRoles" Target="AspNetRoles_Name" Category="Contains" />
+    <Link Source="AspNetRoles" Target="AspNetRoles_NormalizedName" Category="Contains" />
+    <Link Source="AspNetUserClaims" Target="AspNetUserClaims_ClaimType" Category="Contains" />
+    <Link Source="AspNetUserClaims" Target="AspNetUserClaims_ClaimValue" Category="Contains" />
+    <Link Source="AspNetUserClaims" Target="AspNetUserClaims_Id" Category="Contains" />
+    <Link Source="AspNetUserClaims" Target="AspNetUserClaims_UserId" Category="Contains" />
+    <Link Source="AspNetUserClaims_UserId" Target="AspNetUsers_Id" Category="Foreign Key" Label="FK_AspNetUserClaims_0_0" />
+    <Link Source="AspNetUserLogins" Target="AspNetUserLogins_LoginProvider" Category="Contains" />
+    <Link Source="AspNetUserLogins" Target="AspNetUserLogins_ProviderDisplayName" Category="Contains" />
+    <Link Source="AspNetUserLogins" Target="AspNetUserLogins_ProviderKey" Category="Contains" />
+    <Link Source="AspNetUserLogins" Target="AspNetUserLogins_UserId" Category="Contains" />
+    <Link Source="AspNetUserLogins_UserId" Target="AspNetUsers_Id" Category="Foreign Key" Label="FK_AspNetUserLogins_0_0" />
+    <Link Source="AspNetUserRoles" Target="AspNetUserRoles_RoleId" Category="Contains" />
+    <Link Source="AspNetUserRoles" Target="AspNetUserRoles_UserId" Category="Contains" />
+    <Link Source="AspNetUserRoles_RoleId" Target="AspNetRoles_Id" Category="Foreign Key" Label="FK_AspNetUserRoles_1_0" />
+    <Link Source="AspNetUserRoles_UserId" Target="AspNetUsers_Id" Category="Foreign Key" Label="FK_AspNetUserRoles_0_0" />
+    <Link Source="AspNetUserTokens" Target="AspNetUserTokens_LoginProvider" Category="Contains" />
+    <Link Source="AspNetUserTokens" Target="AspNetUserTokens_Name" Category="Contains" />
+    <Link Source="AspNetUserTokens" Target="AspNetUserTokens_UserId" Category="Contains" />
+    <Link Source="AspNetUserTokens" Target="AspNetUserTokens_Value" Category="Contains" />
+    <Link Source="AspNetUserTokens_UserId" Target="AspNetUsers_Id" Category="Foreign Key" Label="FK_AspNetUserTokens_0_0" />
+    <Link Source="AspNetUsers" Target="AspNetUsers_AccessFailedCount" Category="Contains" />
+    <Link Source="AspNetUsers" Target="AspNetUsers_ConcurrencyStamp" Category="Contains" />
+    <Link Source="AspNetUsers" Target="AspNetUsers_Email" Category="Contains" />
+    <Link Source="AspNetUsers" Target="AspNetUsers_EmailConfirmed" Category="Contains" />
+    <Link Source="AspNetUsers" Target="AspNetUsers_Id" Category="Contains" />
+    <Link Source="AspNetUsers" Target="AspNetUsers_LockoutEnabled" Category="Contains" />
+    <Link Source="AspNetUsers" Target="AspNetUsers_LockoutEnd" Category="Contains" />
+    <Link Source="AspNetUsers" Target="AspNetUsers_NormalizedEmail" Category="Contains" />
+    <Link Source="AspNetUsers" Target="AspNetUsers_NormalizedUserName" Category="Contains" />
+    <Link Source="AspNetUsers" Target="AspNetUsers_ObservingSessionId" Category="Contains" />
+    <Link Source="AspNetUsers" Target="AspNetUsers_PasswordHash" Category="Contains" />
+    <Link Source="AspNetUsers" Target="AspNetUsers_PhoneNumber" Category="Contains" />
+    <Link Source="AspNetUsers" Target="AspNetUsers_PhoneNumberConfirmed" Category="Contains" />
+    <Link Source="AspNetUsers" Target="AspNetUsers_Provisioned" Category="Contains" />
+    <Link Source="AspNetUsers" Target="AspNetUsers_SecurityStamp" Category="Contains" />
+    <Link Source="AspNetUsers" Target="AspNetUsers_TwoFactorEnabled" Category="Contains" />
+    <Link Source="AspNetUsers" Target="AspNetUsers_UserName" Category="Contains" />
+    <Link Source="AspNetUsers_ObservingSessionId" Target="ObservingSessions_Id" Category="Foreign Key" Label="FK_AspNetUsers_0_0" />
+    <Link Source="Badges" Target="Badges_Id" Category="Contains" />
+    <Link Source="Badges" Target="Badges_ImageIdentifier" Category="Contains" />
+    <Link Source="Badges" Target="Badges_Name" Category="Contains" />
+    <Link Source="Categories" Target="Categories_Id" Category="Contains" />
+    <Link Source="Categories" Target="Categories_Name" Category="Contains" />
+    <Link Source="Challenges" Target="Challenges_BookSection" Category="Contains" />
+    <Link Source="Challenges" Target="Challenges_CategoryId" Category="Contains" />
+    <Link Source="Challenges" Target="Challenges_Id" Category="Contains" />
+    <Link Source="Challenges" Target="Challenges_Location" Category="Contains" />
+    <Link Source="Challenges" Target="Challenges_MissionTrackId" Category="Contains" />
+    <Link Source="Challenges" Target="Challenges_Name" Category="Contains" />
+    <Link Source="Challenges" Target="Challenges_Points" Category="Contains" />
+    <Link Source="Challenges" Target="Challenges_ValidationImage" Category="Contains" />
+    <Link Source="Challenges_CategoryId" Target="Categories_Id" Category="Foreign Key" Label="FK_Challenges_1_0" />
+    <Link Source="Challenges_MissionTrackId" Target="MissionTracks_Id" Category="Foreign Key" Label="FK_Challenges_0_0" />
+    <Link Source="Database" Target="AspNetRoleClaims" Category="Contains" />
+    <Link Source="Database" Target="AspNetRoles" Category="Contains" />
+    <Link Source="Database" Target="AspNetUserClaims" Category="Contains" />
+    <Link Source="Database" Target="AspNetUserLogins" Category="Contains" />
+    <Link Source="Database" Target="AspNetUserRoles" Category="Contains" />
+    <Link Source="Database" Target="AspNetUserTokens" Category="Contains" />
+    <Link Source="Database" Target="AspNetUsers" Category="Contains" />
+    <Link Source="Database" Target="Badges" Category="Contains" />
+    <Link Source="Database" Target="Categories" Category="Contains" />
+    <Link Source="Database" Target="Challenges" Category="Contains" />
+    <Link Source="Database" Target="MissionLevels" Category="Contains" />
+    <Link Source="Database" Target="MissionTracks" Category="Contains" />
+    <Link Source="Database" Target="Missions" Category="Contains" />
+    <Link Source="Database" Target="Observations" Category="Contains" />
+    <Link Source="Database" Target="ObservingSessions" Category="Contains" />
+    <Link Source="Database" Target="QueuedWorkItems" Category="Contains" />
+    <Link Source="Database" Target="UserBadges" Category="Contains" />
+    <Link Source="MissionLevels" Target="MissionLevels_AwardTitle" Category="Contains" />
+    <Link Source="MissionLevels" Target="MissionLevels_Id" Category="Contains" />
+    <Link Source="MissionLevels" Target="MissionLevels_Level" Category="Contains" />
+    <Link Source="MissionLevels" Target="MissionLevels_MissionId" Category="Contains" />
+    <Link Source="MissionLevels" Target="MissionLevels_Name" Category="Contains" />
+    <Link Source="MissionLevels" Target="MissionLevels_Precondition" Category="Contains" />
+    <Link Source="MissionLevels_MissionId" Target="Missions_Id" Category="Foreign Key" Label="FK_MissionLevels_0_0" />
+    <Link Source="MissionTracks" Target="MissionTracks_AwardTitle" Category="Contains" />
+    <Link Source="MissionTracks" Target="MissionTracks_BadgeId" Category="Contains" />
+    <Link Source="MissionTracks" Target="MissionTracks_Id" Category="Contains" />
+    <Link Source="MissionTracks" Target="MissionTracks_MissionLevelId" Category="Contains" />
+    <Link Source="MissionTracks" Target="MissionTracks_Name" Category="Contains" />
+    <Link Source="MissionTracks" Target="MissionTracks_Number" Category="Contains" />
+    <Link Source="MissionTracks_BadgeId" Target="Badges_Id" Category="Foreign Key" Label="FK_MissionTracks_1_0" />
+    <Link Source="MissionTracks_MissionLevelId" Target="MissionLevels_Id" Category="Foreign Key" Label="FK_MissionTracks_0_0" />
+    <Link Source="Missions" Target="Missions_Id" Category="Contains" />
+    <Link Source="Missions" Target="Missions_Precondition" Category="Contains" />
+    <Link Source="Missions" Target="Missions_Title" Category="Contains" />
+    <Link Source="Observations" Target="Observations_ChallengeId" Category="Contains" />
+    <Link Source="Observations" Target="Observations_Equipment" Category="Contains" />
+    <Link Source="Observations" Target="Observations_ExpectedImage" Category="Contains" />
+    <Link Source="Observations" Target="Observations_Id" Category="Contains" />
+    <Link Source="Observations" Target="Observations_Notes" Category="Contains" />
+    <Link Source="Observations" Target="Observations_ObservationDateTimeUtc" Category="Contains" />
+    <Link Source="Observations" Target="Observations_ObservingSite" Category="Contains" />
+    <Link Source="Observations" Target="Observations_Seeing" Category="Contains" />
+    <Link Source="Observations" Target="Observations_Status" Category="Contains" />
+    <Link Source="Observations" Target="Observations_SubmittedImage" Category="Contains" />
+    <Link Source="Observations" Target="Observations_Transparency" Category="Contains" />
+    <Link Source="Observations" Target="Observations_UserId" Category="Contains" />
+    <Link Source="Observations_ChallengeId" Target="Challenges_Id" Category="Foreign Key" Label="FK_Observations_1_0" />
+    <Link Source="Observations_UserId" Target="AspNetUsers_Id" Category="Foreign Key" Label="FK_Observations_0_0" />
+    <Link Source="ObservingSessions" Target="ObservingSessions_Description" Category="Contains" />
+    <Link Source="ObservingSessions" Target="ObservingSessions_Id" Category="Contains" />
+    <Link Source="ObservingSessions" Target="ObservingSessions_RemindOneDayBefore" Category="Contains" />
+    <Link Source="ObservingSessions" Target="ObservingSessions_RemindOneWeekBefore" Category="Contains" />
+    <Link Source="ObservingSessions" Target="ObservingSessions_ScheduleState" Category="Contains" />
+    <Link Source="ObservingSessions" Target="ObservingSessions_StartsAt" Category="Contains" />
+    <Link Source="ObservingSessions" Target="ObservingSessions_Title" Category="Contains" />
+    <Link Source="ObservingSessions" Target="ObservingSessions_Venue" Category="Contains" />
+    <Link Source="QueuedWorkItems" Target="QueuedWorkItems_Discriminator" Category="Contains" />
+    <Link Source="QueuedWorkItems" Target="QueuedWorkItems_Disposition" Category="Contains" />
+    <Link Source="QueuedWorkItems" Target="QueuedWorkItems_Id" Category="Contains" />
+    <Link Source="QueuedWorkItems" Target="QueuedWorkItems_Message" Category="Contains" />
+    <Link Source="QueuedWorkItems" Target="QueuedWorkItems_ObservingSessionId" Category="Contains" />
+    <Link Source="QueuedWorkItems" Target="QueuedWorkItems_ProcessAfter" Category="Contains" />
+    <Link Source="QueuedWorkItems" Target="QueuedWorkItems_QueueName" Category="Contains" />
+    <Link Source="UserBadges" Target="UserBadges_Awarded" Category="Contains" />
+    <Link Source="UserBadges" Target="UserBadges_BadgeId" Category="Contains" />
+    <Link Source="UserBadges" Target="UserBadges_UserId" Category="Contains" />
+    <Link Source="UserBadges_BadgeId" Target="Badges_Id" Category="Foreign Key" Label="FK_UserBadges_1_0" />
+    <Link Source="UserBadges_UserId" Target="AspNetUsers_Id" Category="Foreign Key" Label="FK_UserBadges_0_0" />
+  </Links>
+  <Categories>
+    <Category Id="Contains" Label="Contains" Description="Whether the source of the link contains the target object" CanBeDataDriven="False" CanLinkedNodesBeDataDriven="True" IncomingActionLabel="Contained By" IsContainment="True" OutgoingActionLabel="Contains" />
+    <Category Id="Database" />
+    <Category Id="Field" />
+    <Category Id="Field Foreign" />
+    <Category Id="Field Optional" />
+    <Category Id="Field Primary" />
+    <Category Id="Foreign Key" />
+    <Category Id="Table" />
+  </Categories>
+  <Properties>
+    <Property Id="Bounds" DataType="System.Windows.Rect" />
+    <Property Id="CanBeDataDriven" Label="CanBeDataDriven" Description="CanBeDataDriven" DataType="System.Boolean" />
+    <Property Id="CanLinkedNodesBeDataDriven" Label="CanLinkedNodesBeDataDriven" Description="CanLinkedNodesBeDataDriven" DataType="System.Boolean" />
+    <Property Id="Description" Label="Description" Description="Description" DataType="System.String" />
+    <Property Id="Expression" DataType="System.String" />
+    <Property Id="GraphDirection" DataType="Microsoft.VisualStudio.Diagrams.Layout.LayoutOrientation" />
+    <Property Id="Group" Label="Group" Description="Display the node as a group" DataType="Microsoft.VisualStudio.GraphModel.GraphGroupStyle" />
+    <Property Id="GroupLabel" DataType="System.String" />
+    <Property Id="IncomingActionLabel" Label="IncomingActionLabel" Description="IncomingActionLabel" DataType="System.String" />
+    <Property Id="IsContainment" DataType="System.Boolean" />
+    <Property Id="IsEnabled" DataType="System.Boolean" />
+    <Property Id="Label" Label="Label" Description="Displayable label of an Annotatable object" DataType="System.String" />
+    <Property Id="Layout" DataType="System.String" />
+    <Property Id="OutgoingActionLabel" Label="OutgoingActionLabel" Description="OutgoingActionLabel" DataType="System.String" />
+    <Property Id="TargetType" DataType="System.Type" />
+    <Property Id="Value" DataType="System.String" />
+    <Property Id="ValueLabel" DataType="System.String" />
+    <Property Id="ZoomLevel" DataType="System.String" />
+  </Properties>
+  <Styles>
+    <Style TargetType="Node" GroupLabel="Table" ValueLabel="True">
+      <Condition Expression="HasCategory('Table')" />
+      <Setter Property="Background" Value="#FFC0C0C0" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="Schema" ValueLabel="True">
+      <Condition Expression="HasCategory('Schema')" />
+      <Setter Property="Background" Value="#FF7F9169" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="Field Primary" ValueLabel="True">
+      <Condition Expression="HasCategory('Field Primary')" />
+      <Setter Property="Background" Value="#FF008000" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="Field Optional" ValueLabel="True">
+      <Condition Expression="HasCategory('Field Optional')" />
+      <Setter Property="Background" Value="#FF808040" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="Field Foreign" ValueLabel="True">
+      <Condition Expression="HasCategory('Field Foreign')" />
+      <Setter Property="Background" Value="#FF8080FF" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="Field" ValueLabel="True">
+      <Condition Expression="HasCategory('Field')" />
+      <Setter Property="Background" Value="#FFC0A000" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="Database" ValueLabel="True">
+      <Condition Expression="HasCategory('Database')" />
+      <Setter Property="Background" Value="#FFFFFFFF" />
+    </Style>
+  </Styles>
+</DirectedGraph>

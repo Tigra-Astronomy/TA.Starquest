@@ -6,9 +6,13 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using TA.Starquest.DataAccess.EFCore;
+using TA.Starquest.DataAccess.Entities;
 
 namespace TA.Starquest.Web
     {
@@ -33,6 +37,13 @@ namespace TA.Starquest.Web
                 options.MinimumSameSitePolicy = SameSiteMode.None;
                 });
 
+            services.AddDbContext<ApplicationDbContext>(
+                options=>options.UseSqlite(
+                    Configuration.GetConnectionString("Starquest")));
+
+            services.AddDefaultIdentity<ApplicationUser>()
+                .AddEntityFrameworkStores<ApplicationDbContext>();
+
             services.AddControllersWithViews();
             services.AddRazorPages();
             }
@@ -43,6 +54,7 @@ namespace TA.Starquest.Web
             if (env.IsDevelopment())
                 {
                 app.UseDeveloperExceptionPage();
+                app.UseDatabaseErrorPage();
                 }
             else
                 {
@@ -55,6 +67,7 @@ namespace TA.Starquest.Web
             ConfigureStaticFiles(app, env);
             app.UseCookiePolicy();  // GDPR cookie consent
             app.UseRouting();
+            app.UseAuthentication();
             app.UseAuthorization();
             app.UseEndpoints(endpoints =>
             {
