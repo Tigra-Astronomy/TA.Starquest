@@ -2,49 +2,44 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
-using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using TA.Starquest.DataAccess;
 using TA.Starquest.DataAccess.EFCore;
 
 namespace TA.Starquest.DataAccess.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20200810163717_InitialSchema")]
-    partial class InitialSchema
+    [Migration("20200904172612_InitialSchemaWithIdentity")]
+    partial class InitialSchemaWithIdentity
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "3.1.6")
-                .HasAnnotation("Relational:MaxIdentifierLength", 128)
-                .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                .HasAnnotation("ProductVersion", "3.1.7");
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
                 {
                     b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("Name")
-                        .HasColumnType("nvarchar(256)")
+                        .HasColumnType("TEXT")
                         .HasMaxLength(256);
 
                     b.Property<string>("NormalizedName")
-                        .HasColumnType("nvarchar(256)")
+                        .HasColumnType("TEXT")
                         .HasMaxLength(256);
 
                     b.HasKey("Id");
 
                     b.HasIndex("NormalizedName")
                         .IsUnique()
-                        .HasName("RoleNameIndex")
-                        .HasFilter("[NormalizedName] IS NOT NULL");
+                        .HasName("RoleNameIndex");
 
                     b.ToTable("AspNetRoles");
 
@@ -52,19 +47,19 @@ namespace TA.Starquest.DataAccess.Migrations
                         new
                         {
                             Id = "1204ca89-ad5a-4e52-af4d-cb9864254e91",
-                            ConcurrencyStamp = "98183e7c-570c-4824-bd0f-5b3b1d63e045",
+                            ConcurrencyStamp = "c818258e-7020-4bf4-b4e3-a29eeae65e55",
                             Name = "Administrator"
                         },
                         new
                         {
                             Id = "341c4df2-23fe-4905-96f6-0914f73d95e1",
-                            ConcurrencyStamp = "3b7bf515-7c9a-4713-ad20-5c7098b3693e",
+                            ConcurrencyStamp = "a16a3a21-f090-47c2-b856-39ef608c90a1",
                             Name = "Moderator"
                         },
                         new
                         {
                             Id = "27b31d46-7f3e-4bc9-a9cc-4718797c12d8",
-                            ConcurrencyStamp = "33bd4f49-066e-4f28-97af-3787f4e19d62",
+                            ConcurrencyStamp = "aad046ed-1602-468a-98cf-ee33c64299a2",
                             Name = "EventManager"
                         });
                 });
@@ -73,18 +68,17 @@ namespace TA.Starquest.DataAccess.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("ClaimType")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("ClaimValue")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("RoleId")
                         .IsRequired()
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("TEXT");
 
                     b.HasKey("Id");
 
@@ -97,20 +91,24 @@ namespace TA.Starquest.DataAccess.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("ApplicationUserId")
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("ClaimType")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("ClaimValue")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("UserId")
                         .IsRequired()
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("TEXT");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("ApplicationUserId");
 
                     b.HasIndex("UserId");
 
@@ -120,21 +118,26 @@ namespace TA.Starquest.DataAccess.Migrations
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
                 {
                     b.Property<string>("LoginProvider")
-                        .HasColumnType("nvarchar(128)")
+                        .HasColumnType("TEXT")
                         .HasMaxLength(128);
 
                     b.Property<string>("ProviderKey")
-                        .HasColumnType("nvarchar(128)")
+                        .HasColumnType("TEXT")
                         .HasMaxLength(128);
 
+                    b.Property<string>("ApplicationUserId")
+                        .HasColumnType("TEXT");
+
                     b.Property<string>("ProviderDisplayName")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("UserId")
                         .IsRequired()
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("TEXT");
 
                     b.HasKey("LoginProvider", "ProviderKey");
+
+                    b.HasIndex("ApplicationUserId");
 
                     b.HasIndex("UserId");
 
@@ -144,12 +147,17 @@ namespace TA.Starquest.DataAccess.Migrations
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<string>", b =>
                 {
                     b.Property<string>("UserId")
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("RoleId")
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("ApplicationUserId")
+                        .HasColumnType("TEXT");
 
                     b.HasKey("UserId", "RoleId");
+
+                    b.HasIndex("ApplicationUserId");
 
                     b.HasIndex("RoleId");
 
@@ -166,36 +174,131 @@ namespace TA.Starquest.DataAccess.Migrations
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
                 {
                     b.Property<string>("UserId")
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("LoginProvider")
-                        .HasColumnType("nvarchar(128)")
+                        .HasColumnType("TEXT")
                         .HasMaxLength(128);
 
                     b.Property<string>("Name")
-                        .HasColumnType("nvarchar(128)")
+                        .HasColumnType("TEXT")
                         .HasMaxLength(128);
 
+                    b.Property<string>("ApplicationUserId")
+                        .HasColumnType("TEXT");
+
                     b.Property<string>("Value")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("TEXT");
 
                     b.HasKey("UserId", "LoginProvider", "Name");
 
+                    b.HasIndex("ApplicationUserId");
+
                     b.ToTable("AspNetUserTokens");
+                });
+
+            modelBuilder.Entity("TA.Starquest.DataAccess.Entities.ApplicationUser", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("AccessFailedCount")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("ConcurrencyStamp")
+                        .IsConcurrencyToken()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Email")
+                        .HasColumnType("TEXT")
+                        .HasMaxLength(256);
+
+                    b.Property<bool>("EmailConfirmed")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<bool>("LockoutEnabled")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<DateTimeOffset?>("LockoutEnd")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("NormalizedEmail")
+                        .HasColumnType("TEXT")
+                        .HasMaxLength(256);
+
+                    b.Property<string>("NormalizedUserName")
+                        .HasColumnType("TEXT")
+                        .HasMaxLength(256);
+
+                    b.Property<int?>("ObservingSessionId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("PasswordHash")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("PhoneNumber")
+                        .HasColumnType("TEXT");
+
+                    b.Property<bool>("PhoneNumberConfirmed")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<DateTime>("Provisioned")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("SecurityStamp")
+                        .HasColumnType("TEXT");
+
+                    b.Property<bool>("TwoFactorEnabled")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("UserName")
+                        .HasColumnType("TEXT")
+                        .HasMaxLength(256);
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("NormalizedEmail")
+                        .HasName("EmailIndex");
+
+                    b.HasIndex("NormalizedUserName")
+                        .IsUnique()
+                        .HasName("UserNameIndex");
+
+                    b.HasIndex("ObservingSessionId");
+
+                    b.ToTable("AspNetUsers");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "c2e1b3d3-f1cf-4c9b-b712-37502c6e9992",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "95aacb49-849b-4746-8f71-8c8c913217fc",
+                            Email = "Tim@tigranetworks.co.uk",
+                            EmailConfirmed = true,
+                            LockoutEnabled = false,
+                            NormalizedEmail = "TIM@TIGRANETWORKS.CO.UK",
+                            NormalizedUserName = "ADMINISTRATOR",
+                            PasswordHash = "AQAAAAEAACcQAAAAEGGR2g0T4XmZHvoOKx/EqCsSkmURdMKolFHkUILGmwa7V6SwnOouEcOjO0E4yHjjuA==",
+                            PhoneNumberConfirmed = false,
+                            Provisioned = new DateTime(2020, 9, 4, 17, 26, 11, 301, DateTimeKind.Utc).AddTicks(4581),
+                            SecurityStamp = "b63212cc-9eed-4b0a-ba76-87d748cd85d2",
+                            TwoFactorEnabled = false,
+                            UserName = "Administrator"
+                        });
                 });
 
             modelBuilder.Entity("TA.Starquest.DataAccess.Entities.Badge", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("ImageIdentifier")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("TEXT");
 
                     b.HasKey("Id");
 
@@ -206,12 +309,11 @@ namespace TA.Starquest.DataAccess.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("TEXT");
 
                     b.HasKey("Id");
 
@@ -359,31 +461,30 @@ namespace TA.Starquest.DataAccess.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("BookSection")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("TEXT");
 
                     b.Property<int>("CategoryId")
-                        .HasColumnType("int");
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("Location")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("TEXT");
 
                     b.Property<int>("MissionTrackId")
-                        .HasColumnType("int");
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("TEXT");
 
                     b.Property<int>("Points")
-                        .HasColumnType("int");
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("ValidationImage")
                         .IsRequired()
-                        .HasColumnType("nvarchar(255)")
+                        .HasColumnType("TEXT")
                         .HasMaxLength(255);
 
                     b.HasKey("Id");
@@ -399,15 +500,14 @@ namespace TA.Starquest.DataAccess.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("Precondition")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("Title")
                         .IsRequired()
-                        .HasColumnType("nvarchar(128)")
+                        .HasColumnType("TEXT")
                         .HasMaxLength(128);
 
                     b.HasKey("Id");
@@ -419,25 +519,24 @@ namespace TA.Starquest.DataAccess.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("AwardTitle")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("TEXT");
 
                     b.Property<int>("Level")
-                        .HasColumnType("int");
+                        .HasColumnType("INTEGER");
 
                     b.Property<int>("MissionId")
-                        .HasColumnType("int");
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("Precondition")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("TEXT");
 
                     b.HasKey("Id");
 
@@ -450,25 +549,24 @@ namespace TA.Starquest.DataAccess.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("AwardTitle")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("TEXT");
 
                     b.Property<int>("BadgeId")
-                        .HasColumnType("int");
+                        .HasColumnType("INTEGER");
 
                     b.Property<int>("MissionLevelId")
-                        .HasColumnType("int");
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("TEXT");
 
                     b.Property<int>("Number")
-                        .HasColumnType("int");
+                        .HasColumnType("INTEGER");
 
                     b.HasKey("Id");
 
@@ -483,42 +581,41 @@ namespace TA.Starquest.DataAccess.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("INTEGER");
 
                     b.Property<int>("ChallengeId")
-                        .HasColumnType("int");
+                        .HasColumnType("INTEGER");
 
                     b.Property<int>("Equipment")
-                        .HasColumnType("int");
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("ExpectedImage")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("Notes")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("TEXT");
 
                     b.Property<DateTime>("ObservationDateTimeUtc")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("ObservingSite")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("TEXT");
 
                     b.Property<int>("Seeing")
-                        .HasColumnType("int");
+                        .HasColumnType("INTEGER");
 
                     b.Property<int>("Status")
-                        .HasColumnType("int");
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("SubmittedImage")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("TEXT");
 
                     b.Property<int>("Transparency")
-                        .HasColumnType("int");
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("UserId")
                         .IsRequired()
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("TEXT");
 
                     b.HasKey("Id");
 
@@ -533,31 +630,30 @@ namespace TA.Starquest.DataAccess.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("Description")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("TEXT");
 
                     b.Property<bool>("RemindOneDayBefore")
-                        .HasColumnType("bit");
+                        .HasColumnType("INTEGER");
 
                     b.Property<bool>("RemindOneWeekBefore")
-                        .HasColumnType("bit");
+                        .HasColumnType("INTEGER");
 
                     b.Property<int>("ScheduleState")
-                        .HasColumnType("int");
+                        .HasColumnType("INTEGER");
 
                     b.Property<DateTime>("StartsAt")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("Title")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("Venue")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("TEXT");
 
                     b.HasKey("Id");
 
@@ -568,22 +664,21 @@ namespace TA.Starquest.DataAccess.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("Discriminator")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("TEXT");
 
                     b.Property<int>("Disposition")
-                        .HasColumnType("int");
+                        .HasColumnType("INTEGER");
 
                     b.Property<DateTime>("ProcessAfter")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("QueueName")
                         .IsRequired()
-                        .HasColumnType("nvarchar(8)")
+                        .HasColumnType("TEXT")
                         .HasMaxLength(8);
 
                     b.HasKey("Id");
@@ -593,108 +688,16 @@ namespace TA.Starquest.DataAccess.Migrations
                     b.HasDiscriminator<string>("Discriminator").HasValue("QueuedWorkItem");
                 });
 
-            modelBuilder.Entity("TA.Starquest.DataAccess.Entities.StarquestUser", b =>
-                {
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<int>("AccessFailedCount")
-                        .HasColumnType("int");
-
-                    b.Property<string>("ConcurrencyStamp")
-                        .IsConcurrencyToken()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Email")
-                        .HasColumnType("nvarchar(256)")
-                        .HasMaxLength(256);
-
-                    b.Property<bool>("EmailConfirmed")
-                        .HasColumnType("bit");
-
-                    b.Property<bool>("LockoutEnabled")
-                        .HasColumnType("bit");
-
-                    b.Property<DateTimeOffset?>("LockoutEnd")
-                        .HasColumnType("datetimeoffset");
-
-                    b.Property<string>("NormalizedEmail")
-                        .HasColumnType("nvarchar(256)")
-                        .HasMaxLength(256);
-
-                    b.Property<string>("NormalizedUserName")
-                        .HasColumnType("nvarchar(256)")
-                        .HasMaxLength(256);
-
-                    b.Property<int?>("ObservingSessionId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("PasswordHash")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("PhoneNumber")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("PhoneNumberConfirmed")
-                        .HasColumnType("bit");
-
-                    b.Property<DateTime>("Provisioned")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("SecurityStamp")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("TwoFactorEnabled")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("UserName")
-                        .HasColumnType("nvarchar(256)")
-                        .HasMaxLength(256);
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("NormalizedEmail")
-                        .HasName("EmailIndex");
-
-                    b.HasIndex("NormalizedUserName")
-                        .IsUnique()
-                        .HasName("UserNameIndex")
-                        .HasFilter("[NormalizedUserName] IS NOT NULL");
-
-                    b.HasIndex("ObservingSessionId");
-
-                    b.ToTable("AspNetUsers");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = "c2e1b3d3-f1cf-4c9b-b712-37502c6e9992",
-                            AccessFailedCount = 0,
-                            ConcurrencyStamp = "4c31de8e-f01a-4b1e-b698-8a7abdd5c3a2",
-                            Email = "Tim@tigranetworks.co.uk",
-                            EmailConfirmed = true,
-                            LockoutEnabled = false,
-                            NormalizedEmail = "TIM@TIGRANETWORKS.CO.UK",
-                            NormalizedUserName = "ADMINISTRATOR",
-                            PasswordHash = "AQAAAAEAACcQAAAAEEnDdH/APr8EKDX1oaTusG0SvQFvZk9qJMoDY33pLJHjZdbwEPfXIZ4RlocDvYNFAg==",
-                            PhoneNumberConfirmed = false,
-                            Provisioned = new DateTime(2020, 8, 10, 16, 37, 16, 162, DateTimeKind.Utc).AddTicks(5517),
-                            SecurityStamp = "925d1e02-5fba-47bc-80e6-53d2bcb3fb94",
-                            TwoFactorEnabled = false,
-                            UserName = "Administrator"
-                        });
-                });
-
             modelBuilder.Entity("TA.Starquest.DataAccess.Entities.UserBadge", b =>
                 {
                     b.Property<string>("UserId")
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("TEXT");
 
                     b.Property<int>("BadgeId")
-                        .HasColumnType("int");
+                        .HasColumnType("INTEGER");
 
                     b.Property<DateTime>("Awarded")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("TEXT");
 
                     b.HasKey("UserId", "BadgeId");
 
@@ -710,10 +713,10 @@ namespace TA.Starquest.DataAccess.Migrations
                     b.HasBaseType("TA.Starquest.DataAccess.Entities.QueuedWorkItem");
 
                     b.Property<string>("Message")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("TEXT");
 
                     b.Property<int?>("ObservingSessionId")
-                        .HasColumnType("int");
+                        .HasColumnType("INTEGER");
 
                     b.HasDiscriminator().HasValue("ObservingSessionCancellation");
                 });
@@ -723,7 +726,7 @@ namespace TA.Starquest.DataAccess.Migrations
                     b.HasBaseType("TA.Starquest.DataAccess.Entities.QueuedWorkItem");
 
                     b.Property<int?>("ObservingSessionId")
-                        .HasColumnType("int");
+                        .HasColumnType("INTEGER");
 
                     b.HasDiscriminator().HasValue("ObservingSessionReminder");
                 });
@@ -739,7 +742,11 @@ namespace TA.Starquest.DataAccess.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
                 {
-                    b.HasOne("TA.Starquest.DataAccess.Entities.StarquestUser", null)
+                    b.HasOne("TA.Starquest.DataAccess.Entities.ApplicationUser", null)
+                        .WithMany("Claims")
+                        .HasForeignKey("ApplicationUserId");
+
+                    b.HasOne("TA.Starquest.DataAccess.Entities.ApplicationUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -748,7 +755,11 @@ namespace TA.Starquest.DataAccess.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
                 {
-                    b.HasOne("TA.Starquest.DataAccess.Entities.StarquestUser", null)
+                    b.HasOne("TA.Starquest.DataAccess.Entities.ApplicationUser", null)
+                        .WithMany("Logins")
+                        .HasForeignKey("ApplicationUserId");
+
+                    b.HasOne("TA.Starquest.DataAccess.Entities.ApplicationUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -757,13 +768,17 @@ namespace TA.Starquest.DataAccess.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<string>", b =>
                 {
+                    b.HasOne("TA.Starquest.DataAccess.Entities.ApplicationUser", null)
+                        .WithMany("UserRoles")
+                        .HasForeignKey("ApplicationUserId");
+
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
                         .WithMany()
                         .HasForeignKey("RoleId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("TA.Starquest.DataAccess.Entities.StarquestUser", null)
+                    b.HasOne("TA.Starquest.DataAccess.Entities.ApplicationUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -772,11 +787,22 @@ namespace TA.Starquest.DataAccess.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
                 {
-                    b.HasOne("TA.Starquest.DataAccess.Entities.StarquestUser", null)
+                    b.HasOne("TA.Starquest.DataAccess.Entities.ApplicationUser", null)
+                        .WithMany("Tokens")
+                        .HasForeignKey("ApplicationUserId");
+
+                    b.HasOne("TA.Starquest.DataAccess.Entities.ApplicationUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("TA.Starquest.DataAccess.Entities.ApplicationUser", b =>
+                {
+                    b.HasOne("TA.Starquest.DataAccess.Entities.ObservingSession", null)
+                        .WithMany("Attendees")
+                        .HasForeignKey("ObservingSessionId");
                 });
 
             modelBuilder.Entity("TA.Starquest.DataAccess.Entities.Challenge", b =>
@@ -826,18 +852,11 @@ namespace TA.Starquest.DataAccess.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("TA.Starquest.DataAccess.Entities.StarquestUser", "User")
+                    b.HasOne("TA.Starquest.DataAccess.Entities.ApplicationUser", "User")
                         .WithMany("Observations")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-                });
-
-            modelBuilder.Entity("TA.Starquest.DataAccess.Entities.StarquestUser", b =>
-                {
-                    b.HasOne("TA.Starquest.DataAccess.Entities.ObservingSession", null)
-                        .WithMany("Attendees")
-                        .HasForeignKey("ObservingSessionId");
                 });
 
             modelBuilder.Entity("TA.Starquest.DataAccess.Entities.UserBadge", b =>
@@ -848,7 +867,7 @@ namespace TA.Starquest.DataAccess.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("TA.Starquest.DataAccess.Entities.StarquestUser", "User")
+                    b.HasOne("TA.Starquest.DataAccess.Entities.ApplicationUser", "User")
                         .WithMany("UserBadges")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)

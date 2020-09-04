@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
+using TA.Starquest.DataAccess.Entities;
 
 namespace TA.Starquest.Web.Areas.Identity.Pages.Account.Manage
 {

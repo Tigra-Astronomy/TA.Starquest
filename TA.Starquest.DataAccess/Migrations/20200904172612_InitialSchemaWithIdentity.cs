@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace TA.Starquest.DataAccess.Migrations
 {
-    public partial class InitialSchema : Migration
+    public partial class InitialSchemaWithIdentity : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -26,7 +26,7 @@ namespace TA.Starquest.DataAccess.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                        .Annotation("Sqlite:Autoincrement", true),
                     ImageIdentifier = table.Column<string>(nullable: true),
                     Name = table.Column<string>(nullable: true)
                 },
@@ -40,7 +40,7 @@ namespace TA.Starquest.DataAccess.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                        .Annotation("Sqlite:Autoincrement", true),
                     Name = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
@@ -53,7 +53,7 @@ namespace TA.Starquest.DataAccess.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                        .Annotation("Sqlite:Autoincrement", true),
                     Title = table.Column<string>(maxLength: 128, nullable: false),
                     Precondition = table.Column<string>(nullable: true)
                 },
@@ -67,7 +67,7 @@ namespace TA.Starquest.DataAccess.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                        .Annotation("Sqlite:Autoincrement", true),
                     Title = table.Column<string>(nullable: false),
                     Venue = table.Column<string>(nullable: false),
                     StartsAt = table.Column<DateTime>(nullable: false),
@@ -86,7 +86,7 @@ namespace TA.Starquest.DataAccess.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                        .Annotation("Sqlite:Autoincrement", true),
                     ProcessAfter = table.Column<DateTime>(nullable: false),
                     QueueName = table.Column<string>(maxLength: 8, nullable: false),
                     Disposition = table.Column<int>(nullable: false),
@@ -104,7 +104,7 @@ namespace TA.Starquest.DataAccess.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                        .Annotation("Sqlite:Autoincrement", true),
                     RoleId = table.Column<string>(nullable: false),
                     ClaimType = table.Column<string>(nullable: true),
                     ClaimValue = table.Column<string>(nullable: true)
@@ -125,7 +125,7 @@ namespace TA.Starquest.DataAccess.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                        .Annotation("Sqlite:Autoincrement", true),
                     Name = table.Column<string>(nullable: false),
                     Level = table.Column<int>(nullable: false),
                     AwardTitle = table.Column<string>(nullable: false),
@@ -181,7 +181,7 @@ namespace TA.Starquest.DataAccess.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                        .Annotation("Sqlite:Autoincrement", true),
                     Name = table.Column<string>(nullable: false),
                     Number = table.Column<int>(nullable: false),
                     AwardTitle = table.Column<string>(nullable: false),
@@ -210,14 +210,21 @@ namespace TA.Starquest.DataAccess.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                        .Annotation("Sqlite:Autoincrement", true),
                     UserId = table.Column<string>(nullable: false),
                     ClaimType = table.Column<string>(nullable: true),
-                    ClaimValue = table.Column<string>(nullable: true)
+                    ClaimValue = table.Column<string>(nullable: true),
+                    ApplicationUserId = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_AspNetUserClaims", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_AspNetUserClaims_AspNetUsers_ApplicationUserId",
+                        column: x => x.ApplicationUserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_AspNetUserClaims_AspNetUsers_UserId",
                         column: x => x.UserId,
@@ -233,11 +240,18 @@ namespace TA.Starquest.DataAccess.Migrations
                     LoginProvider = table.Column<string>(maxLength: 128, nullable: false),
                     ProviderKey = table.Column<string>(maxLength: 128, nullable: false),
                     ProviderDisplayName = table.Column<string>(nullable: true),
-                    UserId = table.Column<string>(nullable: false)
+                    UserId = table.Column<string>(nullable: false),
+                    ApplicationUserId = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_AspNetUserLogins", x => new { x.LoginProvider, x.ProviderKey });
+                    table.ForeignKey(
+                        name: "FK_AspNetUserLogins_AspNetUsers_ApplicationUserId",
+                        column: x => x.ApplicationUserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_AspNetUserLogins_AspNetUsers_UserId",
                         column: x => x.UserId,
@@ -251,11 +265,18 @@ namespace TA.Starquest.DataAccess.Migrations
                 columns: table => new
                 {
                     UserId = table.Column<string>(nullable: false),
-                    RoleId = table.Column<string>(nullable: false)
+                    RoleId = table.Column<string>(nullable: false),
+                    ApplicationUserId = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_AspNetUserRoles", x => new { x.UserId, x.RoleId });
+                    table.ForeignKey(
+                        name: "FK_AspNetUserRoles_AspNetUsers_ApplicationUserId",
+                        column: x => x.ApplicationUserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_AspNetUserRoles_AspNetRoles_RoleId",
                         column: x => x.RoleId,
@@ -277,11 +298,18 @@ namespace TA.Starquest.DataAccess.Migrations
                     UserId = table.Column<string>(nullable: false),
                     LoginProvider = table.Column<string>(maxLength: 128, nullable: false),
                     Name = table.Column<string>(maxLength: 128, nullable: false),
-                    Value = table.Column<string>(nullable: true)
+                    Value = table.Column<string>(nullable: true),
+                    ApplicationUserId = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_AspNetUserTokens", x => new { x.UserId, x.LoginProvider, x.Name });
+                    table.ForeignKey(
+                        name: "FK_AspNetUserTokens_AspNetUsers_ApplicationUserId",
+                        column: x => x.ApplicationUserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_AspNetUserTokens_AspNetUsers_UserId",
                         column: x => x.UserId,
@@ -320,7 +348,7 @@ namespace TA.Starquest.DataAccess.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                        .Annotation("Sqlite:Autoincrement", true),
                     ValidationImage = table.Column<string>(maxLength: 255, nullable: false),
                     Name = table.Column<string>(nullable: false),
                     Points = table.Column<int>(nullable: false),
@@ -351,7 +379,7 @@ namespace TA.Starquest.DataAccess.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                        .Annotation("Sqlite:Autoincrement", true),
                     ObservationDateTimeUtc = table.Column<DateTime>(nullable: false),
                     Equipment = table.Column<int>(nullable: false),
                     ObservingSite = table.Column<string>(nullable: true),
@@ -384,56 +412,162 @@ namespace TA.Starquest.DataAccess.Migrations
             migrationBuilder.InsertData(
                 table: "AspNetRoles",
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
-                values: new object[,]
-                {
-                    { "1204ca89-ad5a-4e52-af4d-cb9864254e91", "98183e7c-570c-4824-bd0f-5b3b1d63e045", "Administrator", null },
-                    { "341c4df2-23fe-4905-96f6-0914f73d95e1", "3b7bf515-7c9a-4713-ad20-5c7098b3693e", "Moderator", null },
-                    { "27b31d46-7f3e-4bc9-a9cc-4718797c12d8", "33bd4f49-066e-4f28-97af-3787f4e19d62", "EventManager", null }
-                });
+                values: new object[] { "1204ca89-ad5a-4e52-af4d-cb9864254e91", "c818258e-7020-4bf4-b4e3-a29eeae65e55", "Administrator", null });
+
+            migrationBuilder.InsertData(
+                table: "AspNetRoles",
+                columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
+                values: new object[] { "341c4df2-23fe-4905-96f6-0914f73d95e1", "a16a3a21-f090-47c2-b856-39ef608c90a1", "Moderator", null });
+
+            migrationBuilder.InsertData(
+                table: "AspNetRoles",
+                columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
+                values: new object[] { "27b31d46-7f3e-4bc9-a9cc-4718797c12d8", "aad046ed-1602-468a-98cf-ee33c64299a2", "EventManager", null });
 
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "ObservingSessionId", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "Provisioned", "SecurityStamp", "TwoFactorEnabled", "UserName" },
-                values: new object[] { "c2e1b3d3-f1cf-4c9b-b712-37502c6e9992", 0, "4c31de8e-f01a-4b1e-b698-8a7abdd5c3a2", "Tim@tigranetworks.co.uk", true, false, null, "TIM@TIGRANETWORKS.CO.UK", "ADMINISTRATOR", null, "AQAAAAEAACcQAAAAEEnDdH/APr8EKDX1oaTusG0SvQFvZk9qJMoDY33pLJHjZdbwEPfXIZ4RlocDvYNFAg==", null, false, new DateTime(2020, 8, 10, 16, 37, 16, 162, DateTimeKind.Utc).AddTicks(5517), "925d1e02-5fba-47bc-80e6-53d2bcb3fb94", false, "Administrator" });
+                values: new object[] { "c2e1b3d3-f1cf-4c9b-b712-37502c6e9992", 0, "95aacb49-849b-4746-8f71-8c8c913217fc", "Tim@tigranetworks.co.uk", true, false, null, "TIM@TIGRANETWORKS.CO.UK", "ADMINISTRATOR", null, "AQAAAAEAACcQAAAAEGGR2g0T4XmZHvoOKx/EqCsSkmURdMKolFHkUILGmwa7V6SwnOouEcOjO0E4yHjjuA==", null, false, new DateTime(2020, 9, 4, 17, 26, 11, 301, DateTimeKind.Utc).AddTicks(4581), "b63212cc-9eed-4b0a-ba76-87d748cd85d2", false, "Administrator" });
 
             migrationBuilder.InsertData(
                 table: "Categories",
                 columns: new[] { "Id", "Name" },
-                values: new object[,]
-                {
-                    { 2, "Asterism" },
-                    { 26, "Surface Feature" },
-                    { 25, "Star" },
-                    { 24, "Sky" },
-                    { 23, "Satellite" },
-                    { 22, "Region" },
-                    { 21, "Planetary Nebula" },
-                    { 20, "Planet" },
-                    { 19, "Phenomenon" },
-                    { 18, "Phase" },
-                    { 17, "Open Cluster" },
-                    { 16, "Minor Planet" },
-                    { 1, "Artificial Satellite" },
-                    { 15, "Meteor" },
-                    { 27, "Variable Star" },
-                    { 12, "Galaxy" },
-                    { 11, "Emission Nebula" },
-                    { 10, "Eclipse" },
-                    { 9, "Double Star" },
-                    { 8, "Diffuse Nebula" },
-                    { 7, "Dark Nebula" },
-                    { 6, "Crater" },
-                    { 5, "Constellation" },
-                    { 4, "Comet" },
-                    { 3, "Astrometry" },
-                    { 14, "Mare" },
-                    { 13, "Globular Cluster" }
-                });
+                values: new object[] { 25, "Star" });
+
+            migrationBuilder.InsertData(
+                table: "Categories",
+                columns: new[] { "Id", "Name" },
+                values: new object[] { 24, "Sky" });
+
+            migrationBuilder.InsertData(
+                table: "Categories",
+                columns: new[] { "Id", "Name" },
+                values: new object[] { 23, "Satellite" });
+
+            migrationBuilder.InsertData(
+                table: "Categories",
+                columns: new[] { "Id", "Name" },
+                values: new object[] { 22, "Region" });
+
+            migrationBuilder.InsertData(
+                table: "Categories",
+                columns: new[] { "Id", "Name" },
+                values: new object[] { 21, "Planetary Nebula" });
+
+            migrationBuilder.InsertData(
+                table: "Categories",
+                columns: new[] { "Id", "Name" },
+                values: new object[] { 20, "Planet" });
+
+            migrationBuilder.InsertData(
+                table: "Categories",
+                columns: new[] { "Id", "Name" },
+                values: new object[] { 19, "Phenomenon" });
+
+            migrationBuilder.InsertData(
+                table: "Categories",
+                columns: new[] { "Id", "Name" },
+                values: new object[] { 18, "Phase" });
+
+            migrationBuilder.InsertData(
+                table: "Categories",
+                columns: new[] { "Id", "Name" },
+                values: new object[] { 17, "Open Cluster" });
+
+            migrationBuilder.InsertData(
+                table: "Categories",
+                columns: new[] { "Id", "Name" },
+                values: new object[] { 16, "Minor Planet" });
+
+            migrationBuilder.InsertData(
+                table: "Categories",
+                columns: new[] { "Id", "Name" },
+                values: new object[] { 15, "Meteor" });
+
+            migrationBuilder.InsertData(
+                table: "Categories",
+                columns: new[] { "Id", "Name" },
+                values: new object[] { 14, "Mare" });
+
+            migrationBuilder.InsertData(
+                table: "Categories",
+                columns: new[] { "Id", "Name" },
+                values: new object[] { 12, "Galaxy" });
+
+            migrationBuilder.InsertData(
+                table: "Categories",
+                columns: new[] { "Id", "Name" },
+                values: new object[] { 26, "Surface Feature" });
+
+            migrationBuilder.InsertData(
+                table: "Categories",
+                columns: new[] { "Id", "Name" },
+                values: new object[] { 11, "Emission Nebula" });
+
+            migrationBuilder.InsertData(
+                table: "Categories",
+                columns: new[] { "Id", "Name" },
+                values: new object[] { 10, "Eclipse" });
+
+            migrationBuilder.InsertData(
+                table: "Categories",
+                columns: new[] { "Id", "Name" },
+                values: new object[] { 9, "Double Star" });
+
+            migrationBuilder.InsertData(
+                table: "Categories",
+                columns: new[] { "Id", "Name" },
+                values: new object[] { 8, "Diffuse Nebula" });
+
+            migrationBuilder.InsertData(
+                table: "Categories",
+                columns: new[] { "Id", "Name" },
+                values: new object[] { 7, "Dark Nebula" });
+
+            migrationBuilder.InsertData(
+                table: "Categories",
+                columns: new[] { "Id", "Name" },
+                values: new object[] { 6, "Crater" });
+
+            migrationBuilder.InsertData(
+                table: "Categories",
+                columns: new[] { "Id", "Name" },
+                values: new object[] { 5, "Constellation" });
+
+            migrationBuilder.InsertData(
+                table: "Categories",
+                columns: new[] { "Id", "Name" },
+                values: new object[] { 4, "Comet" });
+
+            migrationBuilder.InsertData(
+                table: "Categories",
+                columns: new[] { "Id", "Name" },
+                values: new object[] { 3, "Astrometry" });
+
+            migrationBuilder.InsertData(
+                table: "Categories",
+                columns: new[] { "Id", "Name" },
+                values: new object[] { 2, "Asterism" });
+
+            migrationBuilder.InsertData(
+                table: "Categories",
+                columns: new[] { "Id", "Name" },
+                values: new object[] { 1, "Artificial Satellite" });
+
+            migrationBuilder.InsertData(
+                table: "Categories",
+                columns: new[] { "Id", "Name" },
+                values: new object[] { 13, "Globular Cluster" });
+
+            migrationBuilder.InsertData(
+                table: "Categories",
+                columns: new[] { "Id", "Name" },
+                values: new object[] { 27, "Variable Star" });
 
             migrationBuilder.InsertData(
                 table: "AspNetUserRoles",
-                columns: new[] { "UserId", "RoleId" },
-                values: new object[] { "c2e1b3d3-f1cf-4c9b-b712-37502c6e9992", "1204ca89-ad5a-4e52-af4d-cb9864254e91" });
+                columns: new[] { "UserId", "RoleId", "ApplicationUserId" },
+                values: new object[] { "c2e1b3d3-f1cf-4c9b-b712-37502c6e9992", "1204ca89-ad5a-4e52-af4d-cb9864254e91", null });
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
@@ -444,8 +578,12 @@ namespace TA.Starquest.DataAccess.Migrations
                 name: "RoleNameIndex",
                 table: "AspNetRoles",
                 column: "NormalizedName",
-                unique: true,
-                filter: "[NormalizedName] IS NOT NULL");
+                unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_AspNetUserClaims_ApplicationUserId",
+                table: "AspNetUserClaims",
+                column: "ApplicationUserId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetUserClaims_UserId",
@@ -453,9 +591,19 @@ namespace TA.Starquest.DataAccess.Migrations
                 column: "UserId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_AspNetUserLogins_ApplicationUserId",
+                table: "AspNetUserLogins",
+                column: "ApplicationUserId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_AspNetUserLogins_UserId",
                 table: "AspNetUserLogins",
                 column: "UserId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_AspNetUserRoles_ApplicationUserId",
+                table: "AspNetUserRoles",
+                column: "ApplicationUserId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetUserRoles_RoleId",
@@ -471,13 +619,17 @@ namespace TA.Starquest.DataAccess.Migrations
                 name: "UserNameIndex",
                 table: "AspNetUsers",
                 column: "NormalizedUserName",
-                unique: true,
-                filter: "[NormalizedUserName] IS NOT NULL");
+                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetUsers_ObservingSessionId",
                 table: "AspNetUsers",
                 column: "ObservingSessionId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_AspNetUserTokens_ApplicationUserId",
+                table: "AspNetUserTokens",
+                column: "ApplicationUserId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Challenges_CategoryId",

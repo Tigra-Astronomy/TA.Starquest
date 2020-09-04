@@ -5,7 +5,6 @@ using Microsoft.AspNetCore.Identity.UI;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using TA.Starquest.DataAccess;
 using TA.Starquest.DataAccess.EFCore;
 using TA.Starquest.DataAccess.Entities;
 
@@ -16,14 +15,8 @@ namespace TA.Starquest.Web.Areas.Identity
     {
         public void Configure(IWebHostBuilder builder)
         {
-            //builder.ConfigureServices((context, services) => {
-            //    services.AddDbContext<ApplicationDbContext>(options =>
-            //        options.UseSqlServer(
-            //            context.Configuration.GetConnectionString("TAStarquestWebContextConnection")));
-
-            //    services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true)
-            //        .AddEntityFrameworkStores<ApplicationDbContext>();
-            //});
+            builder.ConfigureServices((context, services) => {
+            });
         }
     }
 }
