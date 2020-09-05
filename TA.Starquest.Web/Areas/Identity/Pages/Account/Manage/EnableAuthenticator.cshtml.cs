@@ -149,7 +149,7 @@ namespace TA.Starquest.Web.Areas.Identity.Pages.Account.Manage
         {
             return string.Format(
                 AuthenticatorUriFormat,
-                _urlEncoder.Encode("TA.Starquest.Web"),
+                _urlEncoder.Encode("Starquest from Tigra Astronomy"),
                 _urlEncoder.Encode(email),
                 unformattedKey);
         }

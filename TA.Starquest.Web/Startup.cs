@@ -7,12 +7,14 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using TA.Starquest.DataAccess.EFCore;
 using TA.Starquest.DataAccess.Entities;
+using TA.Starquest.Web.Services.Email;
 
 namespace TA.Starquest.Web
     {
@@ -41,8 +43,18 @@ namespace TA.Starquest.Web
                 options=>options.UseSqlite(
                     Configuration.GetConnectionString("Starquest")));
 
-            services.AddDefaultIdentity<ApplicationUser>()
+            services.AddDefaultIdentity<ApplicationUser>(
+                    options=>options.SignIn.RequireConfirmedAccount=true)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
+
+            services.AddTransient<IEmailSender, SendgridEmailSender>();
+            services.Configure<AuthMessageSenderOptions>(Configuration);
+
+            services.AddAuthentication().AddFacebook(facebookOptions =>
+                {
+                facebookOptions.AppId = Configuration["Authentication:Facebook:AppId"];
+                facebookOptions.AppSecret = Configuration["Authentication:Facebook:AppSecret"];
+                });
 
             services.AddControllersWithViews();
             services.AddRazorPages();
@@ -60,7 +72,7 @@ namespace TA.Starquest.Web
                 {
                 app.UseExceptionHandler("/Home/Error");
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
-                //ToDo [TPL] Enable this one we have a trusted SSL certificate
+                //ToDo [TPL] Enable this once we have a trusted SSL certificate
                 //app.UseHsts();
                 }
             app.UseHttpsRedirection();

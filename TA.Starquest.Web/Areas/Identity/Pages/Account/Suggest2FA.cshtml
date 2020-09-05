@@ -1,0 +1,21 @@
+﻿@page
+@using TA.Starquest.Web.Areas.Identity.Pages.Account.Manage
+@{
+    ViewData["Title"] = "Email Confirmed";
+    ViewData["ActivePage"] = ManageNavPages.PersonalData;
+}
+
+<h4>@ViewData["Title"]</h4>
+
+<div class="alert alert-info" role="alert">
+    <p>
+        <strong>Thank you for confirming your email, you can now log in to your account.</strong>
+    </p>
+    <p>
+        For best security, we recommend enabling Two Factor Authentication (2FA) using a smart phone or mobile device.
+        You can do this after you have logged in by clicking on your username and using the accou8nt management options there.
+    </p>
+</div>
+
+@section Scripts {
+}
