@@ -1,0 +1,13 @@
+@startuml AtTheEvent Use Cases
+actor Receptionist
+usecase "Open the Event" as OE
+usecase "Register the Attendee" as RA
+actor Attendee
+usecase "Attend event"
+actor Presenter
+usecase "Deliver content"
+usecase "Facilitate observations"
+usecase "Record observations"
+actor Organizer
+usecase "Close the Event"
+@enduml

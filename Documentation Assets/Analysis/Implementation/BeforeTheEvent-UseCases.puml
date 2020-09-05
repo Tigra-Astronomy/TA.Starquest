@@ -1,10 +1,14 @@
-@startuml Event Use Cases
+@startuml BeforeTheEvent Use Cases
 actor Organizer
 usecase "Invite Attendees to Existing Group" as EG
 usecase "Invite Attendees to New Group" as NG
 
+actor Attendee
+usecase "Join Group" as JG
+
 Organizer --> EG
 Organizer --> NG
+Attendee --> JG
 
-EG <|-- NG
+
 @enduml
