@@ -1,0 +1,11 @@
+@startuml Event Management
+| Organizer |
+start
+:Identify Target Audience;
+:Choose a group;
+:Invite Audience to join Group;
+| Attendee |
+:Join Group;
+| Receptionist |
+| Presenter |
+@enduml

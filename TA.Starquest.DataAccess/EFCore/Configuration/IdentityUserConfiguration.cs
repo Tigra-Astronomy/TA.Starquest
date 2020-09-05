@@ -39,7 +39,8 @@ namespace TA.Starquest.DataAccess.EFCore.Configuration
                 UserName = AdministratorUserName,
                 NormalizedUserName = AdministratorUserName.ToUpper(),
                 Provisioned = DateTime.UtcNow,
-                LockoutEnabled = false
+                LockoutEnabled = false,
+                SecurityStamp = Guid.NewGuid().ToString("D")
                 };
             adminUser.PasswordHash = passwordHasher.HashPassword(adminUser, AdministratorTemporaryPassword);
             builder.HasData(adminUser);

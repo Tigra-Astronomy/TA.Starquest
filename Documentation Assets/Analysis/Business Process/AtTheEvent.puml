@@ -1,0 +1,20 @@
+@startuml At The Event
+|Receptionist|
+start
+:Declare the event Open;
+|Attendee|
+:Arrive;
+|Receptionist|
+:Register the Attendee;
+|Attendee|
+:Attend the session;
+|Presenter|
+:Deliver content;
+:Facilitate Observations;
+:Record Observations
+on behalf of
+Attendees;
+|Organizer|
+:Close the event;
+end
+@enduml
