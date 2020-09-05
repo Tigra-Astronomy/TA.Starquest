@@ -1,0 +1,19 @@
+@startuml System Context
+cloud "StarQuest Events" as SQ {
+    database data
+}
+frame Marketing
+actor Organizer
+actor Presenter
+actor Receptionist
+actor Attendee
+actor Time
+
+Organizer --> SQ
+Presenter --> SQ
+Receptionist -l-> SQ
+Attendee -u-> SQ
+Time -u-> SQ
+Marketing --> SQ
+
+@enduml
