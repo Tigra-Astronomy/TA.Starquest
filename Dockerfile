@@ -7,5 +7,5 @@ EXPOSE 443
 
 FROM base AS final
 WORKDIR /app
-COPY Publish/* .
+COPY Publish/* ./
 ENTRYPOINT ["dotnet", "TA.Starquest.Web.dll"]
