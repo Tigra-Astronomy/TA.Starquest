@@ -5,6 +5,7 @@
     <UserSecretsId>cf0e70ae-0a33-4b7d-841b-2e433cf62bb1</UserSecretsId>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
     <ContainerDevelopmentMode>Regular</ContainerDevelopmentMode>
+    <ApplicationInsightsResourceId>/subscriptions/f1858c29-a6ff-445e-9d22-9902c6fddf18/resourceGroups/Starquest/providers/microsoft.insights/components/Starquest-Web</ApplicationInsightsResourceId>
   </PropertyGroup>
 
   <ItemGroup>
@@ -12,6 +13,7 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.14.0" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.Facebook" Version="3.1.7" />
     <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="3.1.7" />
     <PackageReference Include="Microsoft.AspNetCore.Identity" Version="2.2.0" />

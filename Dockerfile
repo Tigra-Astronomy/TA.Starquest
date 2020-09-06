@@ -8,6 +8,7 @@ EXPOSE 443
 FROM mcr.microsoft.com/dotnet/core/sdk:3.1-buster AS build
 WORKDIR /src
 COPY ["TA.Starquest.Web/TA.Starquest.Web.csproj", "TA.Starquest.Web/"]
+COPY ["NuGet.Config", "."]
 RUN dotnet restore "TA.Starquest.Web/TA.Starquest.Web.csproj"
 COPY . .
 WORKDIR "/src/TA.Starquest.Web"
