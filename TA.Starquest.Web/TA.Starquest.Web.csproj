@@ -8,6 +8,10 @@
     <ApplicationInsightsResourceId>/subscriptions/f1858c29-a6ff-445e-9d22-9902c6fddf18/resourceGroups/Starquest/providers/microsoft.insights/components/Starquest-Web</ApplicationInsightsResourceId>
   </PropertyGroup>
 
+  <PropertyGroup>               
+    <PublishWithAspNetCoreTargetManifest>false</PublishWithAspNetCoreTargetManifest>
+ </PropertyGroup>
+
   <ItemGroup>
     <PackageReference Include="GitVersionTask" Version="5.3.7">
       <PrivateAssets>all</PrivateAssets>
