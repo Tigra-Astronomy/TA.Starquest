@@ -13,7 +13,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.CompilerServices;
 using System.Threading;
 using Microsoft.Extensions.Logging;
 using TA.Utils.Core.Diagnostics;
@@ -27,24 +26,21 @@ namespace TA.Starquest.Core.Logging
         public void Dispose() { }
 
         /// <inheritdoc />
-        public ILogger CreateLogger(string categoryName)
-            {
-            return new StarquestLogger(categoryName);
-            }
+        public ILogger CreateLogger(string categoryName) => new StarquestLogger(categoryName);
         }
     }
 
 public class StarquestLogger : ILogger
-    {
+{
     private readonly string category;
-    private readonly LoggingService logger;
+    private readonly ILog logger;
     private int scopeId = 0;
     private List<DisposableScopeObject> scopes = new List<DisposableScopeObject>();
 
     public StarquestLogger(string category)
         {
         this.category = category;
-        logger = new LoggingService();
+        logger = new LoggingService().WithName(category);
         }
 
     /// <inheritdoc />
@@ -53,28 +49,28 @@ public class StarquestLogger : ILogger
         {
         IFluentLogBuilder builder;
         switch (logLevel)
-            {
-                case LogLevel.Trace:
-                    builder = logger.Trace(category);
-                    break;
-                case LogLevel.Debug:
-                    builder = logger.Debug(category);
-                    break;
-                case LogLevel.Information:
-                case LogLevel.None:
-                default:
-                    builder = logger.Info(category);
-                    break;
-                case LogLevel.Warning:
-                    builder = logger.Warn(category);
-                    break;
-                case LogLevel.Error:
-                    builder = logger.Error(category);
-                    break;
-                case LogLevel.Critical:
-                    builder = logger.Error(category);
-                    break;
-            }
+        {
+            case LogLevel.Trace:
+                builder = logger.Trace();
+                break;
+            case LogLevel.Debug:
+                builder = logger.Debug();
+                break;
+            case LogLevel.Information:
+            case LogLevel.None:
+            default:
+                builder = logger.Info();
+                break;
+            case LogLevel.Warning:
+                builder = logger.Warn();
+                break;
+            case LogLevel.Error:
+                builder = logger.Error();
+                break;
+            case LogLevel.Critical:
+                builder = logger.Error();
+                break;
+        }
 
         var scopeProperties = scopes
             .ToDictionary(dso => dso.PropertyName, dso => dso.State);
@@ -97,11 +93,15 @@ public class StarquestLogger : ILogger
         {
         var id = Interlocked.Increment(ref scopeId);
         var scopeObject = new DisposableScopeObject(id, state, EndScope);
-        return null;
+        return scopeObject;
         }
 
-    private void EndScope(DisposableScopeObject scope) => scopes.Remove(scope);
+    private void EndScope(DisposableScopeObject scope)
+    {
+        scopes.Remove(scope);
+        scope.Dispose();
     }
+}
 
 class DisposableScopeObject : IDisposable
     {

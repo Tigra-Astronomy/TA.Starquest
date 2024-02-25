@@ -1,34 +1,31 @@
-﻿using System;
-using System.ComponentModel;
-using System.ComponentModel.DataAnnotations;
-using System.Collections.Generic;
+﻿using System.ComponentModel.DataAnnotations;
+using System.Linq;
 using System.Text;
 using System.Text.Encodings.Web;
-using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.Extensions.Logging;
 using TA.Starquest.DataAccess.Entities;
+using TA.Utils.Core.Diagnostics;
 
 namespace TA.Starquest.Web.Areas.Identity.Pages.Account.Manage
 {
     public class EnableAuthenticatorModel : PageModel
     {
         private readonly UserManager<ApplicationUser> _userManager;
-        private readonly ILogger<EnableAuthenticatorModel> _logger;
+        private readonly ILog log;
         private readonly UrlEncoder _urlEncoder;
 
         private const string AuthenticatorUriFormat = "otpauth://totp/{0}:{1}?secret={2}&issuer={0}&digits=6";
 
         public EnableAuthenticatorModel(
             UserManager<ApplicationUser> userManager,
-            ILogger<EnableAuthenticatorModel> logger,
+            ILog log,
             UrlEncoder urlEncoder)
         {
             _userManager = userManager;
-            _logger = logger;
+           this.log = log;
             _urlEncoder = urlEncoder;
         }
 
@@ -96,7 +93,7 @@ namespace TA.Starquest.Web.Areas.Identity.Pages.Account.Manage
 
             await _userManager.SetTwoFactorEnabledAsync(user, true);
             var userId = await _userManager.GetUserIdAsync(user);
-            _logger.LogInformation("User with ID '{UserId}' has enabled 2FA with an authenticator app.", userId);
+            log.Info().Message("User with ID '{UserId}' has enabled 2FA with an authenticator app.", userId).Write();
 
             StatusMessage = "Your authenticator app has been verified.";
 

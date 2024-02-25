@@ -1,29 +1,27 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
+﻿using System.ComponentModel.DataAnnotations;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.Extensions.Logging;
 using TA.Starquest.DataAccess.Entities;
+using TA.Utils.Core.Diagnostics;
+
 namespace TA.Starquest.Web.Areas.Identity.Pages.Account.Manage
 {
     public class ChangePasswordModel : PageModel
     {
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly SignInManager<ApplicationUser> _signInManager;
-        private readonly ILogger<ChangePasswordModel> _logger;
+        private readonly ILog log;
 
         public ChangePasswordModel(
-            UserManager<ApplicationUser> userManager,
+            UserManager<ApplicationUser>   userManager,
             SignInManager<ApplicationUser> signInManager,
-            ILogger<ChangePasswordModel> logger)
+            ILog                           log)
         {
             _userManager = userManager;
             _signInManager = signInManager;
-            _logger = logger;
+            this.log = log;
         }
 
         [BindProperty]
@@ -92,7 +90,9 @@ namespace TA.Starquest.Web.Areas.Identity.Pages.Account.Manage
             }
 
             await _signInManager.RefreshSignInAsync(user);
-            _logger.LogInformation("User changed their password successfully.");
+            log.Info()
+                .Message("User {userName} changed their password successfully.", user.UserName)
+                .Write();
             StatusMessage = "Your password has been changed.";
 
             return RedirectToPage();

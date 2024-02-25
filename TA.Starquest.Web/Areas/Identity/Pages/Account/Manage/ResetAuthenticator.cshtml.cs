@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.Extensions.Logging;
 using TA.Starquest.DataAccess.Entities;
+using TA.Utils.Core.Diagnostics;
 
 namespace TA.Starquest.Web.Areas.Identity.Pages.Account.Manage
 {
@@ -14,16 +11,16 @@ namespace TA.Starquest.Web.Areas.Identity.Pages.Account.Manage
     {
         UserManager<ApplicationUser> _userManager;
         private readonly SignInManager<ApplicationUser> _signInManager;
-        ILogger<ResetAuthenticatorModel> _logger;
+        private readonly ILog log;
 
         public ResetAuthenticatorModel(
             UserManager<ApplicationUser> userManager,
             SignInManager<ApplicationUser> signInManager,
-            ILogger<ResetAuthenticatorModel> logger)
+            ILog log)
         {
             _userManager = userManager;
             _signInManager = signInManager;
-            _logger = logger;
+           this.log = log;
         }
 
         [TempData]
@@ -50,8 +47,8 @@ namespace TA.Starquest.Web.Areas.Identity.Pages.Account.Manage
 
             await _userManager.SetTwoFactorEnabledAsync(user, false);
             await _userManager.ResetAuthenticatorKeyAsync(user);
-            _logger.LogInformation("User with ID '{UserId}' has reset their authentication app key.", user.Id);
-            
+            log.Info().Message("User with ID '{UserId}' has reset their authentication app key.", user.Id).Write();
+
             await _signInManager.RefreshSignInAsync(user);
             StatusMessage = "Your authenticator app key has been reset, you will need to configure your authenticator app using the new key.";
 

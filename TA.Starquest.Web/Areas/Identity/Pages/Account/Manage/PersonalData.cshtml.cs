@@ -2,22 +2,22 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.Extensions.Logging;
 using TA.Starquest.DataAccess.Entities;
+using TA.Utils.Core.Diagnostics;
 
 namespace TA.Starquest.Web.Areas.Identity.Pages.Account.Manage
 {
     public class PersonalDataModel : PageModel
     {
         private readonly UserManager<ApplicationUser> _userManager;
-        private readonly ILogger<PersonalDataModel> _logger;
+        private readonly ILog log;
 
         public PersonalDataModel(
             UserManager<ApplicationUser> userManager,
-            ILogger<PersonalDataModel> logger)
+            ILog log)
         {
             _userManager = userManager;
-            _logger = logger;
+           this.log = log;
         }
 
         public async Task<IActionResult> OnGet()

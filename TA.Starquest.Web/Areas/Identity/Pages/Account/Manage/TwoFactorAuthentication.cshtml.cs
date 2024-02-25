@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.Extensions.Logging;
 using TA.Starquest.DataAccess.Entities;
+using TA.Utils.Core.Diagnostics;
 
 namespace TA.Starquest.Web.Areas.Identity.Pages.Account.Manage
 {
@@ -16,16 +13,16 @@ namespace TA.Starquest.Web.Areas.Identity.Pages.Account.Manage
 
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly SignInManager<ApplicationUser> _signInManager;
-        private readonly ILogger<TwoFactorAuthenticationModel> _logger;
+        private readonly ILog log;
 
         public TwoFactorAuthenticationModel(
             UserManager<ApplicationUser> userManager,
             SignInManager<ApplicationUser> signInManager,
-            ILogger<TwoFactorAuthenticationModel> logger)
+            ILog log)
         {
             _userManager = userManager;
             _signInManager = signInManager;
-            _logger = logger;
+           this.log = log;
         }
 
         public bool HasAuthenticator { get; set; }

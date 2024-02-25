@@ -15,7 +15,10 @@ using TA.Starquest.DataAccess.Entities;
 
 namespace TA.Starquest.DataAccess.QuerySpecifications
     {
-    public class SingleUserWithBadges : QuerySpecification<ApplicationUser>
+        /// <summary>
+        ///     Queries a single user and eagerly loads the user's badges.
+        /// </summary>
+        public class SingleUserWithBadges : QuerySpecification<ApplicationUser>
         {
         private readonly string userId;
 

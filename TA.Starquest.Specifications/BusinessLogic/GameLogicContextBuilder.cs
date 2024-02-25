@@ -9,13 +9,14 @@ using System.Linq;
 using TA.Starquest.BusinessLogic.Preconditions;
 using TA.Starquest.DataAccess.Entities;
 using TA.Starquest.Specifications.TestHelpers;
+using TA.Utils.Core.Diagnostics;
 
 namespace TA.Starquest.Specifications.BusinessLogic
     {
     class GameLogicContextBuilder
         {
         readonly List<Badge> badges = new List<Badge>();
-        readonly LevelPreconditionParser parser = new LevelPreconditionParser();
+        private readonly LevelPreconditionParser parser = new(new DegenerateLoggerService());
         IPredicate<ApplicationUser> precondition = CompositePredicate<ApplicationUser>.AlwaysFalse;
         ApplicationUser user = new ApplicationUser();
 

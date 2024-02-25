@@ -14,26 +14,24 @@ using System.Linq;
 
 namespace TA.Starquest.DataAccess.QuerySpecifications
     {
-    /// <summary>
-    ///     Represents a projecting query specification, which filters a set of input entities and projects
-    ///     them onto a set of output entities. The types of the input and output entities may be the same
-    ///     or different.
-    /// </summary>
-    /// <typeparam name="T">The type of the input entities to be filtered and of the output entities.</typeparam>
-    /// <seealso cref="IQuerySpecification{T}" />
-    public abstract class QuerySpecification<T> : QuerySpecification<T, T>, IQuerySpecification<T> where T : class { }
+        /// <summary>
+        ///     Represents a query specification which filters a set of input entities.
+        /// </summary>
+        /// <typeparam name="T">The type of the input entities to be filtered and of the output entities.</typeparam>
+        /// <seealso cref="IQuerySpecification{T}" />
+        public abstract class QuerySpecification<T> : QuerySpecification<T, T>, IQuerySpecification<T> where T : class { }
 
-    /// <summary>
-    ///     Represents a projecting query specification, which filters a set of input entities and projects
-    ///     them onto a set of output entities. The types of the input and output entities may be the same
-    ///     or different.
-    /// </summary>
-    /// <typeparam name="TIn">The type of the input entities to be filtered.</typeparam>
-    /// <typeparam name="TOut">The projected type of the output entities.</typeparam>
-    /// <seealso cref="IQuerySpecification{TIn,TOut}" />
-    public abstract class QuerySpecification<TIn, TOut> : IQuerySpecification<TIn, TOut>
-        where TIn : class
-    //where TOut : class
+        /// <summary>
+        ///     Represents a projecting query specification, which filters a set of input entities and projects
+        ///     them onto a set of output entities. The types of the input and output entities may be the same
+        ///     or different.
+        /// </summary>
+        /// <typeparam name="TIn">The type of the input entities to be filtered.</typeparam>
+        /// <typeparam name="TOut">The projected type of the output entities.</typeparam>
+        /// <seealso cref="IQuerySpecification{TIn,TOut}" />
+        public abstract class QuerySpecification<TIn, TOut> : IQuerySpecification<TIn, TOut>
+            where TIn : class
+            where TOut : class
         {
         /// <summary>
         ///     Gets the LINQ expression tree (<see cref="T:System.Linq.IQueryable`1" /> representing the

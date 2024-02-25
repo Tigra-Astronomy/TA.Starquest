@@ -1,3 +1,21 @@
 ﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/StructuralSearch/Pattern/=30FE4C526DC95B4C8E128E4A9B9E2DD4/@KeyIndexDefined">True</s:Boolean>
+	<s:String x:Key="/Default/PatternsAndTemplates/StructuralSearch/Pattern/=30FE4C526DC95B4C8E128E4A9B9E2DD4/Comment/@EntryValue">Obsolete/incorrect use of ILog</s:String>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/StructuralSearch/Pattern/=30FE4C526DC95B4C8E128E4A9B9E2DD4/CustomPatternPlaceholder/=log/@KeyIndexDefined">True</s:Boolean>
+	<s:String x:Key="/Default/PatternsAndTemplates/StructuralSearch/Pattern/=30FE4C526DC95B4C8E128E4A9B9E2DD4/CustomPatternPlaceholder/=log/Properties/=ExactType/@EntryIndexedValue">True</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/StructuralSearch/Pattern/=30FE4C526DC95B4C8E128E4A9B9E2DD4/CustomPatternPlaceholder/=log/Properties/=ExpressionType/@EntryIndexedValue">TA.Utils.Core.Diagnostics.ILog</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/StructuralSearch/Pattern/=30FE4C526DC95B4C8E128E4A9B9E2DD4/CustomPatternPlaceholder/=log/Type/@EntryValue">ExpressionPlaceholder</s:String>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/StructuralSearch/Pattern/=30FE4C526DC95B4C8E128E4A9B9E2DD4/CustomPatternPlaceholder/=message/@KeyIndexDefined">True</s:Boolean>
+	<s:String x:Key="/Default/PatternsAndTemplates/StructuralSearch/Pattern/=30FE4C526DC95B4C8E128E4A9B9E2DD4/CustomPatternPlaceholder/=message/Properties/=ExactType/@EntryIndexedValue">False</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/StructuralSearch/Pattern/=30FE4C526DC95B4C8E128E4A9B9E2DD4/CustomPatternPlaceholder/=message/Properties/=ExpressionType/@EntryIndexedValue">System.String</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/StructuralSearch/Pattern/=30FE4C526DC95B4C8E128E4A9B9E2DD4/CustomPatternPlaceholder/=message/Type/@EntryValue">ExpressionPlaceholder</s:String>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/StructuralSearch/Pattern/=30FE4C526DC95B4C8E128E4A9B9E2DD4/IsReplacePattern/@EntryValue">True</s:Boolean>
+	<s:String x:Key="/Default/PatternsAndTemplates/StructuralSearch/Pattern/=30FE4C526DC95B4C8E128E4A9B9E2DD4/LanguageName/@EntryValue">CSHARP</s:String>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/StructuralSearch/Pattern/=30FE4C526DC95B4C8E128E4A9B9E2DD4/MatchCatchClauseWithoutExceptionFilter/@EntryValue">False</s:Boolean>
+	<s:String x:Key="/Default/PatternsAndTemplates/StructuralSearch/Pattern/=30FE4C526DC95B4C8E128E4A9B9E2DD4/ReplaceComment/@EntryValue">Replace with correct implementation</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/StructuralSearch/Pattern/=30FE4C526DC95B4C8E128E4A9B9E2DD4/ReplacePattern/@EntryValue">$log$.Info().Message($message$).Write();</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/StructuralSearch/Pattern/=30FE4C526DC95B4C8E128E4A9B9E2DD4/SearchPattern/@EntryValue">        $log$.Info($message$);&#xD;
+</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/StructuralSearch/Pattern/=30FE4C526DC95B4C8E128E4A9B9E2DD4/Severity/@EntryValue">ERROR</s:String>
 	<s:Boolean x:Key="/Default/UserDictionary/Words/=completionist/@EntryIndexedValue">True</s:Boolean>
 	<s:Boolean x:Key="/Default/UserDictionary/Words/=Starquest/@EntryIndexedValue">True</s:Boolean></wpf:ResourceDictionary>

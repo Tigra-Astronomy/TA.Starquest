@@ -91,5 +91,15 @@ namespace TA.Starquest.DataAccess
         /// <param name="specification">A specification that determines which entities should be returned.</param>
         /// <returns>A collection of all entities satisfying the specification.</returns>
         IEnumerable<TOut> AllSatisfying<TOut>(IQuerySpecification<TEntity, TOut> specification) where TOut : class;
+
+        /// <summary>
+        ///     Checks whether any entities satisfy the supplied query specification.
+        ///     This is more efficient than <see cref="AllSatisfying{TOut}" /> where it is only needed to determine whether any
+        ///     entities exist and not to retrieve their values.
+        /// </summary>
+        /// <param name="specification">A valid query specification in terms of <typeparamref name="TOut" />.</param>
+        /// <typeparam name="TOut">The type of the output entity.</typeparam>
+        /// <returns><c>>true</c> if any items satisfy the query, <c>false</c> otherwise.</returns>
+        bool Any<TOut>(IQuerySpecification<TEntity, TOut> specification) where TOut : class;
         }
     }

@@ -8,23 +8,23 @@
 // permit persons to whom the Software is furnished to do so. The Software comes with no warranty of any kind.
 // You make use of the Software entirely at your own risk and assume all liability arising from your use thereof.
 // 
-// File: MissionHasAssociatedObservations.cs  Last modified: 2020-08-11@14:43 by Tim Long
+// File: ObservationsForMission.cs  Last modified: 2020-08-11@14:43 by Tim Long
 
 using System.Linq;
 using TA.Starquest.DataAccess.Entities;
 
 namespace TA.Starquest.DataAccess.QuerySpecifications
     {
-    public class MissionHasAssociatedObservations : QuerySpecification<Observation, int>
+        public class ObservationsForMission : QuerySpecification<Observation>
         {
         private readonly int missionId;
 
-        public MissionHasAssociatedObservations(int missionId)
-            {
+        public ObservationsForMission(int missionId)
+        {
             this.missionId = missionId;
             }
 
-        public override IQueryable<int> GetQuery(IQueryable<Observation> items)
+        public override IQueryable<Observation> GetQuery(IQueryable<Observation> items)
             {
             /*
              * Returns a collection of counts, where each count is the number of observations associated
@@ -33,11 +33,8 @@ namespace TA.Starquest.DataAccess.QuerySpecifications
              * observations, or it will be an empty set if none were found. This can be used with GetMaybe.
              */
             var query = from observation in items
-                        let associatedMission = observation.Challenge.MissionTrack.MissionLevel.MissionId
-                        where associatedMission == missionId
-                        group observation by associatedMission
-                        into associatedObservations
-                        select associatedObservations.Count();
+                        where observation.Challenge.MissionTrack.MissionLevel.MissionId == missionId
+                        select observation;
             return query;
             }
         }

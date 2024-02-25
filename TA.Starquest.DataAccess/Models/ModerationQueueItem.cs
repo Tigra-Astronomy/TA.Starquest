@@ -7,17 +7,17 @@ using System;
 
 namespace TA.Starquest.DataAccess.Models
     {
-    /// <summary>
-    ///     Data transfer object used to display the moderation queue
-    /// </summary>
-    public class ModerationQueueItem
+        /// <summary>
+        ///     Data transfer object used to display the moderation queue
+        /// </summary>
+        public record ModerationQueueItem
         {
-        public int Id { get; set; }
+            public int Id { get; set; }
 
-        public DateTime DateTime { get; set; }
+            public DateTime DateTime { get; set; }
 
-        public string UserName { get; set; }
+            public string UserName { get; set; }
 
-        public string ChallengeName { get; set; }
+            public string ChallengeName { get; set; }
         }
     }

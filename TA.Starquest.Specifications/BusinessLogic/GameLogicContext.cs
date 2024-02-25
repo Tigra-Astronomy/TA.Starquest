@@ -13,14 +13,15 @@
 using System.Collections.Generic;
 using TA.Starquest.BusinessLogic.Preconditions;
 using TA.Starquest.DataAccess.Entities;
+using TA.Utils.Core.Diagnostics;
 
 namespace TA.Starquest.Specifications.BusinessLogic
     {
     class GameLogicContext
         {
-        public LevelPreconditionParser Parser { get; set; } = new LevelPreconditionParser();
+            public LevelPreconditionParser Parser { get; set; } = new(new DegenerateLoggerService());
 
-        public IPredicate<ApplicationUser> Precondition { get; set; }
+            public IPredicate<ApplicationUser> Precondition { get; set; }
 
         public ApplicationUser User { get; set; }
 

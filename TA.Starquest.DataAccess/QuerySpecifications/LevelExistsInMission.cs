@@ -29,12 +29,11 @@ namespace TA.Starquest.DataAccess.QuerySpecifications
             this.missionId = missionId;
             }
 
-        public override IQueryable<MissionLevel> GetQuery(IQueryable<MissionLevel> items)
+            public override IQueryable<MissionLevel> GetQuery(IQueryable<MissionLevel> items)
             {
-            var query = from level in items
-                        where level.MissionId == missionId
-                        where level.Level == levelNumber
-                        select level;
+                var query = from level in items
+                            where level.MissionId == missionId && level.Level == levelNumber
+                            select level;
             return query;
             }
         }

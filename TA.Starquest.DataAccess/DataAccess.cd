@@ -1,19 +1,52 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
   <Class Name="TA.Starquest.DataAccess.EFCore.Repository&lt;TEntity, TKey&gt;">
-    <Position X="9.25" Y="2.5" Width="2.5" />
+    <Position X="4" Y="2.25" Width="2.5" />
     <TypeIdentifier>
       <HashCode>AAIAAAAAAgAAAABAAIAABAAAAAAIAAAAAgAAAAIAQAQ=</HashCode>
       <FileName>EFCore\Repository.cs</FileName>
     </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="Context" />
+    </ShowAsAssociation>
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="TA.Starquest.DataAccess.EFCore.ApplicationDbContext">
-    <Position X="13.25" Y="1.5" Width="2.25" />
+    <Position X="13" Y="2.25" Width="2.25" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAMAAAAAAIAAAQAAIAECAAEBAAAEAAABAAAAA=</HashCode>
       <FileName>EFCore\ApplicationDbContext.cs</FileName>
     </TypeIdentifier>
   </Class>
+  <Class Name="TA.Starquest.DataAccess.EFCore.EntityFrameworkCoreUnitOfWork">
+    <Position X="8.75" Y="2.25" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAGAAYCAAAAAIAQAQAAIAACgAABAAAEAAABAAACA=</HashCode>
+      <FileName>EFCore\EntityFrameworkCoreUnitOfWork.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="dbContext" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Microsoft.EntityFrameworkCore.DbContext" Collapsed="true">
+    <Position X="0.5" Y="2.25" Width="1.5" />
+    <TypeIdentifier />
+    <Lollipop Position="0.2" />
+  </Class>
+  <Interface Name="TA.Starquest.DataAccess.IRepository&lt;TEntity, TKey&gt;" Collapsed="true">
+    <Position X="4" Y="1.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAAABAAIAABAAAAAAIAAAAAgAAAAIAAAQ=</HashCode>
+      <FileName>IRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="TA.Starquest.DataAccess.IUnitOfWork" Collapsed="true">
+    <Position X="8.75" Y="1" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAGAAYAAAAAAIAAAQAAIAACAAABAAAEAAABAAACA=</HashCode>
+      <FileName>IUnitOfWork.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
   <Font Name="Segoe UI" Size="9" />
 </ClassDiagram>

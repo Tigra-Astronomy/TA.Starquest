@@ -4,8 +4,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.Extensions.Logging;
 using TA.Starquest.DataAccess.Entities;
+using TA.Utils.Core.Diagnostics;
 
 namespace TA.Starquest.Web.Areas.Identity.Pages.Account.Manage
 {
@@ -13,16 +13,16 @@ namespace TA.Starquest.Web.Areas.Identity.Pages.Account.Manage
     {
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly SignInManager<ApplicationUser> _signInManager;
-        private readonly ILogger<DeletePersonalDataModel> _logger;
+        private readonly ILog log;
 
         public DeletePersonalDataModel(
-            UserManager<ApplicationUser> userManager,
+            UserManager<ApplicationUser>   userManager,
             SignInManager<ApplicationUser> signInManager,
-            ILogger<DeletePersonalDataModel> logger)
+            ILog                           log)
         {
             _userManager = userManager;
             _signInManager = signInManager;
-            _logger = logger;
+            log = log;
         }
 
         [BindProperty]
@@ -76,7 +76,7 @@ namespace TA.Starquest.Web.Areas.Identity.Pages.Account.Manage
 
             await _signInManager.SignOutAsync();
 
-            _logger.LogInformation("User with ID '{UserId}' deleted themselves.", userId);
+            log.Info().Message("User with ID '{UserId}' deleted themselves.", userId).Write();
 
             return Redirect("~/");
         }

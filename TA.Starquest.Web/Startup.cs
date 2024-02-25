@@ -1,12 +1,6 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -49,11 +43,12 @@ namespace TA.Starquest.Web
 
             services.AddTransient<IEmailSender, SendgridEmailSender>();
             services.Configure<AuthMessageSenderOptions>(Configuration);
-
-            services.AddAuthentication().AddFacebook(facebookOptions =>
+            //services.AddAuthentication();
+            services.AddAuthentication()
+                .AddFacebook(facebookOptions =>
                 {
-                facebookOptions.AppId = Configuration["Authentication:Facebook:AppId"];
-                facebookOptions.AppSecret = Configuration["Authentication:Facebook:AppSecret"];
+                    facebookOptions.AppId = Configuration["Authentication:Facebook:AppId"];
+                    facebookOptions.AppSecret = Configuration["Authentication:Facebook:AppSecret"];
                 });
 
             services.AddControllersWithViews();

@@ -30,8 +30,8 @@ namespace TA.Starquest.Specifications.DataAccess.QuerySpecifications
      */
 
     [Subject(typeof(ObservationsAwaitingModeration))]
-    class when_querying_observations_and_there_is_one_observation_in_pending_state
-        {
+    internal class when_querying_the_moderation_queue_and_there_is_one_observation_in_pending_state
+    {
         Establish context = () =>
             {
             var user = new ApplicationUser {Id = "darth", Email = "Darth@deathstar.com", UserName = "Darth Vader"};
@@ -66,8 +66,8 @@ namespace TA.Starquest.Specifications.DataAccess.QuerySpecifications
             };
 
         It should_produce_one_result = () => Results.Count.ShouldEqual(1);
-        It should_be_awaiting_moderation = () => Results.Single().Id.ShouldEqual(2);
-        static List<Observation> Observations;
+        private It should_be_item_2 = () => Results.Single().Id.ShouldEqual(2);
+        private static List<Observation> Observations;
         static List<ModerationQueueItem> Results;
         }
 

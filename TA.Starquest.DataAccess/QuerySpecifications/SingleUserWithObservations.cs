@@ -15,10 +15,18 @@ using TA.Starquest.DataAccess.Entities;
 
 namespace TA.Starquest.DataAccess.QuerySpecifications
     {
-    public class SingleUserWithObservations : QuerySpecification<ApplicationUser>
+        /// <summary>
+        ///     Queries a single user and eagerly loads the user's observations and the challenge against which the observation was
+        ///     submitted.
+        /// </summary>
+        public class SingleUserWithObservations : QuerySpecification<ApplicationUser>
         {
         private readonly string requestedUserId;
 
+        /// <summary>
+        ///     Initialize the query specification with the user ID of interest.
+        /// </summary>
+        /// <param name="userId">The ID of the user of interest.</param>
         public SingleUserWithObservations(string userId)
             {
             requestedUserId = userId;

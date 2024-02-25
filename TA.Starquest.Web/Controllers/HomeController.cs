@@ -1,27 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
-using TA.Starquest.Web.Models;
+using TA.Starquest.Web.ViewModels;
+using TA.Utils.Core.Diagnostics;
 
 namespace TA.Starquest.Web.Controllers
     {
-    public class HomeController : Controller
+        public class HomeController : Controller
         {
-        private readonly ILogger<HomeController> _logger;
+            private readonly ILog log;
 
-        public HomeController(ILogger<HomeController> logger)
+            public HomeController(ILog log)
             {
-            _logger = logger;
+                this.log = log;
             }
 
-        public IActionResult Index()
-            {
-            return View();
-            }
+            public IActionResult Index() => View();
 
         public IActionResult Privacy()
             {

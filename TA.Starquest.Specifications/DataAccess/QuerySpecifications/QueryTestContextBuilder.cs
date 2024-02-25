@@ -17,6 +17,7 @@ using Microsoft.EntityFrameworkCore;
 using TA.Starquest.DataAccess;
 using TA.Starquest.DataAccess.EFCore;
 using TA.Starquest.DataAccess.Entities;
+using TA.Utils.Core.Diagnostics;
 
 namespace TA.Starquest.Specifications.DataAccess.QuerySpecifications
     {
@@ -49,19 +50,17 @@ namespace TA.Starquest.Specifications.DataAccess.QuerySpecifications
                 .EnableSensitiveDataLogging();
             var dbContext = new ApplicationDbContext(dbOptionsBuilder.Options);
             dbContext.Database.EnsureCreated();
-            var uow = new EntityFrameworkCoreUnitOfWork(dbContext);
+            var uow = new EntityFrameworkCoreUnitOfWork(dbContext, new DegenerateLoggerService());
             var context = new QueryTestContext
                 {
                 UnitOfWork = uow,
                 DbContext = dbContext,
                 DbConnection = connection
                 };
-            foreach (var dataLoader in dataLoaders)
-                {
-                dataLoader(uow);
-                }
-            uow.Commit();
-            LogSetup.EnableLogging();
+                foreach (var dataLoader in dataLoaders) dataLoader(uow);
+
+                uow.Commit();
+                LogSetup.EnableLogging();
             return context;
             }
 
