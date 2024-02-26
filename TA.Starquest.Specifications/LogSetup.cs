@@ -18,62 +18,55 @@ using NLog.Targets;
 using TA.Starquest.Core.Logging;
 using LogLevel = NLog.LogLevel;
 
-namespace TA.Starquest.Specifications
+namespace TA.Starquest.Specifications;
+
+public class LogSetup : IAssemblyContext
+{
+    public static ILoggerFactory LogFactory = LoggerFactory.Create(
+                                                                   config =>
+                                                                       config.AddProvider(new StarquestLoggingProvider()));
+
+    public void OnAssemblyStart()
     {
-    public class LogSetup : IAssemblyContext
-        {
-        public static ILoggerFactory LogFactory = LoggerFactory.Create(
-            config => config.AddProvider(new StarquestLoggingProvider()));
-
-        public void OnAssemblyStart()
-            {
-            var configuration = new LoggingConfiguration();
-            var unitTestRunnerTarget = new TraceTarget();
-            configuration.AddTarget("Unit test runner", unitTestRunnerTarget);
-            unitTestRunnerTarget.Layout =
-                "${time}|${pad:padding=-5:inner=${uppercase:${level}}}|${pad:padding=-16:inner=${logger}}|${message}";
-            unitTestRunnerTarget.RawWrite = true;
-            configuration.AddRuleForAllLevels(unitTestRunnerTarget);
-            LogManager.Configuration = configuration;
-            LogFactory.CreateLogger("MSpec").LogDebug("Logging initialized");
-            }
-
-        public void OnAssemblyComplete() { }
-
-        internal static void MuteLogging() => SetLogLevel(LogLevel.Off);
-
-        internal static void EnableLogging() => SetLogLevel(LogLevel.Debug);
-
-        /// <summary>Reconfigures the NLog logging level.</summary>
-        /// <param name="level">The <see cref="LogLevel" /> to be set.</param>
-        private static void SetLogLevel(LogLevel level)
-            {
-            // Uncomment these to enable NLog logging. NLog exceptions are swallowed by default.
-            ////NLog.Common.InternalLogger.LogFile = @"C:\Temp\nlog.debug.log";
-            ////NLog.Common.InternalLogger.LogLevel = LogLevel.Debug;
-
-            if (level == LogLevel.Off)
-                {
-                LogManager.DisableLogging();
-                }
-            else
-                {
-                if (!LogManager.IsLoggingEnabled())
-                    {
-                    LogManager.EnableLogging();
-                    }
-
-                foreach (var rule in LogManager.Configuration.LoggingRules)
-                    {
-                    // Iterate over all levels up to and including the target, (re)enabling them.
-                    for (int i = level.Ordinal; i <= 5; i++)
-                        {
-                        rule.EnableLoggingForLevel(LogLevel.FromOrdinal(i));
-                        }
-                    }
-                }
-
-            LogManager.ReconfigExistingLoggers();
-            }
-        }
+        var configuration = new LoggingConfiguration();
+        var unitTestRunnerTarget = new TraceTarget();
+        configuration.AddTarget("Unit test runner", unitTestRunnerTarget);
+        unitTestRunnerTarget.Layout =
+            "${time}|${pad:padding=-5:inner=${uppercase:${level}}}|${pad:padding=-16:inner=${logger}}|${message}";
+        unitTestRunnerTarget.RawWrite = true;
+        configuration.AddRuleForAllLevels(unitTestRunnerTarget);
+        LogManager.Configuration = configuration;
+        LogFactory.CreateLogger("MSpec").LogDebug("Logging initialized");
     }
+
+    public void OnAssemblyComplete() { }
+
+    internal static void MuteLogging() => SetLogLevel(LogLevel.Off);
+
+    internal static void EnableLogging() => SetLogLevel(LogLevel.Debug);
+
+    /// <summary>Reconfigures the NLog logging level.</summary>
+    /// <param name="level">The <see cref="LogLevel" /> to be set.</param>
+    private static void SetLogLevel(LogLevel level)
+    {
+        // Uncomment these to enable NLog logging. NLog exceptions are swallowed by default.
+        ////NLog.Common.InternalLogger.LogFile = @"C:\Temp\nlog.debug.log";
+        ////NLog.Common.InternalLogger.LogLevel = LogLevel.Debug;
+
+        if (level == LogLevel.Off)
+        {
+            LogManager.SuspendLogging();
+        }
+        else
+        {
+            if (!LogManager.IsLoggingEnabled()) LogManager.ResumeLogging();
+
+            foreach (var rule in LogManager.Configuration.LoggingRules)
+                // Iterate over all levels up to and including the target, (re)enabling them.
+                for (var i = level.Ordinal; i <= 5; i++)
+                    rule.EnableLoggingForLevel(LogLevel.FromOrdinal(i));
+        }
+
+        LogManager.ReconfigExistingLoggers();
+    }
+}
