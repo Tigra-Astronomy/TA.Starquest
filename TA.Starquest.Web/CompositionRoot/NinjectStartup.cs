@@ -90,6 +90,10 @@ public class NinjectStartup : AspNetCoreStartupBase
             //app.UseHsts();
         }
 
+        app.UseStaticFiles();
+        app.UseRouting();
+        app.UseAuthorization();
+        //app.UseMvcWithDefaultRoute();
         app.UseHttpsRedirection();
         app.ConfigureStaticFiles(env);
         app.UseCookiePolicy(); // GDPR cookie consent
