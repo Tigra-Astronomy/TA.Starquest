@@ -75,7 +75,7 @@ public class GameRulesService : IGameEngineService
             .Write();
         var resultSummary = new BatchCreateObservationsResult();
         var maybeChallenge = unitOfWork.Challenges.GetMaybe(observation.ChallengeId);
-        if (maybeChallenge.None)
+        if (maybeChallenge.IsEmpty)
         {
             resultSummary.Failed = userIds.Count();
             resultSummary.Succeeded = 0;
@@ -88,7 +88,7 @@ public class GameRulesService : IGameEngineService
             try
             {
                 maybeUser = unitOfWork.Users.GetMaybe(userId);
-                if (maybeUser.None)
+                if (maybeUser.IsEmpty)
                 {
                     ++resultSummary.Failed;
                     resultSummary.Errors[userId] = "User not found in the database";
@@ -202,7 +202,7 @@ public class GameRulesService : IGameEngineService
         }
 
         var maybeMission = unitOfWork.Missions.GetMaybe(id);
-        if (maybeMission.None)
+        if (maybeMission.IsEmpty)
         {
             log.Error()
                 .Message("Delete mission id={missionId} FAILED because the mission was not found in the database", id)
@@ -228,7 +228,7 @@ public class GameRulesService : IGameEngineService
     {
         log.Info().Message($"Deleting level id={levelId}").Write();
         var maybeLevel = unitOfWork.MissionLevels.GetMaybe(levelId);
-        if (maybeLevel.None)
+        if (maybeLevel.IsEmpty)
         {
             log.Error().Message($"Delete failed because level id {levelId} was not found in the database").Write();
             throw new ArgumentException("Level not found");
@@ -283,7 +283,7 @@ public class GameRulesService : IGameEngineService
             .Message($"Updating level id={updatedLevel.Id} name={updatedLevel.Name} mission={updatedLevel.MissionId}")
             .Write();
         var maybeLevel = unitOfWork.MissionLevels.GetMaybe(updatedLevel.Id);
-        if (maybeLevel.None)
+        if (maybeLevel.IsEmpty)
         {
             log.Error().Message($"Update failed because level {updatedLevel.Id} was not found in the database").Write();
             throw new InvalidOperationException("The mission to be updated was not found in the database");
@@ -291,7 +291,7 @@ public class GameRulesService : IGameEngineService
 
         var dbLevel = maybeLevel.Single();
         var maybeMission = unitOfWork.Missions.GetMaybe(updatedLevel.MissionId);
-        if (maybeMission.None)
+        if (maybeMission.IsEmpty)
         {
             log.Error().Message($"Update failed because mission {updatedLevel.MissionId} was not found in the database").Write();
             throw new InvalidOperationException("The target mission does not exist in the database");
@@ -324,14 +324,14 @@ public class GameRulesService : IGameEngineService
             .Message($"Creating new Mission Track id={newTrack.Id} Name={newTrack.Name} in mission {newTrack.MissionLevelId} with badge id={newTrack.BadgeId}")
             .Write();
         var maybeBadge = unitOfWork.Badges.GetMaybe(newTrack.BadgeId);
-        if (maybeBadge.None)
+        if (maybeBadge.IsEmpty)
         {
             log.Error().Message($"Create blocked because the target badge id={newTrack.BadgeId} does not exist").Write();
             throw new InvalidOperationException("The associated Mission Level could not be found");
         }
 
         var targetLevel = unitOfWork.MissionLevels.GetMaybe(newTrack.MissionLevelId);
-        if (targetLevel.None)
+        if (targetLevel.IsEmpty)
         {
             log.Error().Message($"Create blocked because the target level id={newTrack.MissionLevelId} does not exist").Write();
             throw new InvalidOperationException("The associated Mission Level could not be found");
@@ -358,7 +358,7 @@ public class GameRulesService : IGameEngineService
     {
         log.Info().Message($"Deleting mission track id={id}").Write();
         var maybeTrack = unitOfWork.MissionTracks.GetMaybe(id);
-        if (maybeTrack.None)
+        if (maybeTrack.IsEmpty)
         {
             log.Error().Message($"Delete failed, track id={id} was not found in the database").Write();
             throw new InvalidOperationException("Track not found in the database");

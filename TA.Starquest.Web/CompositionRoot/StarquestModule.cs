@@ -14,6 +14,7 @@ using AutoMapper;
 using Microsoft.AspNetCore.Http;
 using Ninject.Activation;
 using Ninject.Modules;
+using Ninject.Web.Common;
 using TA.Starquest.BusinessLogic;
 using TA.Starquest.DataAccess;
 using TA.Starquest.DataAccess.EFCore;
@@ -33,7 +34,7 @@ internal class StarquestModule : NinjectModule
     {
         Bind<ILog>().ToMethod(BuildLogger).InTransientScope();
         Bind<IUnitOfWork>().To<EntityFrameworkCoreUnitOfWork>().InTransientScope();
-        Bind<ICurrentUser>().ToMethod(GetCurrentWebUser).InTransientScope();
+        Bind<ICurrentUser>().ToMethod(GetCurrentWebUser).InRequestScope();
         var mapperConfiguration = new MapperConfiguration(cfg => { cfg.AddProfile<ViewModelMappingProfile>(); });
         Bind<IMapper>().ToMethod(m => mapperConfiguration.CreateMapper()).InSingletonScope();
         Bind<IGameEngineService>().To<GameRulesService>().InTransientScope();

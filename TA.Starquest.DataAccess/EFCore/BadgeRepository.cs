@@ -19,9 +19,9 @@ namespace TA.Starquest.DataAccess.EFCore
     {
     public class BadgeRepository : Repository<Badge, int>
         {
-        public BadgeRepository(ApplicationDbContext dbContext) : base(dbContext) { }
+            public BadgeRepository(StarquestDbContext dbContext) : base(dbContext) { }
 
-        public override IEnumerable<PickListItem<int>> PickList =>
+            public override IEnumerable<PickListItem<int>> PickList =>
             GetAll().Select(p => new PickListItem<int>(p.Id, p.Name));
         }
     }

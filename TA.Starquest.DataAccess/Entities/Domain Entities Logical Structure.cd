@@ -26,8 +26,8 @@
       <FileName>Entities\MissionTrack.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
-      <Property Name="MissionLevel" />
       <Property Name="Badge" />
+      <Property Name="MissionLevel" />
     </ShowAsAssociation>
     <Lollipop Position="0.2" />
   </Class>
@@ -66,11 +66,11 @@
     </ShowAsAssociation>
     <Lollipop Position="0.2" />
   </Class>
-  <Class Name="TA.Starquest.DataAccess.Entities.StarquestUser">
+  <Class Name="TA.Starquest.DataAccess.Entities.ApplicationUser">
     <Position X="12" Y="7.25" Width="3.25" />
     <TypeIdentifier>
       <HashCode>AAAAIAAAEAAAAAAAAAAQAAAAAAAAAAgAAAEQAAABAAA=</HashCode>
-      <FileName>Entities\StarquestUser.cs</FileName>
+      <FileName>Entities\ApplicationUser.cs</FileName>
     </TypeIdentifier>
     <ShowAsCollectionAssociation>
       <Property Name="Observations" />

@@ -43,12 +43,12 @@ namespace TA.Starquest.Specifications.DataAccess.QuerySpecifications
             if (!logDatabaseSetup)
                 LogSetup.MuteLogging();
             SqliteConnection connection = CreateInMemoryDatabase();
-            var dbOptionsBuilder = new DbContextOptionsBuilder<ApplicationDbContext>();
+            var dbOptionsBuilder = new DbContextOptionsBuilder<StarquestDbContext>();
             dbOptionsBuilder
                 .UseSqlite(connection)
                 .UseLoggerFactory(LogSetup.LogFactory)
                 .EnableSensitiveDataLogging();
-            var dbContext = new ApplicationDbContext(dbOptionsBuilder.Options);
+            var dbContext = new StarquestDbContext(dbOptionsBuilder.Options);
             dbContext.Database.EnsureCreated();
             var uow = new EntityFrameworkCoreUnitOfWork(dbContext, new DegenerateLoggerService());
             var context = new QueryTestContext

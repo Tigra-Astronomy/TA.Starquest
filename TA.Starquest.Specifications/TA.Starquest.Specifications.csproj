@@ -5,6 +5,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Web\**" />
+    <EmbeddedResource Remove="Web\**" />
+    <None Remove="Web\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Remove="BusinessLogic\PreconditionsEngine\HasAll-1-2-4.xml" />
     <None Remove="BusinessLogic\PreconditionsEngine\HasAny-1-2-4.xml" />
     <None Remove="BusinessLogic\PreconditionsEngine\HasBadge-1.xml" />
@@ -35,10 +41,6 @@
     <ProjectReference Include="..\TA.Starquest.BusinessLogic\TA.Starquest.BusinessLogic.csproj" />
     <ProjectReference Include="..\TA.Starquest.Core\TA.Starquest.Core.csproj" />
     <ProjectReference Include="..\TA.Starquest.DataAccess\TA.Starquest.DataAccess.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Web\" />
   </ItemGroup>
 
 </Project>

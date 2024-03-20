@@ -43,7 +43,9 @@
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="8.0.1" />
     <PackageReference Include="Ninject" Version="3.3.6" />
     <PackageReference Include="Ninject.Web.AspNetCore" Version="8.0.1" />
+    <PackageReference Include="NLog.Targets.Seq" Version="3.1.0" />
     <PackageReference Include="SendGrid" Version="9.29.2" />
+    <PackageReference Include="Seq.Extensions.Logging" Version="8.0.0" />
     <PackageReference Include="TA.Utils.Core" Version="2.4.0" />
     <PackageReference Include="TA.Utils.Logging.Nlog" Version="2.4.0" />
   </ItemGroup>
@@ -64,6 +66,12 @@
 
   <ItemGroup>
     <None Include="wwwroot\images\Masthead.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="NLog.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
 </Project>

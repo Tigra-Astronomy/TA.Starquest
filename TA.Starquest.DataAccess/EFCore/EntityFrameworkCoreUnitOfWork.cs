@@ -21,15 +21,15 @@ namespace TA.Starquest.DataAccess.EFCore;
 
 /// <summary>
 ///     Implements the unit-of-work pattern using Entity Framework Core.
-///     In EF Core, the <see cref="ApplicationDbContext" /> class is essentially the Unit of Work,
+///     In EF Core, the <see cref="StarquestDbContext" /> class is essentially the Unit of Work,
 ///     so most processing is delegated to it. However, we expose a more sophisticated repository implementation.
 /// </summary>
 public class EntityFrameworkCoreUnitOfWork : IUnitOfWork
 {
-    private readonly ApplicationDbContext dbContext;
+    private readonly StarquestDbContext dbContext;
     private readonly ILog log;
 
-    public EntityFrameworkCoreUnitOfWork(ApplicationDbContext context, ILog log)
+    public EntityFrameworkCoreUnitOfWork(StarquestDbContext context, ILog log)
     {
         dbContext = context;
         this.log = log;

@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.30404.54
+# Visual Studio Version 17
+VisualStudioVersion = 17.10.34607.79
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TA.Starquest.Core", "TA.Starquest.Core\TA.Starquest.Core.csproj", "{281799DC-F6E5-4768-91D7-4A777A9C3752}"
 EndProject
@@ -24,6 +24,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		NuGet.Config = NuGet.Config
 		README.md = README.md
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TA.Starquest.DataAccess.Migrations", "TA.Starquest.DataAccess.Migrations\TA.Starquest.DataAccess.Migrations.csproj", "{8D01A6FC-7B02-4160-A02D-04CE136471F4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +53,10 @@ Global
 		{ACCD8669-2A45-41C0-AF1B-5C35DBE0C8A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ACCD8669-2A45-41C0-AF1B-5C35DBE0C8A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ACCD8669-2A45-41C0-AF1B-5C35DBE0C8A1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8D01A6FC-7B02-4160-A02D-04CE136471F4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8D01A6FC-7B02-4160-A02D-04CE136471F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8D01A6FC-7B02-4160-A02D-04CE136471F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8D01A6FC-7B02-4160-A02D-04CE136471F4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

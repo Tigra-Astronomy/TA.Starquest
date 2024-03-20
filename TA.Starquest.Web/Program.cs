@@ -13,7 +13,7 @@ public class Program
         //var host = CreateHostBuilder(args).Build();
         //using (var scope = host.Services.CreateScope())
         //{
-        //    var db = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
+        //    var db = scope.ServiceProvider.GetRequiredService<StarquestDbContext>();
         //    db.Database.Migrate();
         //}
 

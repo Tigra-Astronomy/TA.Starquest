@@ -21,11 +21,11 @@ namespace TA.Starquest.DataAccess.EFCore
     /// <seealso cref="Repository{TEntity,TKey}" />
     public class ChallengeRepository : Repository<Challenge, int>
         {
-        /// <summary>Initializes a new instance of the <see cref="ChallengeRepository" /> class.</summary>
-        /// <param name="dbContext">The database context.</param>
-        public ChallengeRepository(ApplicationDbContext dbContext) : base(dbContext) { }
+            /// <summary>Initializes a new instance of the <see cref="ChallengeRepository" /> class.</summary>
+            /// <param name="dbContext">The database context.</param>
+            public ChallengeRepository(StarquestDbContext dbContext) : base(dbContext) { }
 
-        public override IEnumerable<PickListItem<int>> PickList =>
+            public override IEnumerable<PickListItem<int>> PickList =>
             GetAll().Select(p => new PickListItem<int>(p.Id, p.Name));
         }
     }

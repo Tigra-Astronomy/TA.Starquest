@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using TA.Starquest.DataAccess.Entities;
 using TA.Utils.Core.Diagnostics;
+using TA.Utils.Logging.NLog;
 
 namespace TA.Starquest.Web.Areas.Identity.Pages.Account
 {
@@ -26,7 +27,7 @@ namespace TA.Starquest.Web.Areas.Identity.Pages.Account
         {
             _userManager = userManager;
             _signInManager = signInManager;
-            log = log;
+            this.log = log ?? new LoggingService();
         }
 
         [BindProperty]

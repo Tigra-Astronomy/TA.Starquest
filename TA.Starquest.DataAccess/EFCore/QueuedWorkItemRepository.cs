@@ -21,7 +21,7 @@ namespace TA.Starquest.DataAccess.EFCore
     {
     public class QueuedWorkItemRepository : Repository<QueuedWorkItem, int>
         {
-        public QueuedWorkItemRepository([NotNull] ApplicationDbContext dbContext) : base(dbContext)
+            public QueuedWorkItemRepository([NotNull] StarquestDbContext dbContext) : base(dbContext)
             {
             Contract.Requires(dbContext != null);
             }

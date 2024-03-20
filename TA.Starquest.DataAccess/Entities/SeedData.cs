@@ -11,15 +11,13 @@
 // File: SeedData.cs  Last modified: 2020-08-09@21:31 by Tim Long
 
 using System;
-using System.Collections.Generic;
 using TA.Starquest.DataAccess.EFCore;
 
 namespace TA.Starquest.DataAccess.Entities
     {
     public static class SeedData
         {
-
-        internal static void CreateBetaMission(ApplicationDbContext context)
+            internal static void CreateBetaMission(StarquestDbContext context)
             {
             //ToDo - seed data works differently in EF Core - re-implement
             //var phaseCategory = context.Categories.Single(p => p.Name == "Phase");

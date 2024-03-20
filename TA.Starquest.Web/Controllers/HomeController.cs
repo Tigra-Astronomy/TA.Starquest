@@ -12,6 +12,7 @@ namespace TA.Starquest.Web.Controllers
             public HomeController(ILog log)
             {
                 this.log = log;
+                log.Info().Message("Home controller").Write();
             }
 
             public IActionResult Index() => View();

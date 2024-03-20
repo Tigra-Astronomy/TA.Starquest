@@ -71,13 +71,13 @@ public class Startup : AspNetCoreStartupBase
 //            options.MinimumSameSitePolicy = SameSiteMode.None;
 //            });
 
-//        services.AddDbContext<ApplicationDbContext>(
+//        services.AddDbContext<StarquestDbContext>(
 //            options=>options.UseSqlite(
 //                Configuration.GetConnectionString("Starquest")));
 
 //        services.AddDefaultIdentity<ApplicationUser>(
 //                options=>options.SignIn.RequireConfirmedAccount=true)
-//            .AddEntityFrameworkStores<ApplicationDbContext>();
+//            .AddEntityFrameworkStores<StarquestDbContext>();
 
 //        services.AddTransient<IEmailSender, SendgridEmailSender>();
 //        services.Configure<AuthMessageSenderOptions>(Configuration);

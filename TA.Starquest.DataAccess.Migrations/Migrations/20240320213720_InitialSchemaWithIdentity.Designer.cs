@@ -2,19 +2,23 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TA.Starquest.DataAccess.EFCore;
 
-namespace TA.Starquest.DataAccess.Migrations
+#nullable disable
+
+namespace TA.Starquest.DataAccess.Migrations.Migrations
 {
-    [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [DbContext(typeof(StarquestDbContext))]
+    [Migration("20240320213720_InitialSchemaWithIdentity")]
+    partial class InitialSchemaWithIdentity
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
-            modelBuilder
-                .HasAnnotation("ProductVersion", "3.1.7");
+            modelBuilder.HasAnnotation("ProductVersion", "8.0.3");
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
                 {
@@ -26,38 +30,35 @@ namespace TA.Starquest.DataAccess.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Name")
-                        .HasColumnType("TEXT")
-                        .HasMaxLength(256);
+                        .HasMaxLength(256)
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("NormalizedName")
-                        .HasColumnType("TEXT")
-                        .HasMaxLength(256);
+                        .HasMaxLength(256)
+                        .HasColumnType("TEXT");
 
                     b.HasKey("Id");
 
                     b.HasIndex("NormalizedName")
                         .IsUnique()
-                        .HasName("RoleNameIndex");
+                        .HasDatabaseName("RoleNameIndex");
 
-                    b.ToTable("AspNetRoles");
+                    b.ToTable("AspNetRoles", (string)null);
 
                     b.HasData(
                         new
                         {
                             Id = "1204ca89-ad5a-4e52-af4d-cb9864254e91",
-                            ConcurrencyStamp = "c818258e-7020-4bf4-b4e3-a29eeae65e55",
                             Name = "Administrator"
                         },
                         new
                         {
                             Id = "341c4df2-23fe-4905-96f6-0914f73d95e1",
-                            ConcurrencyStamp = "a16a3a21-f090-47c2-b856-39ef608c90a1",
                             Name = "Moderator"
                         },
                         new
                         {
                             Id = "27b31d46-7f3e-4bc9-a9cc-4718797c12d8",
-                            ConcurrencyStamp = "aad046ed-1602-468a-98cf-ee33c64299a2",
                             Name = "EventManager"
                         });
                 });
@@ -82,7 +83,7 @@ namespace TA.Starquest.DataAccess.Migrations
 
                     b.HasIndex("RoleId");
 
-                    b.ToTable("AspNetRoleClaims");
+                    b.ToTable("AspNetRoleClaims", (string)null);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
@@ -110,18 +111,16 @@ namespace TA.Starquest.DataAccess.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("AspNetUserClaims");
+                    b.ToTable("AspNetUserClaims", (string)null);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
                 {
                     b.Property<string>("LoginProvider")
-                        .HasColumnType("TEXT")
-                        .HasMaxLength(128);
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("ProviderKey")
-                        .HasColumnType("TEXT")
-                        .HasMaxLength(128);
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("ApplicationUserId")
                         .HasColumnType("TEXT");
@@ -139,7 +138,7 @@ namespace TA.Starquest.DataAccess.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("AspNetUserLogins");
+                    b.ToTable("AspNetUserLogins", (string)null);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<string>", b =>
@@ -159,7 +158,7 @@ namespace TA.Starquest.DataAccess.Migrations
 
                     b.HasIndex("RoleId");
 
-                    b.ToTable("AspNetUserRoles");
+                    b.ToTable("AspNetUserRoles", (string)null);
 
                     b.HasData(
                         new
@@ -175,12 +174,10 @@ namespace TA.Starquest.DataAccess.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<string>("LoginProvider")
-                        .HasColumnType("TEXT")
-                        .HasMaxLength(128);
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("Name")
-                        .HasColumnType("TEXT")
-                        .HasMaxLength(128);
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("ApplicationUserId")
                         .HasColumnType("TEXT");
@@ -192,7 +189,7 @@ namespace TA.Starquest.DataAccess.Migrations
 
                     b.HasIndex("ApplicationUserId");
 
-                    b.ToTable("AspNetUserTokens");
+                    b.ToTable("AspNetUserTokens", (string)null);
                 });
 
             modelBuilder.Entity("TA.Starquest.DataAccess.Entities.ApplicationUser", b =>
@@ -208,8 +205,8 @@ namespace TA.Starquest.DataAccess.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Email")
-                        .HasColumnType("TEXT")
-                        .HasMaxLength(256);
+                        .HasMaxLength(256)
+                        .HasColumnType("TEXT");
 
                     b.Property<bool>("EmailConfirmed")
                         .HasColumnType("INTEGER");
@@ -221,12 +218,12 @@ namespace TA.Starquest.DataAccess.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<string>("NormalizedEmail")
-                        .HasColumnType("TEXT")
-                        .HasMaxLength(256);
+                        .HasMaxLength(256)
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("NormalizedUserName")
-                        .HasColumnType("TEXT")
-                        .HasMaxLength(256);
+                        .HasMaxLength(256)
+                        .HasColumnType("TEXT");
 
                     b.Property<int?>("ObservingSessionId")
                         .HasColumnType("INTEGER");
@@ -250,37 +247,37 @@ namespace TA.Starquest.DataAccess.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("UserName")
-                        .HasColumnType("TEXT")
-                        .HasMaxLength(256);
+                        .HasMaxLength(256)
+                        .HasColumnType("TEXT");
 
                     b.HasKey("Id");
 
                     b.HasIndex("NormalizedEmail")
-                        .HasName("EmailIndex");
+                        .HasDatabaseName("EmailIndex");
 
                     b.HasIndex("NormalizedUserName")
                         .IsUnique()
-                        .HasName("UserNameIndex");
+                        .HasDatabaseName("UserNameIndex");
 
                     b.HasIndex("ObservingSessionId");
 
-                    b.ToTable("AspNetUsers");
+                    b.ToTable("AspNetUsers", (string)null);
 
                     b.HasData(
                         new
                         {
                             Id = "c2e1b3d3-f1cf-4c9b-b712-37502c6e9992",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "95aacb49-849b-4746-8f71-8c8c913217fc",
+                            ConcurrencyStamp = "067e246f-dafc-4e27-967f-d9336b18829d",
                             Email = "Tim@tigranetworks.co.uk",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "TIM@TIGRANETWORKS.CO.UK",
                             NormalizedUserName = "ADMINISTRATOR",
-                            PasswordHash = "AQAAAAEAACcQAAAAEGGR2g0T4XmZHvoOKx/EqCsSkmURdMKolFHkUILGmwa7V6SwnOouEcOjO0E4yHjjuA==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEAkVuWRo/405Tdw1FY6vBWMe9gnG9L4q5xv5Ps13yIUPRcoUvAFyyjSoQH5Ib3Zwqw==",
                             PhoneNumberConfirmed = false,
-                            Provisioned = new DateTime(2020, 9, 4, 17, 26, 11, 301, DateTimeKind.Utc).AddTicks(4581),
-                            SecurityStamp = "b63212cc-9eed-4b0a-ba76-87d748cd85d2",
+                            Provisioned = new DateTime(2024, 3, 20, 21, 37, 20, 165, DateTimeKind.Utc).AddTicks(2402),
+                            SecurityStamp = "0072ed7f-180b-4a2a-8a28-60006a2196ce",
                             TwoFactorEnabled = false,
                             UserName = "Administrator"
                         });
@@ -482,8 +479,8 @@ namespace TA.Starquest.DataAccess.Migrations
 
                     b.Property<string>("ValidationImage")
                         .IsRequired()
-                        .HasColumnType("TEXT")
-                        .HasMaxLength(255);
+                        .HasMaxLength(255)
+                        .HasColumnType("TEXT");
 
                     b.HasKey("Id");
 
@@ -501,12 +498,13 @@ namespace TA.Starquest.DataAccess.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Precondition")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Title")
                         .IsRequired()
-                        .HasColumnType("TEXT")
-                        .HasMaxLength(128);
+                        .HasMaxLength(128)
+                        .HasColumnType("TEXT");
 
                     b.HasKey("Id");
 
@@ -534,6 +532,7 @@ namespace TA.Starquest.DataAccess.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Precondition")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
@@ -666,6 +665,7 @@ namespace TA.Starquest.DataAccess.Migrations
 
                     b.Property<string>("Discriminator")
                         .IsRequired()
+                        .HasMaxLength(34)
                         .HasColumnType("TEXT");
 
                     b.Property<int>("Disposition")
@@ -676,14 +676,16 @@ namespace TA.Starquest.DataAccess.Migrations
 
                     b.Property<string>("QueueName")
                         .IsRequired()
-                        .HasColumnType("TEXT")
-                        .HasMaxLength(8);
+                        .HasMaxLength(8)
+                        .HasColumnType("TEXT");
 
                     b.HasKey("Id");
 
                     b.ToTable("QueuedWorkItems");
 
                     b.HasDiscriminator<string>("Discriminator").HasValue("QueuedWorkItem");
+
+                    b.UseTphMappingStrategy();
                 });
 
             modelBuilder.Entity("TA.Starquest.DataAccess.Entities.UserBadge", b =>
@@ -714,6 +716,7 @@ namespace TA.Starquest.DataAccess.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<int?>("ObservingSessionId")
+                        .ValueGeneratedOnUpdateSometimes()
                         .HasColumnType("INTEGER");
 
                     b.HasDiscriminator().HasValue("ObservingSessionCancellation");
@@ -724,6 +727,7 @@ namespace TA.Starquest.DataAccess.Migrations
                     b.HasBaseType("TA.Starquest.DataAccess.Entities.QueuedWorkItem");
 
                     b.Property<int?>("ObservingSessionId")
+                        .ValueGeneratedOnUpdateSometimes()
                         .HasColumnType("INTEGER");
 
                     b.HasDiscriminator().HasValue("ObservingSessionReminder");
@@ -816,6 +820,10 @@ namespace TA.Starquest.DataAccess.Migrations
                         .HasForeignKey("MissionTrackId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Category");
+
+                    b.Navigation("MissionTrack");
                 });
 
             modelBuilder.Entity("TA.Starquest.DataAccess.Entities.MissionLevel", b =>
@@ -825,6 +833,8 @@ namespace TA.Starquest.DataAccess.Migrations
                         .HasForeignKey("MissionId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Mission");
                 });
 
             modelBuilder.Entity("TA.Starquest.DataAccess.Entities.MissionTrack", b =>
@@ -840,6 +850,10 @@ namespace TA.Starquest.DataAccess.Migrations
                         .HasForeignKey("MissionLevelId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Badge");
+
+                    b.Navigation("MissionLevel");
                 });
 
             modelBuilder.Entity("TA.Starquest.DataAccess.Entities.Observation", b =>
@@ -855,6 +869,10 @@ namespace TA.Starquest.DataAccess.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Challenge");
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("TA.Starquest.DataAccess.Entities.UserBadge", b =>
@@ -870,6 +888,50 @@ namespace TA.Starquest.DataAccess.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Badge");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("TA.Starquest.DataAccess.Entities.ApplicationUser", b =>
+                {
+                    b.Navigation("Claims");
+
+                    b.Navigation("Logins");
+
+                    b.Navigation("Observations");
+
+                    b.Navigation("Tokens");
+
+                    b.Navigation("UserBadges");
+
+                    b.Navigation("UserRoles");
+                });
+
+            modelBuilder.Entity("TA.Starquest.DataAccess.Entities.Badge", b =>
+                {
+                    b.Navigation("UserBadges");
+                });
+
+            modelBuilder.Entity("TA.Starquest.DataAccess.Entities.Mission", b =>
+                {
+                    b.Navigation("MissionLevels");
+                });
+
+            modelBuilder.Entity("TA.Starquest.DataAccess.Entities.MissionLevel", b =>
+                {
+                    b.Navigation("Tracks");
+                });
+
+            modelBuilder.Entity("TA.Starquest.DataAccess.Entities.MissionTrack", b =>
+                {
+                    b.Navigation("Challenges");
+                });
+
+            modelBuilder.Entity("TA.Starquest.DataAccess.Entities.ObservingSession", b =>
+                {
+                    b.Navigation("Attendees");
                 });
 #pragma warning restore 612, 618
         }

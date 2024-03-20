@@ -8,7 +8,7 @@
 // permit persons to whom the Software is furnished to do so. The Software comes with no warranty of any kind.
 // You make use of the Software entirely at your own risk and assume all liability arising from your use thereof.
 // 
-// File: ApplicationDbContext.cs  Last modified: 2020-09-01@04:21 by Tim Long
+// File: StarquestDbContext.cs  Last modified: 2020-09-01@04:21 by Tim Long
 
 using System.Reflection;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
@@ -18,14 +18,14 @@ using TA.Starquest.DataAccess.Entities.QueueWorkItems;
 
 namespace TA.Starquest.DataAccess.EFCore
     {
-    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
+        public class StarquestDbContext : IdentityDbContext<ApplicationUser>
         {
-        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
-            : base(options) { }
+            public StarquestDbContext(DbContextOptions<StarquestDbContext> options = null)
+                : base(options ?? new DbContextOptions<StarquestDbContext>()) { }
 
-        public virtual DbSet<Challenge> Challenges { get; set; }
+            public virtual DbSet<Challenge> Challenges { get; set; }
 
-        public virtual DbSet<Category> Categories { get; set; }
+            public virtual DbSet<Category> Categories { get; set; }
 
         public virtual DbSet<MissionLevel> MissionLevels { get; set; }
 

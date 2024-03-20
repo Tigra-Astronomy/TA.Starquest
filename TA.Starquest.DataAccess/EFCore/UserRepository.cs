@@ -21,10 +21,10 @@ namespace TA.Starquest.DataAccess.EFCore
     /// <seealso cref="Repository{TEntity,TKey}" />
     public class UserRepository : Repository<ApplicationUser, string>
         {
-        /// <summary>Initializes a new instance of the <see cref="UserRepository" /> class.</summary>
-        /// <param name="dbContext">The database context.</param>
-        public UserRepository(ApplicationDbContext dbContext)
-            : base(dbContext) { }
+            /// <summary>Initializes a new instance of the <see cref="UserRepository" /> class.</summary>
+            /// <param name="dbContext">The database context.</param>
+            public UserRepository(StarquestDbContext dbContext)
+                : base(dbContext) { }
 
         public override IEnumerable<PickListItem<string>> PickList =>
             GetAll().Select(p => new PickListItem<string>(p.Id, $"{p.UserName} <{p.Email}>"));

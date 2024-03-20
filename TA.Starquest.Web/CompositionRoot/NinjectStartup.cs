@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
 using Ninject.Web.AspNetCore;
 using Ninject.Web.AspNetCore.Hosting;
 using TA.Starquest.DataAccess.EFCore;
@@ -45,13 +46,13 @@ public class NinjectStartup : AspNetCoreStartupBase
             options.MinimumSameSitePolicy = SameSiteMode.None;
         });
 
-        services.AddDbContext<ApplicationDbContext>(
-                                                    options => options.UseSqlite(
-                                                                                 Configuration.GetConnectionString("Starquest")));
+        services.AddDbContext<StarquestDbContext>(
+                                                  options => options.UseSqlite(
+                                                                               Configuration.GetConnectionString("Starquest")));
 
         services.AddDefaultIdentity<ApplicationUser>(
                                                      options => options.SignIn.RequireConfirmedAccount = true)
-            .AddEntityFrameworkStores<ApplicationDbContext>();
+            .AddEntityFrameworkStores<StarquestDbContext>();
 
         services.AddTransient<IEmailSender, SendgridEmailSender>();
         services.Configure<AuthMessageSenderOptions>(Configuration);
@@ -67,6 +68,14 @@ public class NinjectStartup : AspNetCoreStartupBase
         services.AddRazorPages();
         services.AddApplicationInsightsTelemetry();
         services.AddDatabaseDeveloperPageExceptionFilter();
+        services.AddLogging(ConfigureLogging);
+        services.AddHttpLogging(options => { });
+    }
+
+    private void ConfigureLogging(ILoggingBuilder builder)
+    {
+        //builder.AddProvider(new StarquestLoggingProvider());
+        builder.AddSeq("http://seq.devops.oceansignal.com:5341", "iH0Mbr2WMgizM3UVwFYp");
     }
 
     public override void Configure(IApplicationBuilder app)
@@ -90,6 +99,7 @@ public class NinjectStartup : AspNetCoreStartupBase
             //app.UseHsts();
         }
 
+        app.UseHttpLogging();
         app.UseStaticFiles();
         app.UseRouting();
         app.UseAuthorization();

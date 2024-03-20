@@ -7,7 +7,7 @@ namespace TA.Starquest.Specifications.DataAccess.QuerySpecifications
     class QueryTestContext : IDisposable
     {
     public EntityFrameworkCoreUnitOfWork UnitOfWork { get; set; }
-    public ApplicationDbContext DbContext { get; set; }
+    public StarquestDbContext DbContext { get; set; }
     public SqliteConnection DbConnection { get; set; }
 
     public void Dispose()
