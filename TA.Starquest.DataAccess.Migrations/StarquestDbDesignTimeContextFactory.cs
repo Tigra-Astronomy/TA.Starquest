@@ -9,6 +9,7 @@
 // 
 // File: StarquestDbDesignTimeContextFactory.cs  Last modified: 2024-3-20@21:21 by Tim
 
+using Microsoft.Data.Sqlite;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 using TA.Starquest.DataAccess.EFCore;
@@ -22,8 +23,11 @@ public class StarquestDbDesignTimeContextFactory : IDesignTimeDbContextFactory<S
     /// <inheritdoc />
     public StarquestDbContext CreateDbContext(string[] args)
     {
+        var dbFile = @".\Starquest.db";
+        var connectionBuilder = new SqliteConnectionStringBuilder { Mode = SqliteOpenMode.ReadWriteCreate, DataSource = dbFile };
         var builder = new DbContextOptionsBuilder<StarquestDbContext>();
-        builder.UseSqlite(o => o.MigrationsAssembly("TA.Starquest.DataAccess.Migrations"));
+        builder.UseSqlite(connectionBuilder.ToString(),
+                          o => o.MigrationsAssembly("TA.Starquest.DataAccess.Migrations"));
         return new StarquestDbContext(builder.Options);
     }
 
